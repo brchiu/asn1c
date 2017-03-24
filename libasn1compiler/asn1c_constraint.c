@@ -133,7 +133,7 @@ asn1c_emit_constraint_checking_code(arg_t *arg) {
 		INDENT(+1);
 		OUT("ASN__CTFAIL(app_key, td, sptr,\n");
 		OUT("\t\"%%s: value not given (%%s:%%d)\",\n");
-		OUT("\ttd->name, __FILE__, __LINE__);\n");
+		OUT("\tTYPE_NAME(td),__FILE__, __LINE__);\n");
 		OUT("return -1;\n");
 		INDENT(-1);
 	OUT("}\n");
@@ -219,7 +219,7 @@ asn1c_emit_constraint_checking_code(arg_t *arg) {
 		INDENT(+1);
 			OUT("ASN__CTFAIL(app_key, td, sptr,\n");
 			OUT("\t\"%%s: constraint failed (%%s:%%d)\",\n");
-			OUT("\ttd->name, __FILE__, __LINE__);\n");
+			OUT("\tTYPE_NAME(td),__FILE__, __LINE__);\n");
 			OUT("return -1;\n");
 		INDENT(-1);
 	OUT("}\n");
@@ -575,7 +575,7 @@ emit_size_determination_code(arg_t *arg, asn1p_expr_type_e etype) {
 		OUT("if((ssize_t)size < 0) {\n");
 		OUT("\tASN__CTFAIL(app_key, td, sptr,\n");
 		OUT("\t\t\"%%s: UTF-8: broken encoding (%%s:%%d)\",\n");
-		OUT("\t\ttd->name, __FILE__, __LINE__);\n");
+		OUT("\t\tTYPE_NAME(td),__FILE__, __LINE__);\n");
 		OUT("\treturn -1;\n");
 		OUT("}\n");
 		break;
@@ -645,7 +645,7 @@ emit_value_determination_code(arg_t *arg, asn1p_expr_type_e etype, asn1cnst_rang
 				INDENT(+1);
 				OUT("ASN__CTFAIL(app_key, td, sptr,\n");
 				OUT("\t\"%%s: value too large (%%s:%%d)\",\n");
-				OUT("\ttd->name, __FILE__, __LINE__);\n");
+				OUT("\tTYPE_NAME(td),__FILE__, __LINE__);\n");
 				OUT("return -1;\n");
 				INDENT(-1);
 				OUT("}\n");
@@ -654,7 +654,7 @@ emit_value_determination_code(arg_t *arg, asn1p_expr_type_e etype, asn1cnst_rang
 				INDENT(+1);
 				OUT("ASN__CTFAIL(app_key, td, sptr,\n");
 				OUT("\t\"%%s: value too large (%%s:%%d)\",\n");
-				OUT("\ttd->name, __FILE__, __LINE__);\n");
+				OUT("\tTYPE_NAME(td),__FILE__, __LINE__);\n");
 				OUT("return -1;\n");
 				INDENT(-1);
 				OUT("}\n");
@@ -667,7 +667,7 @@ emit_value_determination_code(arg_t *arg, asn1p_expr_type_e etype, asn1cnst_rang
 				INDENT(+1);
 				OUT("ASN__CTFAIL(app_key, td, sptr,\n");
 				OUT("\t\"%%s: value too large (%%s:%%d)\",\n");
-				OUT("\ttd->name, __FILE__, __LINE__);\n");
+				OUT("\tTYPE_NAME(td),__FILE__, __LINE__);\n");
 				OUT("return -1;\n");
 				INDENT(-1);
 			OUT("}\n");

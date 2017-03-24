@@ -6,7 +6,7 @@
 #include <asn_internal.h>
 #include <xer_support.h>		/* XER/XML parsing support */
 
-
+#if (ASN_OP_MASK & ASN_OP_XER)
 /*
  * Decode the XER encoding of a given type.
  */
@@ -366,3 +366,4 @@ xer_skip_unknown(xer_check_tag_e tcv, ber_tlv_len_t *depth) {
 		return -1;
 	}
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */

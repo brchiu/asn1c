@@ -50,99 +50,184 @@ extern asn_TYPE_member_t asn_MBR_Everything_1[10];
 
 asn_TYPE_member_t asn_MBR_Everything_1[] = {
 	{ ATF_POINTER, 0, offsetof(struct Everything, ch1),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = +1,	/* EXPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Choice1,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "ch1"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct Everything, ch2),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = +1,	/* EXPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Choice2,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "ch2"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct Everything, ch3),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 		.tag_mode = +1,	/* EXPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Choice3,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "ch3"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Everything, set),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (3 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Set,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "set"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Everything, a),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (4 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Alpha,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "a"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Everything, b),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (5 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Beta,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "b"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Everything, g),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (6 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Gamma,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "g"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Everything, ot),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (7 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_OneTwo,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "ot"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Everything, tt),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (8 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_TwoThree,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "tt"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Everything, to),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (9 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_ThreeOne,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "to"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_Everything_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Everything_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* ch1 */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* ch2 */
@@ -155,27 +240,46 @@ static const asn_TYPE_tag2member_t asn_MAP_Everything_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (8 << 2)), 8, 0, 0 }, /* tt */
     { (ASN_TAG_CLASS_CONTEXT | (9 << 2)), 9, 0, 0 } /* to */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_SEQUENCE_specifics_t asn_SPC_Everything_specs_1 = {
 	sizeof(struct Everything),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct Everything, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Everything_tag2el_1,
 	10,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Everything = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Everything",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Everything",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_Everything_tags_1,
 	sizeof(asn_DEF_Everything_tags_1)
 		/sizeof(asn_DEF_Everything_tags_1[0]), /* 1 */
 	asn_DEF_Everything_tags_1,	/* Same as above */
 	sizeof(asn_DEF_Everything_tags_1)
 		/sizeof(asn_DEF_Everything_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Everything_1,
 	10,	/* Elements count */
 	&asn_SPC_Everything_specs_1	/* Additional specs */
@@ -228,50 +332,86 @@ extern asn_TYPE_member_t asn_MBR_Choice1_1[2];
 
 /*** <<< STAT-DEFS [Choice1] >>> ***/
 
+
 asn_TYPE_member_t asn_MBR_Choice1_1[] = {
 	{ ATF_POINTER, 0, offsetof(struct Choice1, choice.something),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Everything,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "something"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct Choice1, choice.some2),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Everything,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "some2"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Choice1_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* something */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 } /* some2 */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_CHOICE_specifics_t asn_SPC_Choice1_specs_1 = {
 	sizeof(struct Choice1),
 	offsetof(struct Choice1, _asn_ctx),
 	offsetof(struct Choice1, present),
 	sizeof(((struct Choice1 *)0)->present),
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Choice1_tag2el_1,
 	2,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	.canonical_order = 0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	.ext_start = 1	/* Extensions start */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Choice1 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Choice1",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Choice1",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_CHOICE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	CHOICE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0,	/* No effective tags (pointer) */
 	0,	/* No effective tags (count) */
 	0,	/* No tags (pointer) */
 	0,	/* No tags (count) */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Choice1_1,
 	2,	/* Elements count */
 	&asn_SPC_Choice1_specs_1	/* Additional specs */
@@ -325,50 +465,86 @@ extern asn_TYPE_member_t asn_MBR_Choice2_1[2];
 
 /*** <<< STAT-DEFS [Choice2] >>> ***/
 
+
 asn_TYPE_member_t asn_MBR_Choice2_1[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct Choice2, choice.typeref),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_TypeRef,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "typeref"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct Choice2, choice.some3),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Everything,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "some3"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Choice2_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* typeref */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 } /* some3 */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_CHOICE_specifics_t asn_SPC_Choice2_specs_1 = {
 	sizeof(struct Choice2),
 	offsetof(struct Choice2, _asn_ctx),
 	offsetof(struct Choice2, present),
 	sizeof(((struct Choice2 *)0)->present),
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Choice2_tag2el_1,
 	2,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	.canonical_order = 0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	.ext_start = 1	/* Extensions start */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Choice2 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Choice2",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Choice2",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_CHOICE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	CHOICE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0,	/* No effective tags (pointer) */
 	0,	/* No effective tags (count) */
 	0,	/* No tags (pointer) */
 	0,	/* No tags (count) */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Choice2_1,
 	2,	/* Elements count */
 	&asn_SPC_Choice2_specs_1	/* Additional specs */
@@ -435,44 +611,76 @@ extern asn_TYPE_member_t asn_MBR_Choice3_1[3];
 
 static asn_TYPE_member_t asn_MBR_a_2[] = {
 	{ ATF_POINTER, 0, offsetof(struct a, aa),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Everything,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "aa"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_a_tags_2[] = {
 	(ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_a_tag2el_2[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 } /* aa */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 static asn_SEQUENCE_specifics_t asn_SPC_a_specs_2 = {
 	sizeof(struct a),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct a, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_a_tag2el_2,
 	1,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 static /* Use -fall-defs-global to expose */
 asn_TYPE_descriptor_t asn_DEF_a_2 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"a",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"a",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_a_tags_2,
 	sizeof(asn_DEF_a_tags_2)
 		/sizeof(asn_DEF_a_tags_2[0]) - 1, /* 1 */
 	asn_DEF_a_tags_2,	/* Same as above */
 	sizeof(asn_DEF_a_tags_2)
 		/sizeof(asn_DEF_a_tags_2[0]), /* 2 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_a_2,
 	1,	/* Elements count */
 	&asn_SPC_a_specs_2	/* Additional specs */
@@ -480,96 +688,164 @@ asn_TYPE_descriptor_t asn_DEF_a_2 = {
 
 static asn_TYPE_member_t asn_MBR_c_5[] = {
 	{ ATF_POINTER, 0, 0,
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = -1 /* Ambiguous tag (CHOICE?) */,
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Choice3,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = ""
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_c_tags_5[] = {
 	(ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 static asn_SET_OF_specifics_t asn_SPC_c_specs_5 = {
 	sizeof(struct c),
 	offsetof(struct c, _asn_ctx),
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	2,	/* XER encoding is XMLValueList */
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 };
+
 static /* Use -fall-defs-global to expose */
 asn_TYPE_descriptor_t asn_DEF_c_5 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"c",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"c",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE_OF,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_OF_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_c_tags_5,
 	sizeof(asn_DEF_c_tags_5)
 		/sizeof(asn_DEF_c_tags_5[0]) - 1, /* 1 */
 	asn_DEF_c_tags_5,	/* Same as above */
 	sizeof(asn_DEF_c_tags_5)
 		/sizeof(asn_DEF_c_tags_5[0]), /* 2 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_c_5,
 	1,	/* Single element */
 	&asn_SPC_c_specs_5	/* Additional specs */
 };
 
+
 asn_TYPE_member_t asn_MBR_Choice3_1[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct Choice3, choice.a),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_a_2,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "a"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct Choice3, choice.b),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Everything,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "b"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Choice3, choice.c),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_c_5,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "c"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Choice3_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* a */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* b */
     { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 } /* c */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_CHOICE_specifics_t asn_SPC_Choice3_specs_1 = {
 	sizeof(struct Choice3),
 	offsetof(struct Choice3, _asn_ctx),
 	offsetof(struct Choice3, present),
 	sizeof(((struct Choice3 *)0)->present),
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Choice3_tag2el_1,
 	3,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	.canonical_order = 0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	.ext_start = -1	/* Extensions start */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Choice3 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Choice3",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Choice3",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_CHOICE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	CHOICE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0,	/* No effective tags (pointer) */
 	0,	/* No effective tags (count) */
 	0,	/* No tags (pointer) */
 	0,	/* No tags (count) */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Choice3_1,
 	3,	/* Elements count */
 	&asn_SPC_Choice3_specs_1	/* Additional specs */
@@ -629,54 +905,99 @@ extern asn_TYPE_member_t asn_MBR_Set_1[1];
 
 static asn_TYPE_member_t asn_MBR_Member_2[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct Member, Int),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_INTEGER,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "int"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct Member, set),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Set,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "set"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct Member, seq),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Sequence,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "seq"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 2, offsetof(struct Member, set2),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (3 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Set,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "set2"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 1, offsetof(struct Member, set3),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (4 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Set,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "set3"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_Member_tags_2[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Member_tag2el_2[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* int */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* set */
@@ -684,28 +1005,47 @@ static const asn_TYPE_tag2member_t asn_MAP_Member_tag2el_2[] = {
     { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 3, 0, 0 }, /* set2 */
     { (ASN_TAG_CLASS_CONTEXT | (4 << 2)), 4, 0, 0 } /* set3 */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 static asn_SEQUENCE_specifics_t asn_SPC_Member_specs_2 = {
 	sizeof(struct Member),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct Member, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Member_tag2el_2,
 	5,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	3,	/* Start extensions */
 	6	/* Stop extensions */
 };
+
 static /* Use -fall-defs-global to expose */
 asn_TYPE_descriptor_t asn_DEF_Member_2 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"SEQUENCE",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"SEQUENCE",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_Member_tags_2,
 	sizeof(asn_DEF_Member_tags_2)
 		/sizeof(asn_DEF_Member_tags_2[0]), /* 1 */
 	asn_DEF_Member_tags_2,	/* Same as above */
 	sizeof(asn_DEF_Member_tags_2)
 		/sizeof(asn_DEF_Member_tags_2[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Member_2,
 	5,	/* Elements count */
 	&asn_SPC_Member_specs_2	/* Additional specs */
@@ -713,35 +1053,59 @@ asn_TYPE_descriptor_t asn_DEF_Member_2 = {
 
 asn_TYPE_member_t asn_MBR_Set_1[] = {
 	{ ATF_POINTER, 0, 0,
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_UNIVERSAL | (16 << 2)),
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Member_2,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = ""
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_Set_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (17 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 asn_SET_OF_specifics_t asn_SPC_Set_specs_1 = {
 	sizeof(struct Set),
 	offsetof(struct Set, _asn_ctx),
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	0,	/* XER encoding is XMLDelimitedItemList */
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Set = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Set",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Set",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SET_OF,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SET_OF_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_Set_tags_1,
 	sizeof(asn_DEF_Set_tags_1)
 		/sizeof(asn_DEF_Set_tags_1[0]), /* 1 */
 	asn_DEF_Set_tags_1,	/* Same as above */
 	sizeof(asn_DEF_Set_tags_1)
 		/sizeof(asn_DEF_Set_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Set_1,
 	1,	/* Single element */
 	&asn_SPC_Set_specs_1	/* Additional specs */
@@ -789,72 +1153,128 @@ extern asn_TYPE_member_t asn_MBR_Sequence_1[4];
 
 asn_TYPE_member_t asn_MBR_Sequence_1[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct Sequence, a),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_INTEGER,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "a"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 3, offsetof(struct Sequence, seq),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Sequence,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "seq"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 2, offsetof(struct Sequence, b),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_INTEGER,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "b"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 1, offsetof(struct Sequence, set),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (3 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Set,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "set"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_Sequence_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Sequence_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* a */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* seq */
     { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 }, /* b */
     { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 3, 0, 0 } /* set */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_SEQUENCE_specifics_t asn_SPC_Sequence_specs_1 = {
 	sizeof(struct Sequence),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct Sequence, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Sequence_tag2el_1,
 	4,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	1,	/* Start extensions */
 	5	/* Stop extensions */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Sequence = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Sequence",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Sequence",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_Sequence_tags_1,
 	sizeof(asn_DEF_Sequence_tags_1)
 		/sizeof(asn_DEF_Sequence_tags_1[0]), /* 1 */
 	asn_DEF_Sequence_tags_1,	/* Same as above */
 	sizeof(asn_DEF_Sequence_tags_1)
 		/sizeof(asn_DEF_Sequence_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Sequence_1,
 	4,	/* Elements count */
 	&asn_SPC_Sequence_specs_1	/* Additional specs */
@@ -871,14 +1291,23 @@ typedef Sequence_t	 TypeRef_t;
 
 /*** <<< FUNC-DECLS [TypeRef] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_TypeRef;
 asn_struct_free_f TypeRef_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f TypeRef_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f TypeRef_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f TypeRef_decode_ber;
 der_type_encoder_f TypeRef_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f TypeRef_decode_xer;
 xer_type_encoder_f TypeRef_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [TypeRef] >>> ***/
 
@@ -889,21 +1318,35 @@ xer_type_encoder_f TypeRef_encode_xer;
 
 /*** <<< STAT-DEFS [TypeRef] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_TypeRef_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_TypeRef = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"TypeRef",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"TypeRef",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_TypeRef_tags_1,
 	sizeof(asn_DEF_TypeRef_tags_1)
 		/sizeof(asn_DEF_TypeRef_tags_1[0]), /* 1 */
 	asn_DEF_TypeRef_tags_1,	/* Same as above */
 	sizeof(asn_DEF_TypeRef_tags_1)
 		/sizeof(asn_DEF_TypeRef_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Sequence_1,
 	4,	/* Elements count */
 	&asn_SPC_Sequence_specs_1	/* Additional specs */
@@ -947,44 +1390,76 @@ extern asn_TYPE_member_t asn_MBR_Alpha_1[2];
 
 static asn_TYPE_member_t asn_MBR_b_3[] = {
 	{ ATF_POINTER, 1, offsetof(struct b, b),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Beta,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "b"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_b_tags_3[] = {
 	(ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_b_tag2el_3[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 } /* b */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 static asn_SEQUENCE_specifics_t asn_SPC_b_specs_3 = {
 	sizeof(struct b),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct b, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_b_tag2el_3,
 	1,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 static /* Use -fall-defs-global to expose */
 asn_TYPE_descriptor_t asn_DEF_b_3 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"b",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"b",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_b_tags_3,
 	sizeof(asn_DEF_b_tags_3)
 		/sizeof(asn_DEF_b_tags_3[0]) - 1, /* 1 */
 	asn_DEF_b_tags_3,	/* Same as above */
 	sizeof(asn_DEF_b_tags_3)
 		/sizeof(asn_DEF_b_tags_3[0]), /* 2 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_b_3,
 	1,	/* Elements count */
 	&asn_SPC_b_specs_3	/* Additional specs */
@@ -992,52 +1467,92 @@ asn_TYPE_descriptor_t asn_DEF_b_3 = {
 
 asn_TYPE_member_t asn_MBR_Alpha_1[] = {
 	{ ATF_POINTER, 0, offsetof(struct Alpha, a),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Beta,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "a"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Alpha, b),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_b_3,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "b"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_Alpha_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Alpha_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* a */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 } /* b */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_SEQUENCE_specifics_t asn_SPC_Alpha_specs_1 = {
 	sizeof(struct Alpha),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct Alpha, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Alpha_tag2el_1,
 	2,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Alpha = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Alpha",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Alpha",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_Alpha_tags_1,
 	sizeof(asn_DEF_Alpha_tags_1)
 		/sizeof(asn_DEF_Alpha_tags_1[0]), /* 1 */
 	asn_DEF_Alpha_tags_1,	/* Same as above */
 	sizeof(asn_DEF_Alpha_tags_1)
 		/sizeof(asn_DEF_Alpha_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Alpha_1,
 	2,	/* Elements count */
 	&asn_SPC_Alpha_specs_1	/* Additional specs */
@@ -1078,52 +1593,92 @@ extern asn_TYPE_member_t asn_MBR_Beta_1[2];
 
 asn_TYPE_member_t asn_MBR_Beta_1[] = {
 	{ ATF_POINTER, 2, offsetof(struct Beta, b),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Alpha,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "b"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 1, offsetof(struct Beta, g),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Gamma,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "g"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_Beta_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Beta_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* b */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 } /* g */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_SEQUENCE_specifics_t asn_SPC_Beta_specs_1 = {
 	sizeof(struct Beta),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct Beta, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Beta_tag2el_1,
 	2,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Beta = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Beta",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Beta",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_Beta_tags_1,
 	sizeof(asn_DEF_Beta_tags_1)
 		/sizeof(asn_DEF_Beta_tags_1[0]), /* 1 */
 	asn_DEF_Beta_tags_1,	/* Same as above */
 	sizeof(asn_DEF_Beta_tags_1)
 		/sizeof(asn_DEF_Beta_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Beta_1,
 	2,	/* Elements count */
 	&asn_SPC_Beta_specs_1	/* Additional specs */
@@ -1167,62 +1722,110 @@ extern asn_TYPE_member_t asn_MBR_Gamma_1[3];
 
 asn_TYPE_member_t asn_MBR_Gamma_1[] = {
 	{ ATF_POINTER, 0, offsetof(struct Gamma, o),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_TwoThree,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "o"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct Gamma, a),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Alpha,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "a"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct Gamma, b),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Beta,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "b"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_Gamma_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Gamma_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* o */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 }, /* a */
     { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 2, 0, 0 } /* b */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_SEQUENCE_specifics_t asn_SPC_Gamma_specs_1 = {
 	sizeof(struct Gamma),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct Gamma, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Gamma_tag2el_1,
 	3,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Gamma = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Gamma",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Gamma",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_Gamma_tags_1,
 	sizeof(asn_DEF_Gamma_tags_1)
 		/sizeof(asn_DEF_Gamma_tags_1[0]), /* 1 */
 	asn_DEF_Gamma_tags_1,	/* Same as above */
 	sizeof(asn_DEF_Gamma_tags_1)
 		/sizeof(asn_DEF_Gamma_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Gamma_1,
 	3,	/* Elements count */
 	&asn_SPC_Gamma_specs_1	/* Additional specs */
@@ -1274,47 +1877,78 @@ extern asn_TYPE_member_t asn_MBR_OneTwo_1[1];
 
 asn_TYPE_member_t asn_MBR_OneTwo_1[] = {
 	{ ATF_POINTER, 0, offsetof(struct OneTwo, m12),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_TwoThree,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "m12"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_OneTwo_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (17 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_OneTwo_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 } /* m12 */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 static const uint8_t asn_MAP_OneTwo_mmap_1[(1 + (8 * sizeof(unsigned int)) - 1) / 8] = {
 	(1 << 7)
 };
+
 asn_SET_specifics_t asn_SPC_OneTwo_specs_1 = {
 	sizeof(struct OneTwo),
 	offsetof(struct OneTwo, _asn_ctx),
 	offsetof(struct OneTwo, _presence_map),
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_OneTwo_tag2el_1,
 	1,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	asn_MAP_OneTwo_tag2el_1,	/* Same as above */
 	1,	/* Count of tags in the CXER map */
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	0,	/* Whether extensible */
 	(unsigned int *)asn_MAP_OneTwo_mmap_1	/* Mandatory elements map */
 };
+
 asn_TYPE_descriptor_t asn_DEF_OneTwo = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"OneTwo",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"OneTwo",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SET,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SET_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_OneTwo_tags_1,
 	sizeof(asn_DEF_OneTwo_tags_1)
 		/sizeof(asn_DEF_OneTwo_tags_1[0]), /* 1 */
 	asn_DEF_OneTwo_tags_1,	/* Same as above */
 	sizeof(asn_DEF_OneTwo_tags_1)
 		/sizeof(asn_DEF_OneTwo_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_OneTwo_1,
 	1,	/* Elements count */
 	&asn_SPC_OneTwo_specs_1	/* Additional specs */
@@ -1366,47 +2000,78 @@ extern asn_TYPE_member_t asn_MBR_TwoThree_1[1];
 
 asn_TYPE_member_t asn_MBR_TwoThree_1[] = {
 	{ ATF_POINTER, 0, offsetof(struct TwoThree, m23),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_ThreeOne,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "m23"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_TwoThree_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (17 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_TwoThree_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 } /* m23 */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 static const uint8_t asn_MAP_TwoThree_mmap_1[(1 + (8 * sizeof(unsigned int)) - 1) / 8] = {
 	(1 << 7)
 };
+
 asn_SET_specifics_t asn_SPC_TwoThree_specs_1 = {
 	sizeof(struct TwoThree),
 	offsetof(struct TwoThree, _asn_ctx),
 	offsetof(struct TwoThree, _presence_map),
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_TwoThree_tag2el_1,
 	1,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	asn_MAP_TwoThree_tag2el_1,	/* Same as above */
 	1,	/* Count of tags in the CXER map */
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	0,	/* Whether extensible */
 	(unsigned int *)asn_MAP_TwoThree_mmap_1	/* Mandatory elements map */
 };
+
 asn_TYPE_descriptor_t asn_DEF_TwoThree = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"TwoThree",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"TwoThree",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SET,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SET_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_TwoThree_tags_1,
 	sizeof(asn_DEF_TwoThree_tags_1)
 		/sizeof(asn_DEF_TwoThree_tags_1[0]), /* 1 */
 	asn_DEF_TwoThree_tags_1,	/* Same as above */
 	sizeof(asn_DEF_TwoThree_tags_1)
 		/sizeof(asn_DEF_TwoThree_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_TwoThree_1,
 	1,	/* Elements count */
 	&asn_SPC_TwoThree_specs_1	/* Additional specs */
@@ -1462,57 +2127,96 @@ extern asn_TYPE_member_t asn_MBR_ThreeOne_1[2];
 
 asn_TYPE_member_t asn_MBR_ThreeOne_1[] = {
 	{ ATF_POINTER, 0, offsetof(struct ThreeOne, m31),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_OneTwo,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "m31"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 0, offsetof(struct ThreeOne, g),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_Gamma,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "g"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_ThreeOne_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (17 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_ThreeOne_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 0, 0, 0 }, /* m31 */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 1, 0, 0 } /* g */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 static const uint8_t asn_MAP_ThreeOne_mmap_1[(2 + (8 * sizeof(unsigned int)) - 1) / 8] = {
 	(1 << 7) | (1 << 6)
 };
+
 asn_SET_specifics_t asn_SPC_ThreeOne_specs_1 = {
 	sizeof(struct ThreeOne),
 	offsetof(struct ThreeOne, _asn_ctx),
 	offsetof(struct ThreeOne, _presence_map),
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_ThreeOne_tag2el_1,
 	2,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	asn_MAP_ThreeOne_tag2el_1,	/* Same as above */
 	2,	/* Count of tags in the CXER map */
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	0,	/* Whether extensible */
 	(unsigned int *)asn_MAP_ThreeOne_mmap_1	/* Mandatory elements map */
 };
+
 asn_TYPE_descriptor_t asn_DEF_ThreeOne = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"ThreeOne",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"ThreeOne",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SET,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SET_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_ThreeOne_tags_1,
 	sizeof(asn_DEF_ThreeOne_tags_1)
 		/sizeof(asn_DEF_ThreeOne_tags_1[0]), /* 1 */
 	asn_DEF_ThreeOne_tags_1,	/* Same as above */
 	sizeof(asn_DEF_ThreeOne_tags_1)
 		/sizeof(asn_DEF_ThreeOne_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_ThreeOne_1,
 	2,	/* Elements count */
 	&asn_SPC_ThreeOne_specs_1	/* Additional specs */

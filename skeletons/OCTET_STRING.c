@@ -11,48 +11,69 @@
 /*
  * OCTET STRING basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_OCTET_STRING_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (4 << 2))
 };
+#endif
 asn_OCTET_STRING_specifics_t asn_SPC_OCTET_STRING_specs = {
 	sizeof(OCTET_STRING_t),
 	offsetof(OCTET_STRING_t, _asn_ctx),
 	ASN_OSUBV_STR
 };
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_DEF_OCTET_STRING_constraints = {
 	{ APC_CONSTRAINED, 8, 8, 0, 255 },
 	{ APC_SEMI_CONSTRAINED, -1, -1, 0, 0 },
 	0, 0
 };
+#endif
 asn_TYPE_operation_t asn_OP_OCTET_STRING = {
 	OCTET_STRING_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	OCTET_STRING_print,	/* non-ascii stuff, generally */
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	OCTET_STRING_decode_ber,
 	OCTET_STRING_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	OCTET_STRING_decode_xer_hex,
 	OCTET_STRING_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	OCTET_STRING_decode_uper,	/* Unaligned PER decoder */
 	OCTET_STRING_encode_uper,	/* Unaligned PER encoder */
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_OCTET_STRING = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"OCTET STRING",		/* Canonical name */
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"OCTET_STRING",		/* XML tag name */
+#endif
 	&asn_OP_OCTET_STRING,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_OCTET_STRING_tags,
 	sizeof(asn_DEF_OCTET_STRING_tags)
 	  / sizeof(asn_DEF_OCTET_STRING_tags[0]),
 	asn_DEF_OCTET_STRING_tags,	/* Same as above */
 	sizeof(asn_DEF_OCTET_STRING_tags)
 	  / sizeof(asn_DEF_OCTET_STRING_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	&asn_SPC_OCTET_STRING_specs
 };
@@ -170,6 +191,7 @@ _new_stack() {
 	return (struct _stack *)CALLOC(1, sizeof(struct _stack));
 }
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 /*
  * Decode OCTET STRING type.
  */
@@ -190,7 +212,7 @@ OCTET_STRING_decode_ber(asn_codec_ctx_t *opt_codec_ctx,
 	enum asn_OS_Subvariant type_variant = specs->subvariant;
 
 	ASN_DEBUG("Decoding %s as %s (frame %ld)",
-		td->name,
+		TYPE_NAME(td),
 		(type_variant == ASN_OSUBV_STR) ?
 			"OCTET STRING" : "OS-SpecialCase",
 		(long)size);
@@ -510,7 +532,7 @@ OCTET_STRING_decode_ber(asn_codec_ctx_t *opt_codec_ctx,
 	}
 
 	ASN_DEBUG("Took %ld bytes to encode %s: [%s]:%ld",
-		(long)consumed_myself, td->name,
+		(long)consumed_myself, TYPE_NAME(td),
 		(type_variant == ASN_OSUBV_STR) ? (char *)st->buf : "<data>",
 		(long)st->size);
 
@@ -534,7 +556,7 @@ OCTET_STRING_encode_der(asn_TYPE_descriptor_t *td, void *sptr,
 	int fix_last_byte = 0;
 
 	ASN_DEBUG("%s %s as OCTET STRING",
-		cb?"Estimating":"Encoding", td->name);
+		cb?"Estimating":"Encoding", TYPE_NAME(td));
 
 	/*
 	 * Write tags.
@@ -584,7 +606,9 @@ OCTET_STRING_encode_der(asn_TYPE_descriptor_t *td, void *sptr,
 cb_failed:
 	ASN__ENCODE_FAILED;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 asn_enc_rval_t
 OCTET_STRING_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 	int ilevel, enum xer_encoder_flags_e flags,
@@ -1199,7 +1223,9 @@ OCTET_STRING_decode_xer_utf8(asn_codec_ctx_t *opt_codec_ctx,
 		OCTET_STRING__handle_control_chars,
 		OCTET_STRING__convert_entrefs);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_UPER)
 static int
 OCTET_STRING_per_get_characters(asn_per_data_t *po, uint8_t *buf,
 		size_t units, unsigned int bpc, unsigned int unit_bits,
@@ -1469,7 +1495,7 @@ OCTET_STRING_decode_uper(asn_codec_ctx_t *opt_codec_ctx,
 
 		ASN_DEBUG("Got PER length eb %ld, len %ld, %s (%s)",
 			(long)csiz->effective_bits, (long)raw_len,
-			repeat ? "repeat" : "once", td->name);
+			repeat ? "repeat" : "once", TYPE_NAME(td));
 		if(bpc) {
 			len_bytes = raw_len * bpc;
 			len_bits = len_bytes * unit_bits;
@@ -1576,7 +1602,7 @@ OCTET_STRING_encode_uper(asn_TYPE_descriptor_t *td,
 
 	ASN_DEBUG("Encoding %s into %d units of %d bits"
 		" (%ld..%ld, effective %d)%s",
-		td->name, sizeinunits, unit_bits,
+		TYPE_NAME(td), sizeinunits, unit_bits,
 		csiz->lower_bound, csiz->upper_bound,
 		csiz->effective_bits, ct_extensible ? " EXT" : "");
 
@@ -1660,7 +1686,9 @@ OCTET_STRING_encode_uper(asn_TYPE_descriptor_t *td,
 
 	ASN__ENCODED_OK(er);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 OCTET_STRING_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 	asn_app_consume_bytes_f *cb, void *app_key) {
@@ -1717,6 +1745,7 @@ OCTET_STRING_print_utf8(asn_TYPE_descriptor_t *td, const void *sptr,
 		return (cb("<absent>", 8, app_key) < 0) ? -1 : 0;
 	}
 }
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
 
 void
 OCTET_STRING_free(asn_TYPE_descriptor_t *td, void *sptr, int contents_only) {
@@ -1733,7 +1762,7 @@ OCTET_STRING_free(asn_TYPE_descriptor_t *td, void *sptr, int contents_only) {
 		    : &asn_SPC_OCTET_STRING_specs;
 	ctx = (asn_struct_ctx_t *)((char *)st + specs->ctx_offset);
 
-	ASN_DEBUG("Freeing %s as OCTET STRING", td->name);
+	ASN_DEBUG("Freeing %s as OCTET STRING", TYPE_NAME(td));
 
 	if(st->buf) {
 		FREEMEM(st->buf);

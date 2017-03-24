@@ -347,7 +347,7 @@ libsomething_la_SOURCES=$(ASN_MODULE_SOURCES) $(ASN_MODULE_HEADERS)
 # This file may be used as an input for make(3)
 # Remove the lines below to convert it into a pure .am file
 TARGET = x509dump
-CFLAGS += -DHAVE_CONFIG_H -DJUNKTEST -DASN_DISABLE_PER_SUPPORT -DPDU=Certificate -I.
+CFLAGS += -DHAVE_CONFIG_H -DJUNKTEST -DASN_OP_MASK='(ASN_OP_PRINT|ASN_OP_CHECK|ASN_OP_BER_DER|ASN_OP_XER)' -DPDU=Certificate -I.
 OBJS=${ASN_MODULE_SOURCES:.c=.o} ${ASN_CONVERTER_SOURCES:.c=.o}
 
 all: Certificate.c $(TARGET)
@@ -381,7 +381,7 @@ regen-makefile:
 	ASN1MODULES="../rfc3280-*.asn1" \
 	ASN1PDU=Certificate \
 	PROGNAME=x509dump \
-	CFLAGS="-DASN_DISABLE_PER_SUPPORT" \
+	CFLAGS="-DASN_OP_MASK='(ASN_OP_PRINT|ASN_OP_CHECK|ASN_OP_BER_DER|ASN_OP_XER)'" \
 	../sample.makefile.regen
 
 check: ${TARGET} check-ber check-xer check-per
@@ -433,7 +433,7 @@ check-per:
 	done; done; fi
 	@if test -f sample-Certificate-1.per ; then \
 	for f in sample-*-[1-9].per; do \
-	pdu=`echo $$f | sed -E -e "s/sample-([A-Za-z-]+)-[0-9].*//"`; \
+	pdu=`echo $$f | sed -E -e "s/sample-([A-Za-z-]+)-[0-9].*/\1/"`; \
 	for b in 1 17 33 980 8192; do \
 	echo "Recoding $$f into DER into XER and back ($$b)..."; \
 	./${TARGET} -b $$b -p $$pdu -iper -oder $$f > ./.tmp.1.$$$$ || exit 3; \

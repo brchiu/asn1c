@@ -5,6 +5,8 @@
 #include <asn_internal.h>
 #include <errno.h>
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
+
 static ssize_t der_write_TL(ber_tlv_tag_t tag, ber_tlv_len_t len,
 	asn_app_consume_bytes_f *cb, void *app_key, int constructed);
 
@@ -16,7 +18,7 @@ der_encode(asn_TYPE_descriptor_t *type_descriptor, void *struct_ptr,
 	asn_app_consume_bytes_f *consume_bytes, void *app_key) {
 
 	ASN_DEBUG("DER encoder invoked for %s",
-		type_descriptor->name);
+		TYPE_NAME(type_descriptor));
 
 	/*
 	 * Invoke type-specific encoder.
@@ -87,7 +89,7 @@ der_write_tags(asn_TYPE_descriptor_t *sd,
 	int i;
 
 	ASN_DEBUG("Writing tags (%s, tm=%d, tc=%d, tag=%s, mtc=%d)",
-		sd->name, tag_mode, sd->tags_count,
+		TYPE_NAME(sd), tag_mode, sd->tags_count,
 		ber_tlv_tag_string(tag),
 		tag_mode
 			?(sd->tags_count+1
@@ -146,7 +148,7 @@ der_write_tags(asn_TYPE_descriptor_t *sd,
 
 	if(!cb) return overall_length - struct_length;
 
-	ASN_DEBUG("Encoding %s TL sequence (%d elements)", sd->name,
+	ASN_DEBUG("Encoding %s TL sequence (%d elements)", TYPE_NAME(sd),
                   tags_count);
 
 	/*
@@ -199,3 +201,4 @@ der_write_TL(ber_tlv_tag_t tag, ber_tlv_len_t len,
 
 	return size;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */

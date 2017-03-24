@@ -9,17 +9,27 @@ typedef INTEGER_t	 MinMax_16P0_t;
 
 /*** <<< FUNC-DECLS [MinMax] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_MinMax_16P0;
 asn_struct_free_f MinMax_16P0_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f MinMax_16P0_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f MinMax_16P0_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f MinMax_16P0_decode_ber;
 der_type_encoder_f MinMax_16P0_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f MinMax_16P0_decode_xer;
 xer_type_encoder_f MinMax_16P0_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [MinMax] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 MinMax_16P0_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -29,14 +39,14 @@ MinMax_16P0_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
 	if(asn_INTEGER2long(st, &value)) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value too large (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -46,11 +56,12 @@ MinMax_16P0_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using INTEGER,
  * so here we adjust the DEF accordingly.
@@ -58,21 +69,35 @@ MinMax_16P0_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< STAT-DEFS [MinMax] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_MinMax_16P0_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_MinMax_16P0 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"MinMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"MinMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_INTEGER,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	MinMax_16P0_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_MinMax_16P0_tags_1,
 	sizeof(asn_DEF_MinMax_16P0_tags_1)
 		/sizeof(asn_DEF_MinMax_16P0_tags_1[0]), /* 1 */
 	asn_DEF_MinMax_16P0_tags_1,	/* Same as above */
 	sizeof(asn_DEF_MinMax_16P0_tags_1)
 		/sizeof(asn_DEF_MinMax_16P0_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -88,17 +113,27 @@ typedef MinMax_16P0_t	 ThreePlus_t;
 
 /*** <<< FUNC-DECLS [ThreePlus] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_ThreePlus;
 asn_struct_free_f ThreePlus_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f ThreePlus_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f ThreePlus_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f ThreePlus_decode_ber;
 der_type_encoder_f ThreePlus_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f ThreePlus_decode_xer;
 xer_type_encoder_f ThreePlus_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [ThreePlus] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 ThreePlus_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -108,14 +143,14 @@ ThreePlus_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
 	if(asn_INTEGER2long(st, &value)) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value too large (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -125,11 +160,12 @@ ThreePlus_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using MinMax_16P0,
  * so here we adjust the DEF accordingly.
@@ -137,21 +173,35 @@ ThreePlus_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< STAT-DEFS [ThreePlus] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_ThreePlus_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_ThreePlus = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"ThreePlus",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"ThreePlus",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_INTEGER,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	ThreePlus_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_ThreePlus_tags_1,
 	sizeof(asn_DEF_ThreePlus_tags_1)
 		/sizeof(asn_DEF_ThreePlus_tags_1[0]), /* 1 */
 	asn_DEF_ThreePlus_tags_1,	/* Same as above */
 	sizeof(asn_DEF_ThreePlus_tags_1)
 		/sizeof(asn_DEF_ThreePlus_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };

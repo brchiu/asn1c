@@ -9,14 +9,23 @@ typedef T2_t	 T1_t;
 
 /*** <<< FUNC-DECLS [T1] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_T1;
 asn_struct_free_f T1_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f T1_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f T1_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f T1_decode_ber;
 der_type_encoder_f T1_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f T1_decode_xer;
 xer_type_encoder_f T1_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [T1] >>> ***/
 
@@ -27,12 +36,17 @@ xer_type_encoder_f T1_encode_xer;
 
 /*** <<< STAT-DEFS [T1] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T1_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (3 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (4 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (6 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T1_all_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (3 << 2)),
@@ -41,18 +55,30 @@ static const ber_tlv_tag_t asn_DEF_T1_all_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (6 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (9 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_T1 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"T1",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"T1",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_REAL,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	REAL_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_T1_tags_1,
 	sizeof(asn_DEF_T1_tags_1)
 		/sizeof(asn_DEF_T1_tags_1[0]), /* 4 */
 	asn_DEF_T1_all_tags_1,
 	sizeof(asn_DEF_T1_all_tags_1)
 		/sizeof(asn_DEF_T1_all_tags_1[0]), /* 6 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -68,14 +94,23 @@ typedef T3_t	 T2_t;
 
 /*** <<< FUNC-DECLS [T2] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_T2;
 asn_struct_free_f T2_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f T2_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f T2_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f T2_decode_ber;
 der_type_encoder_f T2_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f T2_decode_xer;
 xer_type_encoder_f T2_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [T2] >>> ***/
 
@@ -86,11 +121,16 @@ xer_type_encoder_f T2_encode_xer;
 
 /*** <<< STAT-DEFS [T2] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T2_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (3 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (4 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (6 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T2_all_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (3 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (4 << 2)),
@@ -98,18 +138,30 @@ static const ber_tlv_tag_t asn_DEF_T2_all_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (6 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (9 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_T2 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"T2",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"T2",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_REAL,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	REAL_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_T2_tags_1,
 	sizeof(asn_DEF_T2_tags_1)
 		/sizeof(asn_DEF_T2_tags_1[0]), /* 3 */
 	asn_DEF_T2_all_tags_1,
 	sizeof(asn_DEF_T2_all_tags_1)
 		/sizeof(asn_DEF_T2_all_tags_1[0]), /* 5 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -125,14 +177,23 @@ typedef T4_t	 T3_t;
 
 /*** <<< FUNC-DECLS [T3] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_T3;
 asn_struct_free_f T3_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f T3_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f T3_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f T3_decode_ber;
 der_type_encoder_f T3_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f T3_decode_xer;
 xer_type_encoder_f T3_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [T3] >>> ***/
 
@@ -143,28 +204,45 @@ xer_type_encoder_f T3_encode_xer;
 
 /*** <<< STAT-DEFS [T3] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T3_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (4 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (6 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T3_all_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (4 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (5 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (6 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (9 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_T3 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"T3",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"T3",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_REAL,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	REAL_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_T3_tags_1,
 	sizeof(asn_DEF_T3_tags_1)
 		/sizeof(asn_DEF_T3_tags_1[0]), /* 2 */
 	asn_DEF_T3_all_tags_1,
 	sizeof(asn_DEF_T3_all_tags_1)
 		/sizeof(asn_DEF_T3_all_tags_1[0]), /* 4 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -180,14 +258,23 @@ typedef T5_t	 T4_t;
 
 /*** <<< FUNC-DECLS [T4] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_T4;
 asn_struct_free_f T4_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f T4_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f T4_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f T4_decode_ber;
 der_type_encoder_f T4_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f T4_decode_xer;
 xer_type_encoder_f T4_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [T4] >>> ***/
 
@@ -198,23 +285,37 @@ xer_type_encoder_f T4_encode_xer;
 
 /*** <<< STAT-DEFS [T4] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T4_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (5 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (6 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (9 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_T4 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"T4",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"T4",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_REAL,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	REAL_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_T4_tags_1,
 	sizeof(asn_DEF_T4_tags_1)
 		/sizeof(asn_DEF_T4_tags_1[0]) - 1, /* 2 */
 	asn_DEF_T4_tags_1,	/* Same as above */
 	sizeof(asn_DEF_T4_tags_1)
 		/sizeof(asn_DEF_T4_tags_1[0]), /* 3 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -230,14 +331,23 @@ typedef T6_t	 T5_t;
 
 /*** <<< FUNC-DECLS [T5] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_T5;
 asn_struct_free_f T5_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f T5_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f T5_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f T5_decode_ber;
 der_type_encoder_f T5_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f T5_decode_xer;
 xer_type_encoder_f T5_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [T5] >>> ***/
 
@@ -248,22 +358,36 @@ xer_type_encoder_f T5_encode_xer;
 
 /*** <<< STAT-DEFS [T5] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T5_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (6 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (9 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_T5 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"T5",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"T5",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_REAL,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	REAL_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_T5_tags_1,
 	sizeof(asn_DEF_T5_tags_1)
 		/sizeof(asn_DEF_T5_tags_1[0]) - 1, /* 1 */
 	asn_DEF_T5_tags_1,	/* Same as above */
 	sizeof(asn_DEF_T5_tags_1)
 		/sizeof(asn_DEF_T5_tags_1[0]), /* 2 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -279,14 +403,23 @@ typedef REAL_t	 T6_t;
 
 /*** <<< FUNC-DECLS [T6] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_T6;
 asn_struct_free_f T6_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f T6_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f T6_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f T6_decode_ber;
 der_type_encoder_f T6_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f T6_decode_xer;
 xer_type_encoder_f T6_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [T6] >>> ***/
 
@@ -297,21 +430,35 @@ xer_type_encoder_f T6_encode_xer;
 
 /*** <<< STAT-DEFS [T6] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T6_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (9 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_T6 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"T6",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"T6",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_REAL,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	REAL_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_T6_tags_1,
 	sizeof(asn_DEF_T6_tags_1)
 		/sizeof(asn_DEF_T6_tags_1[0]), /* 1 */
 	asn_DEF_T6_tags_1,	/* Same as above */
 	sizeof(asn_DEF_T6_tags_1)
 		/sizeof(asn_DEF_T6_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -327,14 +474,23 @@ typedef Ts_t	 T_t;
 
 /*** <<< FUNC-DECLS [T] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_T;
 asn_struct_free_f T_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f T_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f T_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f T_decode_ber;
 der_type_encoder_f T_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f T_decode_xer;
 xer_type_encoder_f T_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [T] >>> ***/
 
@@ -345,23 +501,37 @@ xer_type_encoder_f T_encode_xer;
 
 /*** <<< STAT-DEFS [T] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 	(ASN_TAG_CLASS_CONTEXT | (123 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_T = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"T",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"T",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_T_tags_1,
 	sizeof(asn_DEF_T_tags_1)
 		/sizeof(asn_DEF_T_tags_1[0]) - 2, /* 1 */
 	asn_DEF_T_tags_1,	/* Same as above */
 	sizeof(asn_DEF_T_tags_1)
 		/sizeof(asn_DEF_T_tags_1[0]), /* 3 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Ts_1,
 	3,	/* Elements count */
 	&asn_SPC_Ts_specs_1	/* Additional specs */
@@ -395,63 +565,111 @@ extern asn_TYPE_member_t asn_MBR_Ts_1[3];
 
 asn_TYPE_member_t asn_MBR_Ts_1[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct Ts, m1),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_T2,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "m1"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 1, offsetof(struct Ts, m2),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (2 << 2)),
 		.tag_mode = +1,	/* EXPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_T3,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "m2"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Ts, m3),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (3 << 2)),
 		.tag_mode = -1,	/* IMPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_T3,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "m3"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_Ts_tags_1[] = {
 	(ASN_TAG_CLASS_CONTEXT | (123 << 2)),
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Ts_tag2el_1[] = {
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 0, 0, 0 }, /* m1 */
     { (ASN_TAG_CLASS_CONTEXT | (2 << 2)), 1, 0, 0 }, /* m2 */
     { (ASN_TAG_CLASS_CONTEXT | (3 << 2)), 2, 0, 0 } /* m3 */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_SEQUENCE_specifics_t asn_SPC_Ts_specs_1 = {
 	sizeof(struct Ts),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct Ts, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Ts_tag2el_1,
 	3,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Ts = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Ts",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Ts",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_Ts_tags_1,
 	sizeof(asn_DEF_Ts_tags_1)
 		/sizeof(asn_DEF_Ts_tags_1[0]) - 1, /* 1 */
 	asn_DEF_Ts_tags_1,	/* Same as above */
 	sizeof(asn_DEF_Ts_tags_1)
 		/sizeof(asn_DEF_Ts_tags_1[0]), /* 2 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Ts_1,
 	3,	/* Elements count */
 	&asn_SPC_Ts_specs_1	/* Additional specs */

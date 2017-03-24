@@ -17,40 +17,60 @@
 /*
  * NativeReal basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NativeReal_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (9 << 2))
 };
+#endif
 asn_TYPE_operation_t asn_OP_NativeReal = {
 	NativeReal_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	NativeReal_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	NativeReal_decode_ber,
 	NativeReal_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	NativeReal_decode_xer,
 	NativeReal_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	NativeReal_decode_uper,
 	NativeReal_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_NativeReal = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"REAL",			/* The ASN.1 type is still REAL */
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"REAL",
+#endif
 	&asn_OP_NativeReal,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NativeReal_tags,
 	sizeof(asn_DEF_NativeReal_tags) / sizeof(asn_DEF_NativeReal_tags[0]),
 	asn_DEF_NativeReal_tags,	/* Same as above */
 	sizeof(asn_DEF_NativeReal_tags) / sizeof(asn_DEF_NativeReal_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 /*
  * Decode REAL type.
  */
@@ -76,7 +96,7 @@ NativeReal_decode_ber(asn_codec_ctx_t *opt_codec_ctx,
 	}
 
 	ASN_DEBUG("Decoding %s as REAL (tm=%d)",
-		td->name, tag_mode);
+		TYPE_NAME(td), tag_mode);
 
 	/*
 	 * Check tags.
@@ -86,7 +106,7 @@ NativeReal_decode_ber(asn_codec_ctx_t *opt_codec_ctx,
 	if(rval.code != RC_OK)
 		return rval;
 
-	ASN_DEBUG("%s length is %d bytes", td->name, (int)length);
+	ASN_DEBUG("%s length is %d bytes", TYPE_NAME(td), (int)length);
 
 	/*
 	 * Make sure we have this length.
@@ -158,7 +178,7 @@ NativeReal_decode_ber(asn_codec_ctx_t *opt_codec_ctx,
 	rval.consumed += length;
 
 	ASN_DEBUG("Took %ld/%ld bytes to encode %s (%f)",
-		(long)rval.consumed, (long)length, td->name, *Dbl);
+		(long)rval.consumed, (long)length, TYPE_NAME(td), *Dbl);
 
 	return rval;
 }
@@ -196,7 +216,9 @@ NativeReal_encode_der(asn_TYPE_descriptor_t *td, void *ptr,
 
 	return erval;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 
+#if (ASN_OP_MASK & ASN_OP_UPER)
 /*
  * Decode REAL type using PER.
  */
@@ -265,7 +287,9 @@ NativeReal_encode_uper(asn_TYPE_descriptor_t *td,
 
 	return erval;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 /*
  * Decode the chunk of XML text encoding REAL.
  */
@@ -318,7 +342,9 @@ NativeReal_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 
 	ASN__ENCODED_OK(er);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 /*
  * REAL specific human-readable output.
  */
@@ -334,6 +360,7 @@ NativeReal_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 	return (REAL__dump(*Dbl, 0, cb, app_key) < 0) ? -1 : 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
 
 void
 NativeReal_free(asn_TYPE_descriptor_t *td, void *ptr, int contents_only) {
@@ -342,7 +369,7 @@ NativeReal_free(asn_TYPE_descriptor_t *td, void *ptr, int contents_only) {
 		return;
 
 	ASN_DEBUG("Freeing %s as REAL (%d, %p, Native)",
-		td->name, contents_only, ptr);
+		TYPE_NAME(td), contents_only, ptr);
 
 	if(!contents_only) {
 		FREEMEM(ptr);

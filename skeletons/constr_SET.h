@@ -20,6 +20,7 @@ typedef const struct asn_SET_specifics_s {
 	int ctx_offset;		/* Offset of the asn_struct_ctx_t member */
 	int pres_offset;	/* Offset of _presence_map member */
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	/*
 	 * Tags to members mapping table (sorted).
 	 * Sometimes suitable for DER encoding (untagged CHOICE is present);
@@ -27,13 +28,16 @@ typedef const struct asn_SET_specifics_s {
 	 */
 	const asn_TYPE_tag2member_t *tag2el;
 	int tag2el_count;
+#endif
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 	/*
 	 * Tags to members mapping table, second edition.
 	 * Suitable for CANONICAL-XER encoding.
 	 */
 	const asn_TYPE_tag2member_t *tag2el_cxer;
 	int tag2el_cxer_count;
+#endif
 
 	/*
 	 * Extensions-related stuff.

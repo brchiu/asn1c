@@ -9,9 +9,11 @@
 /*
  * BIT STRING basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_BIT_STRING_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (3 << 2))
 };
+#endif
 asn_OCTET_STRING_specifics_t asn_SPC_BIT_STRING_specs = {
 	sizeof(BIT_STRING_t),
 	offsetof(BIT_STRING_t, _asn_ctx),
@@ -19,37 +21,55 @@ asn_OCTET_STRING_specifics_t asn_SPC_BIT_STRING_specs = {
 };
 asn_TYPE_operation_t asn_OP_BIT_STRING = {
 	OCTET_STRING_free,         /* Implemented in terms of OCTET STRING */
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	BIT_STRING_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	BIT_STRING_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	OCTET_STRING_decode_ber,   /* Implemented in terms of OCTET STRING */
 	OCTET_STRING_encode_der,   /* Implemented in terms of OCTET STRING */
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	OCTET_STRING_decode_xer_binary,
 	BIT_STRING_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	OCTET_STRING_decode_uper,	/* Unaligned PER decoder */
 	OCTET_STRING_encode_uper,	/* Unaligned PER encoder */
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_BIT_STRING = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"BIT STRING",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"BIT_STRING",
+#endif
 	&asn_OP_BIT_STRING,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	BIT_STRING_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_BIT_STRING_tags,
 	sizeof(asn_DEF_BIT_STRING_tags)
 	  / sizeof(asn_DEF_BIT_STRING_tags[0]),
 	asn_DEF_BIT_STRING_tags,	/* Same as above */
 	sizeof(asn_DEF_BIT_STRING_tags)
 	  / sizeof(asn_DEF_BIT_STRING_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,  /* No members */
 	&asn_SPC_BIT_STRING_specs
 };
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 /*
  * BIT STRING generic constraint.
  */
@@ -63,19 +83,21 @@ BIT_STRING_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 		|| st->bits_unused < 0 || st->bits_unused > 7) {
 			ASN__CTFAIL(app_key, td, sptr,
 				"%s: invalid padding byte (%s:%d)",
-				td->name, __FILE__, __LINE__);
+				TYPE_NAME(td), __FILE__, __LINE__);
 			return -1;
 		}
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td), __FILE__, __LINE__);
 		return -1;
 	}
 
 	return 0;
 }
+#endif  /* (ASN_OP_MASK & ASN_OP_CHECK) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 static char *_bit_pattern[16] = {
 	"0000", "0001", "0010", "0011", "0100", "0101", "0110", "0111",
 	"1000", "1001", "1010", "1011", "1100", "1101", "1110", "1111"
@@ -141,8 +163,9 @@ BIT_STRING_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 cb_failed:
 	ASN__ENCODE_FAILED;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
-
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 /*
  * BIT STRING specific contents printer.
  */
@@ -195,4 +218,4 @@ BIT_STRING_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 	return 0;
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */

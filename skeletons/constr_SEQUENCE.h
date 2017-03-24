@@ -16,14 +16,20 @@ typedef const struct asn_SEQUENCE_specifics_s {
 	 * Target structure description.
 	 */
 	int struct_size;	/* Size of the target structure. */
-	int ctx_offset;		/* Offset of the asn_struct_ctx_t member */
 
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
+	int ctx_offset;		/* Offset of the asn_struct_ctx_t member */
+#endif
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	/*
 	 * Tags to members mapping table (sorted).
 	 */
 	const asn_TYPE_tag2member_t *tag2el;
 	int tag2el_count;
+#endif
 
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	/*
 	 * Optional members of the extensions root (roms) or additions (aoms).
 	 * Meaningful for PER.
@@ -31,6 +37,7 @@ typedef const struct asn_SEQUENCE_specifics_s {
 	const int *oms;		/* Optional MemberS */
 	int  roms_count;	/* Root optional members count */
 	int  aoms_count;	/* Additions optional members count */
+#endif
 
 	/*
 	 * Description of an extensions group.

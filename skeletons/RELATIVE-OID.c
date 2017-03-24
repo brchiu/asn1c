@@ -13,42 +13,62 @@
 /*
  * RELATIVE-OID basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_RELATIVE_OID_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (13 << 2))
 };
+#endif
 asn_TYPE_operation_t asn_OP_RELATIVE_OID = {
 	ASN__PRIMITIVE_TYPE_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	RELATIVE_OID_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	ber_decode_primitive,
 	der_encode_primitive,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	RELATIVE_OID_decode_xer,
 	RELATIVE_OID_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	OCTET_STRING_decode_uper,
 	OCTET_STRING_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_RELATIVE_OID = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"RELATIVE-OID",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"RELATIVE_OID",
+#endif
 	&asn_OP_RELATIVE_OID,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_RELATIVE_OID_tags,
 	sizeof(asn_DEF_RELATIVE_OID_tags)
 	    / sizeof(asn_DEF_RELATIVE_OID_tags[0]),
 	asn_DEF_RELATIVE_OID_tags,	/* Same as above */
 	sizeof(asn_DEF_RELATIVE_OID_tags)
 	    / sizeof(asn_DEF_RELATIVE_OID_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
 
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 static ssize_t
 RELATIVE_OID__dump_body(const RELATIVE_OID_t *st, asn_app_consume_bytes_f *cb, void *app_key) {
 	ssize_t wrote = 0;
@@ -98,7 +118,9 @@ RELATIVE_OID_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 	return (cb(" }", 2, app_key) < 0) ? -1 : 0;
 }
+#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 static enum xer_pbd_rval
 RELATIVE_OID__xer_body_decode(asn_TYPE_descriptor_t *td, void *sptr, const void *chunk_buf, size_t chunk_size) {
 	RELATIVE_OID_t *st = (RELATIVE_OID_t *)sptr;
@@ -246,4 +268,4 @@ RELATIVE_OID_set_arcs(RELATIVE_OID_t *roid, void *arcs, unsigned int arc_type_si
 
 	return 0;
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */

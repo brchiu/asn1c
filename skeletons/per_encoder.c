@@ -2,6 +2,8 @@
 #include <asn_internal.h>
 #include <per_encoder.h>
 
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
+
 static asn_enc_rval_t uper_encode_internal(asn_TYPE_descriptor_t *td, asn_per_constraints_t *, void *sptr, asn_app_consume_bytes_f *cb, void *app_key);
 
 asn_enc_rval_t
@@ -36,7 +38,7 @@ uper_encode_to_buffer(asn_TYPE_descriptor_t *td, void *sptr, void *buffer, size_
 	key.buffer = buffer;
 	key.left = buffer_size;
 
-	if(td) ASN_DEBUG("Encoding \"%s\" using UNALIGNED PER", td->name);
+	if(td) ASN_DEBUG("Encoding \"%s\" using UNALIGNED PER", TYPE_NAME(td));
 
 	return uper_encode_internal(td, 0, sptr, encode_to_buffer_cb, &key);
 }
@@ -148,4 +150,4 @@ uper_encode_internal(asn_TYPE_descriptor_t *td, asn_per_constraints_t *constrain
 
 	return er;
 }
-
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */

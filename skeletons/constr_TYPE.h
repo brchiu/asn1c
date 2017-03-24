@@ -85,30 +85,48 @@ asn_outmost_tag_f asn_TYPE_outmost_tag;
  */
 typedef struct asn_TYPE_operation_s {
 	asn_struct_free_f  *free_struct;	/* Free the structure */
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	asn_struct_print_f *print_struct;	/* Human readable output */
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_constr_check_f *check_constraints;	/* Constraints validator */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	ber_type_decoder_f *ber_decoder;	/* Generic BER decoder */
 	der_type_encoder_f *der_encoder;	/* Canonical DER encoder */
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	xer_type_decoder_f *xer_decoder;	/* Generic XER decoder */
 	xer_type_encoder_f *xer_encoder;	/* [Canonical] XER encoder */
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	per_type_decoder_f *uper_decoder;	/* Unaligned PER decoder */
 	per_type_encoder_f *uper_encoder;	/* Unaligned PER encoder */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_outmost_tag_f  *outmost_tag;	/* <optional, internal> */
+#endif
 } asn_TYPE_operation_t;
 
 /*
  * The definitive description of the destination language's structure.
  */
 typedef struct asn_TYPE_descriptor_s {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	const char *name;	/* A name of the ASN.1 type. "" in some cases. */
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	const char *xml_tag;	/* Name used in XML tag */
+#endif
 
 	/*
 	 * Generalized functions for dealing with the speciic type.
 	 * May be directly invoked by applications.
 	 */
 	asn_TYPE_operation_t *op;
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_constr_check_f *check_constraints;	/* Constraints validator */
+#endif
 
 	/***********************************************************************
 	 * Internally useful members. Not to be used by applications directly. *
@@ -117,12 +135,15 @@ typedef struct asn_TYPE_descriptor_s {
 	/*
 	 * Tags that are expected to occur.
 	 */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	const ber_tlv_tag_t *tags;	/* Effective tags sequence for this type */
 	int tags_count;			/* Number of tags which are expected */
 	const ber_tlv_tag_t *all_tags;	/* Every tag for BER/containment */
 	int all_tags_count;		/* Number of tags */
-
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	asn_per_constraints_t *per_constraints;	/* PER compiled constraints */
+#endif
 
 	/*
 	 * An ASN.1 production type members (members of SEQUENCE, SET, CHOICE).
@@ -150,14 +171,40 @@ typedef struct asn_TYPE_member_s {
 	enum asn_TYPE_flags_e flags;	/* Element's presentation flags */
 	int optional;	/* Following optional members, including current */
 	int memb_offset;		/* Offset of the element */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	ber_tlv_tag_t tag;		/* Outmost (most immediate) tag */
 	int tag_mode;		/* IMPLICIT/no/EXPLICIT tag at current level */
+#endif
 	asn_TYPE_descriptor_t *type;	/* Member type descriptor */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_constr_check_f *memb_constraints;	/* Constraints validator */
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	asn_per_constraints_t *per_constraints;	/* PER compiled constraints */
 	int (*default_value)(int setval, void **sptr);	/* DEFAULT <value> */
+#endif
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 	const char *name;			/* ASN.1 identifier of the element */
+#endif
 } asn_TYPE_member_t;
+
+#if (ASN_OP_MASK & ASN_OP_PRINT)
+#define TYPE_NAME(td)	((td)->name)
+#elif (ASN_OP_MASK & ASN_OP_XML)
+#define TYPE_NAME(td)	((td)->xml_tag)
+#else
+#define TYPE_NAME(td)	""
+#endif
+
+#if ((ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XML)) == (ASN_OP_PRINT | ASN_OP_XML)) 
+#define MEMB_NAME(elm)	((elm)->name) 
+#elif (ASN_OP_MASK & ASN_OP_PRINT)
+#define MEMB_NAME(elm)	((elm)->name)
+#elif (ASN_OP_MASK & ASN_OP_XML)
+#define MEMB_NAME(elm)	((elm)->name)
+#else
+#define MEMB_NAME(td)	""
+#endif
 
 /*
  * BER tag to element number mapping.

@@ -102,6 +102,17 @@ typedef struct asn_dec_rval_s {
 	return tmp_error;					\
 } while(0)
 
+#define ASN_OP_PRINT            (0x0001)
+#define ASN_OP_CHECK            (0x0002)
+#define ASN_OP_BER_DER          (0x0004)
+#define ASN_OP_XER              (0x0008)
+#define ASN_OP_UPER             (0x0010)
+#define ASN_OP_APER             (0x0020)
+
+#ifndef ASN_OP_MASK
+#define ASN_OP_MASK             (ASN_OP_PRINT | ASN_OP_CHECK | ASN_OP_BER_DER | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)
+#endif
+
 #ifdef __cplusplus
 }
 #endif

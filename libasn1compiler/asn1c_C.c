@@ -207,26 +207,37 @@ asn1c_lang_C_type_common_INTEGER(arg_t *arg) {
 		OUT("const asn_INTEGER_specifics_t asn_SPC_%s_specs_%d = {\n",
 			MKID(expr), expr->_type_unique_index);
 		INDENT(+1);
+		OUT("#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))\n");
 		OUT("asn_MAP_%s_value2enum_%d,\t"
 			"/* \"tag\" => N; sorted by tag */\n",
 			MKID(expr),
 			expr->_type_unique_index);
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))\n");
 		OUT("asn_MAP_%s_enum2value_%d,\t"
 			"/* N => \"tag\"; sorted by N */\n",
 			MKID(expr),
 			expr->_type_unique_index);
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))\n");
 		OUT("%d,\t/* Number of elements in the maps */\n",
 			el_count);
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
 		if(map_extensions) {
 			OUT("%d,\t/* Extensions before this member */\n",
 				map_extensions);
 		} else {
 			OUT("0,\t/* Enumeration is not extensible */\n");
 		}
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))\n");
 		if(expr->expr_type == ASN_BASIC_ENUMERATED)
 			OUT("1,\t/* Strict enumeration */\n");
 		else
 			OUT("0,\n");
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */\n");
+
 		OUT("0,\t/* Native long size */\n");
 		OUT("0\n");
 		INDENT(-1);
@@ -240,11 +251,21 @@ asn1c_lang_C_type_common_INTEGER(arg_t *arg) {
 		OUT("const asn_INTEGER_specifics_t asn_SPC_%s_specs_%d = {\n",
 			MKID(expr), expr->_type_unique_index);
 		INDENT(+1);
-		OUT("0,\t");
-		OUT("0,\t");
-		OUT("0,\t");
-		OUT("0,\t");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))\n");
 		OUT("0,\n");
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))\n");
+		OUT("0,\n");
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))\n");
+		OUT("0,\n");
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
+		OUT("0,\n");
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))\n");
+		OUT("0,\n");
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */\n");
 		OUT("0,\t/* Native long size */\n");
 		OUT("1\t/* Unsigned representation */\n");
 		INDENT(-1);
@@ -414,6 +435,8 @@ asn1c_lang_C_type_SEQUENCE_def(arg_t *arg) {
 			int elm = 0;
 			int comma = 0;
 			comp_mode = 0;
+			OUT("\n");
+			OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
 			OUT("static const int asn_MAP_%s_oms_%d[] = {",
 				MKID(expr),
 				expr->_type_unique_index);
@@ -451,6 +474,7 @@ asn1c_lang_C_type_SEQUENCE_def(arg_t *arg) {
 					"at line %d!",
 					arg->expr->Identifier,
 					arg->expr->_lineno);
+			OUT("#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */\n");
 		} else {
 			roms_count = 0;
 			aoms_count = 0;
@@ -477,9 +501,12 @@ asn1c_lang_C_type_SEQUENCE_def(arg_t *arg) {
 	INDENT(+1);
 	OUT("sizeof(struct ");
 		out_name_chain(arg, ONC_avoid_keywords); OUT("),\n");
+	OUT("#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))\n");
 	OUT("offsetof(struct ");
 		out_name_chain(arg, ONC_avoid_keywords); OUT(", _asn_ctx),\n");
+	OUT("#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */\n");
 
+	OUT("#if (ASN_OP_MASK & ASN_OP_BER_DER)\n");
 	if(tag2el_count) {
 		OUT("asn_MAP_%s_tag2el_%d,\n",
 			MKID(expr),
@@ -489,6 +516,8 @@ asn1c_lang_C_type_SEQUENCE_def(arg_t *arg) {
 		OUT("0,\t/* No top level tags */\n");
 		OUT("0,\t/* No tags in the map */\n");
 	}
+	OUT("#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */\n");
+	OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
 	if(roms_count + aoms_count) {
 		OUT("asn_MAP_%s_oms_%d,\t/* Optional members */\n",
 			MKID(expr), expr->_type_unique_index);
@@ -496,6 +525,7 @@ asn1c_lang_C_type_SEQUENCE_def(arg_t *arg) {
 	} else {
 		OUT("0, 0, 0,\t/* Optional elements (not needed) */\n");
 	}
+	OUT("#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */\n");
 	OUT("%d,\t/* Start extensions */\n",
 			ext_start<0 ? -1 : ext_start);
 	OUT("%d\t/* Stop extensions */\n",
@@ -710,6 +740,7 @@ asn1c_lang_C_type_SET_def(arg_t *arg) {
 	OUT("\n");
 	OUT("};\n");
 
+	OUT("\n");
 	if(!(expr->_type_referenced)) OUT("static \n");
 	OUT("asn_SET_specifics_t asn_SPC_%s_specs_%d = {\n",
 		MKID(expr), expr->_type_unique_index);
@@ -724,8 +755,11 @@ asn1c_lang_C_type_SET_def(arg_t *arg) {
 			out_name_chain(arg, ONC_avoid_keywords);
 		OUT(", _presence_map),\n");
 		p = MKID(expr);
+		OUT("#if (ASN_OP_MASK & ASN_OP_BER_DER)\n");
 		OUT("asn_MAP_%s_tag2el_%d,\n", p, expr->_type_unique_index);
 		OUT("%d,\t/* Count of tags in the map */\n", tag2el_count);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */\n");
+		OUT("#if (ASN_OP_MASK & ASN_OP_XER)\n");
 		if(tag2el_cxer)
 			OUT("asn_MAP_%s_tag2el_cxer_%d,\n",
 				p, expr->_type_unique_index);
@@ -734,6 +768,7 @@ asn1c_lang_C_type_SET_def(arg_t *arg) {
 				p, expr->_type_unique_index);
 		OUT("%d,\t/* Count of tags in the CXER map */\n",
 			tag2el_cxer_count);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_XER) */\n");
 		OUT("%d,\t/* Whether extensible */\n",
 			compute_extensions_start(expr) == -1 ? 0 : 1);
 		OUT("(unsigned int *)asn_MAP_%s_mmap_%d\t/* Mandatory elements map */\n",
@@ -908,9 +943,11 @@ asn1c_lang_C_type_SEx_OF_def(arg_t *arg, int seq_of) {
 		OUT(", _asn_ctx),\n");
 		{
 		int as_xvl = expr_as_xmlvaluelist(arg, v);
+		OUT("#if (ASN_OP_MASK & ASN_OP_XER)\n");
 		OUT("%d,\t/* XER encoding is %s */\n",
 			as_xvl,
 			as_xvl ? "XMLValueList" : "XMLDelimitedItemList");
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_XER) */\n");
 		}
 	);
 	OUT("};\n");
@@ -1043,7 +1080,7 @@ asn1c_lang_C_type_CHOICE_def(arg_t *arg) {
 	 * Print out the table according to which parsing is performed.
 	 */
 	if(expr_elements_count(arg, expr)) {
-
+		OUT("\n");
 		if(!(expr->_type_referenced)) OUT("static ");
 		OUT("asn_TYPE_member_t asn_MBR_%s_%d[] = {\n",
 			MKID(expr), expr->_type_unique_index);
@@ -1109,13 +1146,17 @@ asn1c_lang_C_type_CHOICE_def(arg_t *arg) {
 		OUT("sizeof(((struct ");
 			out_name_chain(arg, ONC_avoid_keywords);
 		OUT(" *)0)->present),\n");
+		OUT("#if (ASN_OP_MASK & ASN_OP_BER_DER)\n");
 		OUT("asn_MAP_%s_tag2el_%d,\n",
 			MKID(expr), expr->_type_unique_index);
 		OUT("%d,\t/* Count of tags in the map */\n", tag2el_count);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
 		if(C99_MODE) OUT(".canonical_order = ");
 		if(cmap) OUT("asn_MAP_%s_cmap_%d,\t/* Canonically sorted */\n",
 			MKID(expr), expr->_type_unique_index);
 		else OUT("0,\n");
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */\n");
 		if(C99_MODE) OUT(".ext_start = ");
 		OUT("%d\t/* Extensions start */\n",
 			compute_extensions_start(expr));
@@ -1282,6 +1323,7 @@ asn1c_lang_C_type_SIMPLE_TYPE(arg_t *arg) {
 	 * Constraint checking.
 	 */
 	if(!(arg->flags & A1C_NO_CONSTRAINTS) && expr->combined_constraints) {
+		OUT("#if (ASN_OP_MASK & ASN_OP_CHECK)\n");
 		p = MKID(expr);
 		if(HIDE_INNER_DEFS) OUT("static ");
 		OUT("int\n");
@@ -1303,6 +1345,7 @@ asn1c_lang_C_type_SIMPLE_TYPE(arg_t *arg) {
 		INDENT(-1);
 		OUT("}\n");
 		OUT("\n");
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */\n");
 	}
 
 	REDIR(OT_STAT_DEFS);
@@ -1508,6 +1551,7 @@ asn1c_lang_C_type_SIMPLE_TYPE(arg_t *arg) {
 	REDIR(OT_FUNC_DECLS);
 
 	p = MKID(expr);
+	OUT("\n");
 	if(HIDE_INNER_DEFS) {
 		OUT("/* extern asn_TYPE_descriptor_t asn_DEF_%s_%d;"
 			"\t// (Use -fall-defs-global to expose) */\n",
@@ -1529,15 +1573,25 @@ asn1c_lang_C_type_SIMPLE_TYPE(arg_t *arg) {
 			}
 		}
 		OUT("asn_struct_free_f %s_free;\n", p);
+		OUT("#if (ASN_OP_MASK & ASN_OP_PRINT)\n");
 		OUT("asn_struct_print_f %s_print;\n", p);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */\n");
+		OUT("#if (ASN_OP_MASK & ASN_OP_CHECK)\n");
 		OUT("asn_constr_check_f %s_constraint;\n", p);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */\n");
+		OUT("#if (ASN_OP_MASK & ASN_OP_BER_DER)\n");
 		OUT("ber_type_decoder_f %s_decode_ber;\n", p);
 		OUT("der_type_encoder_f %s_encode_der;\n", p);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */\n");
+		OUT("#if (ASN_OP_MASK & ASN_OP_XER)\n");
 		OUT("xer_type_decoder_f %s_decode_xer;\n", p);
 		OUT("xer_type_encoder_f %s_encode_xer;\n", p);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_XER) */\n");
 		if(arg->flags & A1C_GEN_PER) {
+		OUT("#if (ASN_OP_MASK & ASN_OP_UPER)\n");
 		OUT("per_type_decoder_f %s_decode_uper;\n", p);
 		OUT("per_type_encoder_f %s_encode_uper;\n", p);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_UPER) */\n");
 		}
 	}
 
@@ -1783,6 +1837,8 @@ emit_tag2member_map(arg_t *arg, tag2el_t *tag2el, int tag2el_count, const char *
 
 	if(!tag2el_count) return 0;	/* No top level tags */
 
+	OUT("\n");
+	OUT("#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))\n");
 	OUT("static const asn_TYPE_tag2member_t asn_MAP_%s_tag2el%s_%d[] = {\n",
 		MKID(expr), opt_modifier?opt_modifier:"",
 		expr->_type_unique_index);
@@ -1801,6 +1857,8 @@ emit_tag2member_map(arg_t *arg, tag2el_t *tag2el, int tag2el_count, const char *
         OUT(" */\n");
 	}
 	OUT("};\n");
+	OUT("#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */\n");
+	OUT("\n");
 
 	return 0;
 }
@@ -1867,15 +1925,22 @@ emit_tags_vectors(arg_t *arg, asn1p_expr_t *expr, int *tags_count_r, int *all_ta
 	} while(0)
 
 	if(tags_count) {
+		OUT("\n");
+		OUT("#if (ASN_OP_MASK & ASN_OP_BER_DER)\n");
 		if(tv_mode == _TVM_SUBSET)
 			EMIT_TAGS_TABLE("", all_tags, all_tags_count);
 		else
 			EMIT_TAGS_TABLE("", tags, tags_count);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */\n");
 	}
 
 	if(all_tags_count) {
-		if(tv_mode == _TVM_DIFFERENT)
+		if(tv_mode == _TVM_DIFFERENT) {
+			OUT("\n");
+			OUT("#if (ASN_OP_MASK & ASN_OP_BER_DER)\n");
 			EMIT_TAGS_TABLE("_all", all_tags, all_tags_count);
+			OUT("#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */\n");
+		}
 	}
 
 	free(tags);
@@ -2070,7 +2135,8 @@ emit_member_PER_constraints(arg_t *arg, asn1p_expr_t *expr, const char *pfx) {
 	}
 
 	REDIR(OT_CTDEFS);
-
+	OUT("\n");
+	OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
 	OUT("static asn_per_constraints_t "
 		"asn_PER_%s_%s_constr_%d GCC_NOTUSED = {\n",
 		pfx, MKID(expr), expr->_type_unique_index);
@@ -2188,15 +2254,15 @@ emit_member_PER_constraints(arg_t *arg, asn1p_expr_t *expr, const char *pfx) {
 			MKID(expr), expr->_type_unique_index);
 	} else if(etype & ASN_STRING_KM_MASK) {
 		DEBUG("No PER value map necessary for %s", MKID(expr));
-		OUT("0, 0\t/* No PER character map necessary */\n");
+		// OUT("0, 0\t/* No PER character map necessary */\n");
 	} else {
-		OUT("0, 0\t/* No PER value map */\n");
+		// OUT("0, 0\t/* No PER value map */\n");
 	}
 
 	INDENT(-1);
 
 	OUT("};\n");
-
+	OUT("#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */\n");
 	REDIR(save_target);
 
 	return 0;
@@ -2320,6 +2386,8 @@ try_inline_default(arg_t *arg, asn1p_expr_t *expr, int out) {
 			return 1;
 		}
 		REDIR(OT_STAT_DEFS);
+		OUT("\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
 		OUT("static int asn_DFL_%d_set(int set_value, void **sptr) {\n", expr->_type_unique_index);
 		INDENT(+1);
 		emit_default_value(arg, expr->marker.default_value);
@@ -2351,6 +2419,7 @@ try_inline_default(arg_t *arg, asn1p_expr_t *expr, int out) {
 		OUT("}\n"); OUT("\n");
 		INDENT(-1);
 		OUT("}\n");
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */\n");
 		REDIR(save_target);
 		return 1;
 	  }
@@ -2408,6 +2477,7 @@ emit_member_table(arg_t *arg, asn1p_expr_t *expr) {
 		OUT("%s),\n", MKID_safe(expr));
 	}
 	INDENT(+1);
+	OUT("#if (ASN_OP_MASK & ASN_OP_BER_DER)\n");
 	if(C99_MODE) OUT(".tag = ");
 	if(outmost_tag) {
 		if(outmost_tag->tag_value == -1)
@@ -2430,6 +2500,7 @@ emit_member_table(arg_t *arg, asn1p_expr_t *expr) {
 	} else {
 		OUT("0,\n");
 	}
+	OUT("#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */\n");
 
 	complex_contents =
 		(expr->expr_type & ASN_CONSTR_MASK)
@@ -2449,6 +2520,7 @@ emit_member_table(arg_t *arg, asn1p_expr_t *expr) {
 		OUT("%s", asn1c_type_name(arg, expr, TNF_SAFE));
 	}
 	OUT(",\n");
+	OUT("#if (ASN_OP_MASK & ASN_OP_CHECK)\n");
 	if(C99_MODE) OUT(".memb_constraints = ");
 	if(expr->constraints) {
 		if(arg->flags & A1C_NO_CONSTRAINTS) {
@@ -2464,6 +2536,8 @@ emit_member_table(arg_t *arg, asn1p_expr_t *expr) {
 	} else {
 		OUT("0,\t/* Defer constraints checking to the member type */\n");
 	}
+	OUT("#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */\n");
+	OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
 	if(C99_MODE) OUT(".per_constraints = ");
 	if(arg->flags & A1C_GEN_PER) {
 		if(expr->constraints) {
@@ -2479,14 +2553,17 @@ emit_member_table(arg_t *arg, asn1p_expr_t *expr) {
 	if(C99_MODE) OUT(".default_value = ");
 	if(try_inline_default(arg, expr, 0)) {
 	} else {
-		OUT("0,\n");
+		OUT("0,\t/* No default value */\n");
 	}
+	OUT("#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */\n");
+	OUT("#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))\n");
 	if(C99_MODE) OUT(".name = ");
 	if(expr->_anonymous_type && !strcmp(expr->Identifier, "Member")) {
 		OUT("\"\"\n");
 	} else {
 		OUT("\"%s\"\n", expr->Identifier);
 	}
+	OUT("#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */\n");
 	OUT("},\n");
 	INDENT(-1);
 
@@ -2496,6 +2573,7 @@ emit_member_table(arg_t *arg, asn1p_expr_t *expr) {
 	save_target = arg->target->target;
 	REDIR(OT_CODE);
 
+	OUT("#if (ASN_OP_MASK & ASN_OP_CHECK)\n");
 	if(expr->_anonymous_type && !strcmp(expr->Identifier, "Member"))
 		p = asn1c_type_name(arg, expr, TNF_SAFE);
 	else
@@ -2514,9 +2592,12 @@ emit_member_table(arg_t *arg, asn1p_expr_t *expr) {
 	INDENT(-1);
 	OUT("}\n");
 	OUT("\n");
+	OUT("#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */\n");
+	OUT("\n");
 
 	if(emit_member_PER_constraints(arg, expr, "memb"))
 		return -1;
+	OUT("\n");
 
 	REDIR(save_target);
 
@@ -2538,6 +2619,7 @@ emit_type_DEF(arg_t *arg, asn1p_expr_t *expr, enum tvm_compat tv_mode, int tags_
 	if(emit_member_PER_constraints(arg, expr, "type"))
 		return -1;
 
+	OUT("\n");
 	if(HIDE_INNER_DEFS)
 		OUT("static /* Use -fall-defs-global to expose */\n");
 	OUT("asn_TYPE_descriptor_t asn_DEF_%s", p);
@@ -2547,13 +2629,21 @@ emit_type_DEF(arg_t *arg, asn1p_expr_t *expr, enum tvm_compat tv_mode, int tags_
 
 		if(expr->_anonymous_type) {
 			p = ASN_EXPR_TYPE2STR(expr->expr_type);
+			OUT("#if (ASN_OP_MASK & ASN_OP_PRINT)\n");
 			OUT("\"%s\",\n", p?p:"");
+			OUT("#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */\n");
+			OUT("#if (ASN_OP_MASK & ASN_OP_XER)\n");
 			OUT("\"%s\",\n",
 				p ? asn1c_make_identifier(AMI_CHECK_RESERVED,
 					0, p, 0) : "");
+			OUT("#endif /* (ASN_OP_MASK & ASN_OP_XER) */\n");
 		} else {
+			OUT("#if (ASN_OP_MASK & ASN_OP_PRINT)\n");
 			OUT("\"%s\",\n", expr->Identifier);
+			OUT("#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */\n");
+			OUT("#if (ASN_OP_MASK & ASN_OP_XER)\n");
 			OUT("\"%s\",\n", expr->Identifier);
+			OUT("#endif /* (ASN_OP_MASK & ASN_OP_XER) */\n");
 		}
 
 		if(expr->expr_type & ASN_CONSTR_MASK) {
@@ -2585,21 +2675,28 @@ do {				\
 
 #if 1
 		OUT("&asn_OP_%s,\n", p2);
+		OUT("#if (ASN_OP_MASK & ASN_OP_CHECK)\n");
 		if (!expr->combined_constraints)
 			FUNCREF2(constraint);
 		else
 			FUNCREF(constraint);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */\n");
 #else
 		FUNCREF2(free);
+		OUT("#if (ASN_OP_MASK & ASN_OP_PRINT)\n");
 		FUNCREF2(print);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */\n");
 		if (!expr->combined_constraints)
 			FUNCREF2(constraint);
 		else
 			FUNCREF(constraint);
 		FUNCREF2(decode_ber);
 		FUNCREF2(encode_der);
+		OUT("#if (ASN_OP_MASK & ASN_OP_XER)\n");
 		FUNCREF2(decode_xer);
 		FUNCREF2(encode_xer);
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_XER) */\n");
+		OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
 		if(arg->flags & A1C_GEN_PER) {
 			FUNCREF2(decode_uper);
 			FUNCREF2(encode_uper);
@@ -2607,7 +2704,7 @@ do {				\
 			OUT("0, 0,\t/* No PER support, "
 				"use \"-gen-PER\" to enable */\n");
 		}
-		if (p2) free(p2);
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */\n");
 
 		if(!terminal || terminal->expr_type == ASN_CONSTR_CHOICE) {
 		//if(expr->expr_type == ASN_CONSTR_CHOICE) {
@@ -2619,6 +2716,7 @@ do {				\
 		if (p2) free(p2);
 
 		p = MKID(expr);
+		OUT("#if (ASN_OP_MASK & ASN_OP_BER_DER)\n");
 		if(tags_count) {
 			OUT("asn_DEF_%s_tags_%d,\n",
 				p, expr->_type_unique_index);
@@ -2653,7 +2751,9 @@ do {				\
 			OUT("0,\t/* No tags (pointer) */\n");
 			OUT("0,\t/* No tags (count) */\n");
 		}
+		OUT("#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */\n");
 
+		OUT("#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))\n");
 		if(arg->flags & A1C_GEN_PER) {
 			if(expr->constraints
 			|| expr->expr_type == ASN_BASIC_ENUMERATED
@@ -2666,6 +2766,7 @@ do {				\
 		} else {
 			OUT("0,\t/* No PER visible constraints */\n");
 		}
+		OUT("#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */\n");
 
 		if(elements_count ||
 			((expr->expr_type == A1TC_REFERENCE) &&

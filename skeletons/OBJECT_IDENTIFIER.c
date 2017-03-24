@@ -12,43 +12,62 @@
 /*
  * OBJECT IDENTIFIER basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_OBJECT_IDENTIFIER_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (6 << 2))
 };
+#endif
 asn_TYPE_operation_t asn_OP_OBJECT_IDENTIFIER = {
 	ASN__PRIMITIVE_TYPE_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	OBJECT_IDENTIFIER_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	OBJECT_IDENTIFIER_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	ber_decode_primitive,
 	der_encode_primitive,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	OBJECT_IDENTIFIER_decode_xer,
 	OBJECT_IDENTIFIER_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	OCTET_STRING_decode_uper,
 	OCTET_STRING_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_OBJECT_IDENTIFIER = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"OBJECT IDENTIFIER",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"OBJECT_IDENTIFIER",
+#endif
 	&asn_OP_OBJECT_IDENTIFIER,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	OBJECT_IDENTIFIER_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_OBJECT_IDENTIFIER_tags,
 	sizeof(asn_DEF_OBJECT_IDENTIFIER_tags)
 	    / sizeof(asn_DEF_OBJECT_IDENTIFIER_tags[0]),
 	asn_DEF_OBJECT_IDENTIFIER_tags,	/* Same as above */
 	sizeof(asn_DEF_OBJECT_IDENTIFIER_tags)
 	    / sizeof(asn_DEF_OBJECT_IDENTIFIER_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
 
-
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 OBJECT_IDENTIFIER_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 		asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -59,20 +78,21 @@ OBJECT_IDENTIFIER_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			ASN__CTFAIL(app_key, td, sptr,
 				"%s: at least one numerical value "
 				"expected (%s:%d)",
-				td->name, __FILE__, __LINE__);
+				TYPE_NAME(td), __FILE__, __LINE__);
 			return -1;
 		}
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td), __FILE__, __LINE__);
 		return -1;
 	}
 
 	return 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 
-
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 int
 OBJECT_IDENTIFIER_get_single_arc(const uint8_t *arcbuf, unsigned int arclen, signed int add, void *rvbufp, unsigned int rvsize) {
 	unsigned LE GCC_NOTUSED = 1; /* Little endian (x86) */
@@ -275,7 +295,9 @@ OBJECT_IDENTIFIER__dump_body(const OBJECT_IDENTIFIER_t *st, asn_app_consume_byte
 
 	return wrote_len;
 }
+#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 static enum xer_pbd_rval
 OBJECT_IDENTIFIER__xer_body_decode(asn_TYPE_descriptor_t *td, void *sptr, const void *chunk_buf, size_t chunk_size) {
 	OBJECT_IDENTIFIER_t *st = (OBJECT_IDENTIFIER_t *)sptr;
@@ -346,7 +368,9 @@ OBJECT_IDENTIFIER_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 
 	ASN__ENCODED_OK(er);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 OBJECT_IDENTIFIER_print(asn_TYPE_descriptor_t *td, const void *sptr,
 	int ilevel, asn_app_consume_bytes_f *cb, void *app_key) {
@@ -367,7 +391,9 @@ OBJECT_IDENTIFIER_print(asn_TYPE_descriptor_t *td, const void *sptr,
 
 	return (cb(" }", 2, app_key) < 0) ? -1 : 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 int
 OBJECT_IDENTIFIER_get_arcs(const OBJECT_IDENTIFIER_t *oid, void *arcs,
 		unsigned int arc_type_size, unsigned int arc_slots) {
@@ -769,5 +795,5 @@ OBJECT_IDENTIFIER_parse_arcs(const char *oid_text, ssize_t oid_txt_length,
 	errno = EINVAL;	/* Broken OID */
 	return -1;
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 

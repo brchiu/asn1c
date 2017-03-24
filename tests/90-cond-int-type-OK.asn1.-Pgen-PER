@@ -9,16 +9,27 @@ typedef long	 CN_IntegerUnlimited_t;
 
 /*** <<< FUNC-DECLS [CN-IntegerUnlimited] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_CN_IntegerUnlimited;
 asn_struct_free_f CN_IntegerUnlimited_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f CN_IntegerUnlimited_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f CN_IntegerUnlimited_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f CN_IntegerUnlimited_decode_ber;
 der_type_encoder_f CN_IntegerUnlimited_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f CN_IntegerUnlimited_decode_xer;
 xer_type_encoder_f CN_IntegerUnlimited_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f CN_IntegerUnlimited_decode_uper;
 per_type_encoder_f CN_IntegerUnlimited_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [CN-IntegerUnlimited] >>> ***/
 
@@ -29,21 +40,35 @@ per_type_encoder_f CN_IntegerUnlimited_encode_uper;
 
 /*** <<< STAT-DEFS [CN-IntegerUnlimited] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_CN_IntegerUnlimited_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_CN_IntegerUnlimited = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"CN-IntegerUnlimited",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"CN-IntegerUnlimited",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	NativeInteger_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_CN_IntegerUnlimited_tags_1,
 	sizeof(asn_DEF_CN_IntegerUnlimited_tags_1)
 		/sizeof(asn_DEF_CN_IntegerUnlimited_tags_1[0]), /* 1 */
 	asn_DEF_CN_IntegerUnlimited_tags_1,	/* Same as above */
 	sizeof(asn_DEF_CN_IntegerUnlimited_tags_1)
 		/sizeof(asn_DEF_CN_IntegerUnlimited_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -59,19 +84,31 @@ typedef long	 CN_IntegerMinMax_t;
 
 /*** <<< FUNC-DECLS [CN-IntegerMinMax] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_CN_IntegerMinMax;
 asn_struct_free_f CN_IntegerMinMax_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f CN_IntegerMinMax_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f CN_IntegerMinMax_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f CN_IntegerMinMax_decode_ber;
 der_type_encoder_f CN_IntegerMinMax_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f CN_IntegerMinMax_decode_xer;
 xer_type_encoder_f CN_IntegerMinMax_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f CN_IntegerMinMax_decode_uper;
 per_type_encoder_f CN_IntegerMinMax_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [CN-IntegerMinMax] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 CN_IntegerMinMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -79,7 +116,7 @@ CN_IntegerMinMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -93,6 +130,7 @@ CN_IntegerMinMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	return td->check_constraints(td, sptr, ctfailcb, app_key);
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -100,29 +138,45 @@ CN_IntegerMinMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [CN-IntegerMinMax] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_CN_IntegerMinMax_constr_1 GCC_NOTUSED = {
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [CN-IntegerMinMax] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_CN_IntegerMinMax_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_CN_IntegerMinMax = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"CN-IntegerMinMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"CN-IntegerMinMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	CN_IntegerMinMax_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_CN_IntegerMinMax_tags_1,
 	sizeof(asn_DEF_CN_IntegerMinMax_tags_1)
 		/sizeof(asn_DEF_CN_IntegerMinMax_tags_1[0]), /* 1 */
 	asn_DEF_CN_IntegerMinMax_tags_1,	/* Same as above */
 	sizeof(asn_DEF_CN_IntegerMinMax_tags_1)
 		/sizeof(asn_DEF_CN_IntegerMinMax_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_CN_IntegerMinMax_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -138,19 +192,31 @@ typedef long	 CN_IntegerMinLow_t;
 
 /*** <<< FUNC-DECLS [CN-IntegerMinLow] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_CN_IntegerMinLow;
 asn_struct_free_f CN_IntegerMinLow_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f CN_IntegerMinLow_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f CN_IntegerMinLow_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f CN_IntegerMinLow_decode_ber;
 der_type_encoder_f CN_IntegerMinLow_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f CN_IntegerMinLow_decode_xer;
 xer_type_encoder_f CN_IntegerMinLow_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f CN_IntegerMinLow_decode_uper;
 per_type_encoder_f CN_IntegerMinLow_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [CN-IntegerMinLow] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 CN_IntegerMinLow_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -159,7 +225,7 @@ CN_IntegerMinLow_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -171,11 +237,12 @@ CN_IntegerMinLow_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -183,29 +250,45 @@ CN_IntegerMinLow_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [CN-IntegerMinLow] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_CN_IntegerMinLow_constr_1 GCC_NOTUSED = {
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 }	/* (MIN..1) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [CN-IntegerMinLow] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_CN_IntegerMinLow_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_CN_IntegerMinLow = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"CN-IntegerMinLow",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"CN-IntegerMinLow",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	CN_IntegerMinLow_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_CN_IntegerMinLow_tags_1,
 	sizeof(asn_DEF_CN_IntegerMinLow_tags_1)
 		/sizeof(asn_DEF_CN_IntegerMinLow_tags_1[0]), /* 1 */
 	asn_DEF_CN_IntegerMinLow_tags_1,	/* Same as above */
 	sizeof(asn_DEF_CN_IntegerMinLow_tags_1)
 		/sizeof(asn_DEF_CN_IntegerMinLow_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_CN_IntegerMinLow_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -221,19 +304,31 @@ typedef INTEGER_t	 NO_IntegerMinHigh_t;
 
 /*** <<< FUNC-DECLS [NO-IntegerMinHigh] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_NO_IntegerMinHigh;
 asn_struct_free_f NO_IntegerMinHigh_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f NO_IntegerMinHigh_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f NO_IntegerMinHigh_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f NO_IntegerMinHigh_decode_ber;
 der_type_encoder_f NO_IntegerMinHigh_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f NO_IntegerMinHigh_decode_xer;
 xer_type_encoder_f NO_IntegerMinHigh_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f NO_IntegerMinHigh_decode_uper;
 per_type_encoder_f NO_IntegerMinHigh_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [NO-IntegerMinHigh] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 NO_IntegerMinHigh_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -243,14 +338,14 @@ NO_IntegerMinHigh_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
 	if(asn_INTEGER2long(st, &value)) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value too large (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -260,11 +355,12 @@ NO_IntegerMinHigh_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using INTEGER,
  * so here we adjust the DEF accordingly.
@@ -272,29 +368,45 @@ NO_IntegerMinHigh_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [NO-IntegerMinHigh] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_NO_IntegerMinHigh_constr_1 GCC_NOTUSED = {
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 }	/* (MIN..3000000000) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [NO-IntegerMinHigh] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NO_IntegerMinHigh_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_NO_IntegerMinHigh = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NO-IntegerMinHigh",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"NO-IntegerMinHigh",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_INTEGER,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	NO_IntegerMinHigh_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NO_IntegerMinHigh_tags_1,
 	sizeof(asn_DEF_NO_IntegerMinHigh_tags_1)
 		/sizeof(asn_DEF_NO_IntegerMinHigh_tags_1[0]), /* 1 */
 	asn_DEF_NO_IntegerMinHigh_tags_1,	/* Same as above */
 	sizeof(asn_DEF_NO_IntegerMinHigh_tags_1)
 		/sizeof(asn_DEF_NO_IntegerMinHigh_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_NO_IntegerMinHigh_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -310,19 +422,31 @@ typedef unsigned long	 NO_IntegerLowHigh_t;
 
 /*** <<< FUNC-DECLS [NO-IntegerLowHigh] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_NO_IntegerLowHigh;
 asn_struct_free_f NO_IntegerLowHigh_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f NO_IntegerLowHigh_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f NO_IntegerLowHigh_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f NO_IntegerLowHigh_decode_ber;
 der_type_encoder_f NO_IntegerLowHigh_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f NO_IntegerLowHigh_decode_xer;
 xer_type_encoder_f NO_IntegerLowHigh_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f NO_IntegerLowHigh_decode_uper;
 per_type_encoder_f NO_IntegerLowHigh_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [NO-IntegerLowHigh] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 NO_IntegerLowHigh_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -331,7 +455,7 @@ NO_IntegerLowHigh_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -343,11 +467,12 @@ NO_IntegerLowHigh_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -355,34 +480,64 @@ NO_IntegerLowHigh_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [NO-IntegerLowHigh] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_NO_IntegerLowHigh_constr_1 GCC_NOTUSED = {
 	{ APC_CONSTRAINED,	 32, -1,  1,  3000000000 }	/* (1..3000000000) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [NO-IntegerLowHigh] >>> ***/
 
 static const asn_INTEGER_specifics_t asn_SPC_NO_IntegerLowHigh_specs_1 = {
-	0,	0,	0,	0,	0,
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 	0,	/* Native long size */
 	1	/* Unsigned representation */
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NO_IntegerLowHigh_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_NO_IntegerLowHigh = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NO-IntegerLowHigh",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"NO-IntegerLowHigh",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	NO_IntegerLowHigh_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NO_IntegerLowHigh_tags_1,
 	sizeof(asn_DEF_NO_IntegerLowHigh_tags_1)
 		/sizeof(asn_DEF_NO_IntegerLowHigh_tags_1[0]), /* 1 */
 	asn_DEF_NO_IntegerLowHigh_tags_1,	/* Same as above */
 	sizeof(asn_DEF_NO_IntegerLowHigh_tags_1)
 		/sizeof(asn_DEF_NO_IntegerLowHigh_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_NO_IntegerLowHigh_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	&asn_SPC_NO_IntegerLowHigh_specs_1	/* Additional specs */
 };
@@ -398,19 +553,31 @@ typedef long	 CN_IntegerLowMax_t;
 
 /*** <<< FUNC-DECLS [CN-IntegerLowMax] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_CN_IntegerLowMax;
 asn_struct_free_f CN_IntegerLowMax_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f CN_IntegerLowMax_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f CN_IntegerLowMax_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f CN_IntegerLowMax_decode_ber;
 der_type_encoder_f CN_IntegerLowMax_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f CN_IntegerLowMax_decode_xer;
 xer_type_encoder_f CN_IntegerLowMax_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f CN_IntegerLowMax_decode_uper;
 per_type_encoder_f CN_IntegerLowMax_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [CN-IntegerLowMax] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 CN_IntegerLowMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -419,7 +586,7 @@ CN_IntegerLowMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -431,11 +598,12 @@ CN_IntegerLowMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -443,29 +611,45 @@ CN_IntegerLowMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [CN-IntegerLowMax] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_CN_IntegerLowMax_constr_1 GCC_NOTUSED = {
 	{ APC_SEMI_CONSTRAINED,	-1, -1,  1,  0 }	/* (1..MAX) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [CN-IntegerLowMax] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_CN_IntegerLowMax_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_CN_IntegerLowMax = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"CN-IntegerLowMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"CN-IntegerLowMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	CN_IntegerLowMax_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_CN_IntegerLowMax_tags_1,
 	sizeof(asn_DEF_CN_IntegerLowMax_tags_1)
 		/sizeof(asn_DEF_CN_IntegerLowMax_tags_1[0]), /* 1 */
 	asn_DEF_CN_IntegerLowMax_tags_1,	/* Same as above */
 	sizeof(asn_DEF_CN_IntegerLowMax_tags_1)
 		/sizeof(asn_DEF_CN_IntegerLowMax_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_CN_IntegerLowMax_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -481,19 +665,31 @@ typedef INTEGER_t	 NO_IntegerHighMax_t;
 
 /*** <<< FUNC-DECLS [NO-IntegerHighMax] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_NO_IntegerHighMax;
 asn_struct_free_f NO_IntegerHighMax_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f NO_IntegerHighMax_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f NO_IntegerHighMax_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f NO_IntegerHighMax_decode_ber;
 der_type_encoder_f NO_IntegerHighMax_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f NO_IntegerHighMax_decode_xer;
 xer_type_encoder_f NO_IntegerHighMax_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f NO_IntegerHighMax_decode_uper;
 per_type_encoder_f NO_IntegerHighMax_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [NO-IntegerHighMax] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 NO_IntegerHighMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -503,14 +699,14 @@ NO_IntegerHighMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
 	if(asn_INTEGER2long(st, &value)) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value too large (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -520,11 +716,12 @@ NO_IntegerHighMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using INTEGER,
  * so here we adjust the DEF accordingly.
@@ -532,29 +729,45 @@ NO_IntegerHighMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [NO-IntegerHighMax] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_NO_IntegerHighMax_constr_1 GCC_NOTUSED = {
 	{ APC_SEMI_CONSTRAINED,	-1, -1,  3000000000,  0 }	/* (3000000000..MAX) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [NO-IntegerHighMax] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NO_IntegerHighMax_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_NO_IntegerHighMax = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NO-IntegerHighMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"NO-IntegerHighMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_INTEGER,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	NO_IntegerHighMax_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NO_IntegerHighMax_tags_1,
 	sizeof(asn_DEF_NO_IntegerHighMax_tags_1)
 		/sizeof(asn_DEF_NO_IntegerHighMax_tags_1[0]), /* 1 */
 	asn_DEF_NO_IntegerHighMax_tags_1,	/* Same as above */
 	sizeof(asn_DEF_NO_IntegerHighMax_tags_1)
 		/sizeof(asn_DEF_NO_IntegerHighMax_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_NO_IntegerHighMax_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -570,19 +783,31 @@ typedef INTEGER_t	 NO_IntegerLowestMax_t;
 
 /*** <<< FUNC-DECLS [NO-IntegerLowestMax] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_NO_IntegerLowestMax;
 asn_struct_free_f NO_IntegerLowestMax_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f NO_IntegerLowestMax_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f NO_IntegerLowestMax_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f NO_IntegerLowestMax_decode_ber;
 der_type_encoder_f NO_IntegerLowestMax_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f NO_IntegerLowestMax_decode_xer;
 xer_type_encoder_f NO_IntegerLowestMax_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f NO_IntegerLowestMax_decode_uper;
 per_type_encoder_f NO_IntegerLowestMax_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [NO-IntegerLowestMax] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 NO_IntegerLowestMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -592,14 +817,14 @@ NO_IntegerLowestMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
 	if(asn_INTEGER2long(st, &value)) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value too large (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -609,11 +834,12 @@ NO_IntegerLowestMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using INTEGER,
  * so here we adjust the DEF accordingly.
@@ -621,29 +847,45 @@ NO_IntegerLowestMax_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [NO-IntegerLowestMax] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_NO_IntegerLowestMax_constr_1 GCC_NOTUSED = {
 	{ APC_SEMI_CONSTRAINED,	-1, -1, -3000000000,  0 }	/* (-3000000000..MAX) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [NO-IntegerLowestMax] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NO_IntegerLowestMax_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_NO_IntegerLowestMax = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NO-IntegerLowestMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"NO-IntegerLowestMax",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_INTEGER,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	NO_IntegerLowestMax_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NO_IntegerLowestMax_tags_1,
 	sizeof(asn_DEF_NO_IntegerLowestMax_tags_1)
 		/sizeof(asn_DEF_NO_IntegerLowestMax_tags_1[0]), /* 1 */
 	asn_DEF_NO_IntegerLowestMax_tags_1,	/* Same as above */
 	sizeof(asn_DEF_NO_IntegerLowestMax_tags_1)
 		/sizeof(asn_DEF_NO_IntegerLowestMax_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_NO_IntegerLowestMax_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -659,19 +901,31 @@ typedef unsigned long	 NO_IntegerOutRange_t;
 
 /*** <<< FUNC-DECLS [NO-IntegerOutRange] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_NO_IntegerOutRange;
 asn_struct_free_f NO_IntegerOutRange_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f NO_IntegerOutRange_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f NO_IntegerOutRange_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f NO_IntegerOutRange_decode_ber;
 der_type_encoder_f NO_IntegerOutRange_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f NO_IntegerOutRange_decode_xer;
 xer_type_encoder_f NO_IntegerOutRange_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f NO_IntegerOutRange_decode_uper;
 per_type_encoder_f NO_IntegerOutRange_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [NO-IntegerOutRange] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 NO_IntegerOutRange_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -680,7 +934,7 @@ NO_IntegerOutRange_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -692,11 +946,12 @@ NO_IntegerOutRange_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -704,34 +959,64 @@ NO_IntegerOutRange_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [NO-IntegerOutRange] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_NO_IntegerOutRange_constr_1 GCC_NOTUSED = {
 	{ APC_CONSTRAINED,	 1, -1,  3000000000,  3000000001 }	/* (3000000000..3000000001) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [NO-IntegerOutRange] >>> ***/
 
 static const asn_INTEGER_specifics_t asn_SPC_NO_IntegerOutRange_specs_1 = {
-	0,	0,	0,	0,	0,
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 	0,	/* Native long size */
 	1	/* Unsigned representation */
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NO_IntegerOutRange_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_NO_IntegerOutRange = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NO-IntegerOutRange",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"NO-IntegerOutRange",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	NO_IntegerOutRange_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NO_IntegerOutRange_tags_1,
 	sizeof(asn_DEF_NO_IntegerOutRange_tags_1)
 		/sizeof(asn_DEF_NO_IntegerOutRange_tags_1[0]), /* 1 */
 	asn_DEF_NO_IntegerOutRange_tags_1,	/* Same as above */
 	sizeof(asn_DEF_NO_IntegerOutRange_tags_1)
 		/sizeof(asn_DEF_NO_IntegerOutRange_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_NO_IntegerOutRange_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	&asn_SPC_NO_IntegerOutRange_specs_1	/* Additional specs */
 };
@@ -747,19 +1032,31 @@ typedef unsigned long	 NO_IntegerOutValue_t;
 
 /*** <<< FUNC-DECLS [NO-IntegerOutValue] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_NO_IntegerOutValue;
 asn_struct_free_f NO_IntegerOutValue_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f NO_IntegerOutValue_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f NO_IntegerOutValue_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f NO_IntegerOutValue_decode_ber;
 der_type_encoder_f NO_IntegerOutValue_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f NO_IntegerOutValue_decode_xer;
 xer_type_encoder_f NO_IntegerOutValue_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f NO_IntegerOutValue_decode_uper;
 per_type_encoder_f NO_IntegerOutValue_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [NO-IntegerOutValue] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 NO_IntegerOutValue_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -768,7 +1065,7 @@ NO_IntegerOutValue_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -780,11 +1077,12 @@ NO_IntegerOutValue_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -792,34 +1090,64 @@ NO_IntegerOutValue_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [NO-IntegerOutValue] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_NO_IntegerOutValue_constr_1 GCC_NOTUSED = {
 	{ APC_CONSTRAINED,	 0, -1,  3000000000,  3000000000 }	/* (3000000000..3000000000) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [NO-IntegerOutValue] >>> ***/
 
 static const asn_INTEGER_specifics_t asn_SPC_NO_IntegerOutValue_specs_1 = {
-	0,	0,	0,	0,	0,
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 	0,	/* Native long size */
 	1	/* Unsigned representation */
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NO_IntegerOutValue_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_NO_IntegerOutValue = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NO-IntegerOutValue",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"NO-IntegerOutValue",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	NO_IntegerOutValue_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NO_IntegerOutValue_tags_1,
 	sizeof(asn_DEF_NO_IntegerOutValue_tags_1)
 		/sizeof(asn_DEF_NO_IntegerOutValue_tags_1[0]), /* 1 */
 	asn_DEF_NO_IntegerOutValue_tags_1,	/* Same as above */
 	sizeof(asn_DEF_NO_IntegerOutValue_tags_1)
 		/sizeof(asn_DEF_NO_IntegerOutValue_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_NO_IntegerOutValue_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	&asn_SPC_NO_IntegerOutValue_specs_1	/* Additional specs */
 };
@@ -835,19 +1163,31 @@ typedef long	 OK_IntegerInRange1_t;
 
 /*** <<< FUNC-DECLS [OK-IntegerInRange1] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange1;
 asn_struct_free_f OK_IntegerInRange1_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f OK_IntegerInRange1_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f OK_IntegerInRange1_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f OK_IntegerInRange1_decode_ber;
 der_type_encoder_f OK_IntegerInRange1_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f OK_IntegerInRange1_decode_xer;
 xer_type_encoder_f OK_IntegerInRange1_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f OK_IntegerInRange1_decode_uper;
 per_type_encoder_f OK_IntegerInRange1_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [OK-IntegerInRange1] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 OK_IntegerInRange1_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -856,7 +1196,7 @@ OK_IntegerInRange1_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -868,11 +1208,12 @@ OK_IntegerInRange1_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -880,29 +1221,45 @@ OK_IntegerInRange1_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [OK-IntegerInRange1] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_OK_IntegerInRange1_constr_1 GCC_NOTUSED = {
 	{ APC_CONSTRAINED,	 8,  8, -100,  100 }	/* (-100..100) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [OK-IntegerInRange1] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_OK_IntegerInRange1_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange1 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"OK-IntegerInRange1",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"OK-IntegerInRange1",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	OK_IntegerInRange1_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_OK_IntegerInRange1_tags_1,
 	sizeof(asn_DEF_OK_IntegerInRange1_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange1_tags_1[0]), /* 1 */
 	asn_DEF_OK_IntegerInRange1_tags_1,	/* Same as above */
 	sizeof(asn_DEF_OK_IntegerInRange1_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange1_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_OK_IntegerInRange1_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -918,19 +1275,31 @@ typedef long	 OK_IntegerInRange2_t;
 
 /*** <<< FUNC-DECLS [OK-IntegerInRange2] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange2;
 asn_struct_free_f OK_IntegerInRange2_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f OK_IntegerInRange2_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f OK_IntegerInRange2_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f OK_IntegerInRange2_decode_ber;
 der_type_encoder_f OK_IntegerInRange2_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f OK_IntegerInRange2_decode_xer;
 xer_type_encoder_f OK_IntegerInRange2_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f OK_IntegerInRange2_decode_uper;
 per_type_encoder_f OK_IntegerInRange2_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [OK-IntegerInRange2] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 OK_IntegerInRange2_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -939,7 +1308,7 @@ OK_IntegerInRange2_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -951,11 +1320,12 @@ OK_IntegerInRange2_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -963,29 +1333,45 @@ OK_IntegerInRange2_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [OK-IntegerInRange2] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_OK_IntegerInRange2_constr_1 GCC_NOTUSED = {
 	{ APC_CONSTRAINED,	 8,  8, -100,  100 }	/* (-100..100) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [OK-IntegerInRange2] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_OK_IntegerInRange2_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange2 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"OK-IntegerInRange2",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"OK-IntegerInRange2",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	OK_IntegerInRange2_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_OK_IntegerInRange2_tags_1,
 	sizeof(asn_DEF_OK_IntegerInRange2_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange2_tags_1[0]), /* 1 */
 	asn_DEF_OK_IntegerInRange2_tags_1,	/* Same as above */
 	sizeof(asn_DEF_OK_IntegerInRange2_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange2_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_OK_IntegerInRange2_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -1001,19 +1387,31 @@ typedef long	 OK_IntegerInRange3_t;
 
 /*** <<< FUNC-DECLS [OK-IntegerInRange3] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange3;
 asn_struct_free_f OK_IntegerInRange3_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f OK_IntegerInRange3_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f OK_IntegerInRange3_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f OK_IntegerInRange3_decode_ber;
 der_type_encoder_f OK_IntegerInRange3_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f OK_IntegerInRange3_decode_xer;
 xer_type_encoder_f OK_IntegerInRange3_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f OK_IntegerInRange3_decode_uper;
 per_type_encoder_f OK_IntegerInRange3_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [OK-IntegerInRange3] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 OK_IntegerInRange3_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -1022,7 +1420,7 @@ OK_IntegerInRange3_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -1034,11 +1432,12 @@ OK_IntegerInRange3_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -1046,29 +1445,45 @@ OK_IntegerInRange3_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [OK-IntegerInRange3] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_OK_IntegerInRange3_constr_1 GCC_NOTUSED = {
 	{ APC_CONSTRAINED,	 32, -1, (-2147483647L - 1),  2147483647 }	/* (-2147483648..2147483647) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [OK-IntegerInRange3] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_OK_IntegerInRange3_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange3 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"OK-IntegerInRange3",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"OK-IntegerInRange3",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	OK_IntegerInRange3_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_OK_IntegerInRange3_tags_1,
 	sizeof(asn_DEF_OK_IntegerInRange3_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange3_tags_1[0]), /* 1 */
 	asn_DEF_OK_IntegerInRange3_tags_1,	/* Same as above */
 	sizeof(asn_DEF_OK_IntegerInRange3_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange3_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_OK_IntegerInRange3_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -1084,19 +1499,31 @@ typedef long	 OK_IntegerInRange4_t;
 
 /*** <<< FUNC-DECLS [OK-IntegerInRange4] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange4;
 asn_struct_free_f OK_IntegerInRange4_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f OK_IntegerInRange4_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f OK_IntegerInRange4_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f OK_IntegerInRange4_decode_ber;
 der_type_encoder_f OK_IntegerInRange4_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f OK_IntegerInRange4_decode_xer;
 xer_type_encoder_f OK_IntegerInRange4_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f OK_IntegerInRange4_decode_uper;
 per_type_encoder_f OK_IntegerInRange4_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [OK-IntegerInRange4] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 OK_IntegerInRange4_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -1105,7 +1532,7 @@ OK_IntegerInRange4_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -1117,11 +1544,12 @@ OK_IntegerInRange4_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -1129,29 +1557,45 @@ OK_IntegerInRange4_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [OK-IntegerInRange4] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_OK_IntegerInRange4_constr_1 GCC_NOTUSED = {
 	{ APC_CONSTRAINED,	 32, -1, (-2147483647L - 1),  2147483647 }	/* (-2147483648..2147483647) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [OK-IntegerInRange4] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_OK_IntegerInRange4_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange4 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"OK-IntegerInRange4",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"OK-IntegerInRange4",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	OK_IntegerInRange4_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_OK_IntegerInRange4_tags_1,
 	sizeof(asn_DEF_OK_IntegerInRange4_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange4_tags_1[0]), /* 1 */
 	asn_DEF_OK_IntegerInRange4_tags_1,	/* Same as above */
 	sizeof(asn_DEF_OK_IntegerInRange4_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange4_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_OK_IntegerInRange4_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -1167,19 +1611,31 @@ typedef long	 OK_IntegerInRange5_t;
 
 /*** <<< FUNC-DECLS [OK-IntegerInRange5] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange5;
 asn_struct_free_f OK_IntegerInRange5_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f OK_IntegerInRange5_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f OK_IntegerInRange5_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f OK_IntegerInRange5_decode_ber;
 der_type_encoder_f OK_IntegerInRange5_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f OK_IntegerInRange5_decode_xer;
 xer_type_encoder_f OK_IntegerInRange5_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f OK_IntegerInRange5_decode_uper;
 per_type_encoder_f OK_IntegerInRange5_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [OK-IntegerInRange5] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 OK_IntegerInRange5_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -1188,7 +1644,7 @@ OK_IntegerInRange5_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -1200,11 +1656,12 @@ OK_IntegerInRange5_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -1212,29 +1669,45 @@ OK_IntegerInRange5_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [OK-IntegerInRange5] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_OK_IntegerInRange5_constr_1 GCC_NOTUSED = {
 	{ APC_CONSTRAINED | APC_EXTENSIBLE,  32, -1, (-2147483647L - 1),  2147483647 }	/* (-2147483648..2147483647,...) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [OK-IntegerInRange5] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_OK_IntegerInRange5_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_OK_IntegerInRange5 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"OK-IntegerInRange5",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"OK-IntegerInRange5",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	OK_IntegerInRange5_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_OK_IntegerInRange5_tags_1,
 	sizeof(asn_DEF_OK_IntegerInRange5_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange5_tags_1[0]), /* 1 */
 	asn_DEF_OK_IntegerInRange5_tags_1,	/* Same as above */
 	sizeof(asn_DEF_OK_IntegerInRange5_tags_1)
 		/sizeof(asn_DEF_OK_IntegerInRange5_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_OK_IntegerInRange5_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -1250,19 +1723,31 @@ typedef unsigned long	 NO_IntegerInRange6_t;
 
 /*** <<< FUNC-DECLS [NO-IntegerInRange6] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_NO_IntegerInRange6;
 asn_struct_free_f NO_IntegerInRange6_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f NO_IntegerInRange6_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f NO_IntegerInRange6_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f NO_IntegerInRange6_decode_ber;
 der_type_encoder_f NO_IntegerInRange6_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f NO_IntegerInRange6_decode_xer;
 xer_type_encoder_f NO_IntegerInRange6_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f NO_IntegerInRange6_decode_uper;
 per_type_encoder_f NO_IntegerInRange6_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [NO-IntegerInRange6] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 NO_IntegerInRange6_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -1270,7 +1755,7 @@ NO_IntegerInRange6_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -1279,6 +1764,7 @@ NO_IntegerInRange6_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	return 0;
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using NativeInteger,
  * so here we adjust the DEF accordingly.
@@ -1286,34 +1772,64 @@ NO_IntegerInRange6_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< CTDEFS [NO-IntegerInRange6] >>> ***/
 
+
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_PER_type_NO_IntegerInRange6_constr_1 GCC_NOTUSED = {
 	{ APC_CONSTRAINED,	 32, -1,  0,  4294967295 }	/* (0..4294967295) */,
 	{ APC_UNCONSTRAINED,	-1, -1,  0,  0 },
-	0, 0	/* No PER value map */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 
 /*** <<< STAT-DEFS [NO-IntegerInRange6] >>> ***/
 
 static const asn_INTEGER_specifics_t asn_SPC_NO_IntegerInRange6_specs_1 = {
-	0,	0,	0,	0,	0,
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
+	0,
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 	0,	/* Native long size */
 	1	/* Unsigned representation */
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NO_IntegerInRange6_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_NO_IntegerInRange6 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NO-IntegerInRange6",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"NO-IntegerInRange6",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	NO_IntegerInRange6_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NO_IntegerInRange6_tags_1,
 	sizeof(asn_DEF_NO_IntegerInRange6_tags_1)
 		/sizeof(asn_DEF_NO_IntegerInRange6_tags_1[0]), /* 1 */
 	asn_DEF_NO_IntegerInRange6_tags_1,	/* Same as above */
 	sizeof(asn_DEF_NO_IntegerInRange6_tags_1)
 		/sizeof(asn_DEF_NO_IntegerInRange6_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_PER_type_NO_IntegerInRange6_constr_1,
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* No members */
 	&asn_SPC_NO_IntegerInRange6_specs_1	/* Additional specs */
 };
@@ -1336,16 +1852,27 @@ typedef long	 CN_IntegerEnumerated1_t;
 
 /*** <<< FUNC-DECLS [CN-IntegerEnumerated1] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_CN_IntegerEnumerated1;
 asn_struct_free_f CN_IntegerEnumerated1_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f CN_IntegerEnumerated1_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f CN_IntegerEnumerated1_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f CN_IntegerEnumerated1_decode_ber;
 der_type_encoder_f CN_IntegerEnumerated1_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f CN_IntegerEnumerated1_decode_xer;
 xer_type_encoder_f CN_IntegerEnumerated1_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f CN_IntegerEnumerated1_decode_uper;
 per_type_encoder_f CN_IntegerEnumerated1_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [CN-IntegerEnumerated1] >>> ***/
 
@@ -1356,21 +1883,35 @@ per_type_encoder_f CN_IntegerEnumerated1_encode_uper;
 
 /*** <<< STAT-DEFS [CN-IntegerEnumerated1] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_CN_IntegerEnumerated1_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_CN_IntegerEnumerated1 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"CN-IntegerEnumerated1",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"CN-IntegerEnumerated1",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_NativeInteger,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	NativeInteger_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_CN_IntegerEnumerated1_tags_1,
 	sizeof(asn_DEF_CN_IntegerEnumerated1_tags_1)
 		/sizeof(asn_DEF_CN_IntegerEnumerated1_tags_1[0]), /* 1 */
 	asn_DEF_CN_IntegerEnumerated1_tags_1,	/* Same as above */
 	sizeof(asn_DEF_CN_IntegerEnumerated1_tags_1)
 		/sizeof(asn_DEF_CN_IntegerEnumerated1_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* Defined elsewhere */
 	0	/* No specifics */
 };
@@ -1393,16 +1934,27 @@ typedef INTEGER_t	 NO_IntegerEnumerated2_t;
 
 /*** <<< FUNC-DECLS [NO-IntegerEnumerated2] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_NO_IntegerEnumerated2;
 asn_struct_free_f NO_IntegerEnumerated2_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f NO_IntegerEnumerated2_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f NO_IntegerEnumerated2_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f NO_IntegerEnumerated2_decode_ber;
 der_type_encoder_f NO_IntegerEnumerated2_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f NO_IntegerEnumerated2_decode_xer;
 xer_type_encoder_f NO_IntegerEnumerated2_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
+#if (ASN_OP_MASK & ASN_OP_UPER)
 per_type_decoder_f NO_IntegerEnumerated2_decode_uper;
 per_type_encoder_f NO_IntegerEnumerated2_encode_uper;
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 /*** <<< CODE [NO-IntegerEnumerated2] >>> ***/
 
@@ -1413,21 +1965,35 @@ per_type_encoder_f NO_IntegerEnumerated2_encode_uper;
 
 /*** <<< STAT-DEFS [NO-IntegerEnumerated2] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NO_IntegerEnumerated2_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_NO_IntegerEnumerated2 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NO-IntegerEnumerated2",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"NO-IntegerEnumerated2",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_INTEGER,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	INTEGER_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NO_IntegerEnumerated2_tags_1,
 	sizeof(asn_DEF_NO_IntegerEnumerated2_tags_1)
 		/sizeof(asn_DEF_NO_IntegerEnumerated2_tags_1[0]), /* 1 */
 	asn_DEF_NO_IntegerEnumerated2_tags_1,	/* Same as above */
 	sizeof(asn_DEF_NO_IntegerEnumerated2_tags_1)
 		/sizeof(asn_DEF_NO_IntegerEnumerated2_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* Defined elsewhere */
 	0	/* No specifics */
 };

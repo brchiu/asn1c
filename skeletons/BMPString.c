@@ -9,53 +9,75 @@
 /*
  * BMPString basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_BMPString_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (30 << 2)),	/* [UNIVERSAL 30] IMPLICIT ...*/
 	(ASN_TAG_CLASS_UNIVERSAL | (4 << 2))	/* ... OCTET STRING */
 };
+#endif
 asn_OCTET_STRING_specifics_t asn_SPC_BMPString_specs = {
 	sizeof(BMPString_t),
 	offsetof(BMPString_t, _asn_ctx),
 	ASN_OSUBV_U16	/* 16-bits character */
 };
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_DEF_BMPString_constraints = {
 	{ APC_CONSTRAINED, 16, 16, 0, 65535 },
 	{ APC_SEMI_CONSTRAINED, -1, -1, 0, 0 },
 	0, 0
 };
+#endif
 asn_TYPE_operation_t asn_OP_BMPString = {
 	OCTET_STRING_free,          /* Implemented in terms of OCTET STRING */
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	BMPString_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,  /* No constraint by default */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	OCTET_STRING_decode_ber,
 	OCTET_STRING_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	BMPString_decode_xer,		/* Convert from UTF-8 */
 	BMPString_encode_xer,		/* Convert to UTF-8 */
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	OCTET_STRING_decode_uper,
 	OCTET_STRING_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_BMPString = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"BMPString",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"BMPString",
+#endif
 	&asn_OP_BMPString,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_BMPString_tags,
 	sizeof(asn_DEF_BMPString_tags)
 	  / sizeof(asn_DEF_BMPString_tags[0]) - 1,
 	asn_DEF_BMPString_tags,
 	sizeof(asn_DEF_BMPString_tags)
 	  / sizeof(asn_DEF_BMPString_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_DEF_BMPString_constraints,
+#endif
 	0, 0,	/* No members */
 	&asn_SPC_BMPString_specs
 };
 
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 /*
  * BMPString specific contents printer.
  */
@@ -96,7 +118,9 @@ BMPString__dump(const BMPString_t *st,
 
 	return wrote;
 }
+#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 asn_dec_rval_t
 BMPString_decode_xer(asn_codec_ctx_t *opt_codec_ctx,
 	asn_TYPE_descriptor_t *td, void **sptr,
@@ -181,7 +205,9 @@ BMPString_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 
 	ASN__ENCODED_OK(er);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 BMPString_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 		asn_app_consume_bytes_f *cb, void *app_key) {
@@ -198,4 +224,4 @@ BMPString_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 	return 0;
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */

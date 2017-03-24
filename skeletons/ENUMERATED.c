@@ -11,40 +11,58 @@
 /*
  * ENUMERATED basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_ENUMERATED_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (10 << 2))
 };
+#endif
 asn_TYPE_operation_t asn_OP_ENUMERATED = {
 	ASN__PRIMITIVE_TYPE_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	INTEGER_print,			/* Implemented in terms of INTEGER */
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	ber_decode_primitive,
 	INTEGER_encode_der,		/* Implemented in terms of INTEGER */
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	INTEGER_decode_xer,	/* This is temporary! */
 	INTEGER_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	ENUMERATED_decode_uper,	/* Unaligned PER decoder */
 	ENUMERATED_encode_uper,	/* Unaligned PER encoder */
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
 	0	/* Use generic outmost tag fetcher */
 };
 asn_TYPE_descriptor_t asn_DEF_ENUMERATED = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"ENUMERATED",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"ENUMERATED",
+#endif
 	&asn_OP_ENUMERATED,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_ENUMERATED_tags,
 	sizeof(asn_DEF_ENUMERATED_tags) / sizeof(asn_DEF_ENUMERATED_tags[0]),
 	asn_DEF_ENUMERATED_tags,	/* Same as above */
 	sizeof(asn_DEF_ENUMERATED_tags) / sizeof(asn_DEF_ENUMERATED_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
 
+#if (ASN_OP_MASK & ASN_OP_UPER)
 asn_dec_rval_t
 ENUMERATED_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 	asn_per_constraints_t *constraints, void **sptr, asn_per_data_t *pd) {
@@ -77,4 +95,4 @@ ENUMERATED_encode_uper(asn_TYPE_descriptor_t *td,
 
 	return NativeEnumerated_encode_uper(td, constraints, &value, po);
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */

@@ -70,6 +70,7 @@
 	&&((memb_idx) < (specs)->ext_before))
 
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 /*
  * Tags are canonically sorted in the tag2element map.
  */
@@ -129,8 +130,8 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 	ssize_t consumed_myself = 0;	/* Consumed bytes from ptr */
 	int edx;			/* SEQUENCE element's index */
 
-	ASN_DEBUG("Decoding %s as SEQUENCE", td->name);
-	
+	ASN_DEBUG("Decoding %s as SEQUENCE", TYPE_NAME(td));
+
 	/*
 	 * Create the target structure if it is not present already.
 	 */
@@ -145,7 +146,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 	 * Restore parsing context.
 	 */
 	ctx = (asn_struct_ctx_t *)((char *)st + specs->ctx_offset);
-	
+
 	/*
 	 * Start to parse where left previously
 	 */
@@ -161,7 +162,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 			tag_mode, 1, &ctx->left, 0);
 		if(rval.code != RC_OK) {
 			ASN_DEBUG("%s tagging check failed: %d",
-				td->name, rval.code);
+				TYPE_NAME(td), rval.code);
 			return rval;
 		}
 
@@ -203,7 +204,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		 */
 		ASN_DEBUG("In %s SEQUENCE left %d, edx=%d flags=%d"
 				" opt=%d ec=%d",
-			td->name, (int)ctx->left, edx,
+			TYPE_NAME(td), (int)ctx->left, edx,
 			elements[edx].flags, elements[edx].optional,
 			td->elements_count);
 
@@ -218,7 +219,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 				&& specs->ext_before > td->elements_count)
 		   )
 		) {
-			ASN_DEBUG("End of SEQUENCE %s", td->name);
+			ASN_DEBUG("End of SEQUENCE %s", TYPE_NAME(td));
 			/*
 			 * Found the legitimate end of the structure.
 			 */
@@ -232,7 +233,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		tag_len = ber_fetch_tag(ptr, LEFT, &tlv_tag);
 		ASN_DEBUG("Current tag in %s SEQUENCE for element %d "
 			"(%s) is %s encoded in %d bytes, of frame %ld",
-			td->name, edx, elements[edx].name,
+			TYPE_NAME(td), edx, elements[edx].name,
 			ber_tlv_tag_string(tlv_tag), (int)tag_len, (long)LEFT);
 		switch(tag_len) {
 		case 0: if(!SIZE_VIOLATION) RETURN(RC_WMORE);
@@ -369,7 +370,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 					(const char *)ptr + tag_len,
 					LEFT - tag_len);
 				ASN_DEBUG("Skip length %d in %s",
-					(int)skip, td->name);
+					(int)skip, TYPE_NAME(td));
 				switch(skip) {
 				case 0: if(!SIZE_VIOLATION) RETURN(RC_WMORE);
 					/* Fall through */
@@ -388,8 +389,8 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		 */
 		ctx->step |= 1;		/* Confirm entering next microphase */
 	microphase2:
-		ASN_DEBUG("Inside SEQUENCE %s MF2", td->name);
-		
+		ASN_DEBUG("Inside SEQUENCE %s MF2", TYPE_NAME(td));
+
 		/*
 		 * Compute the position of the member inside a structure,
 		 * and also a type of containment (it may be contained
@@ -415,7 +416,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 				elements[edx].tag_mode);
 		ASN_DEBUG("In %s SEQUENCE decoded %d %s of %d "
 			"in %d bytes rval.code %d, size=%d",
-			td->name, edx, elements[edx].type->name,
+			TYPE_NAME(td), edx, TYPE_NAME(elements[edx].type),
 			(int)LEFT, (int)rval.consumed, rval.code, (int)size);
 		switch(rval.code) {
 		case RC_OK:
@@ -431,7 +432,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		case RC_FAIL: /* Fatal error */
 			RETURN(RC_FAIL);
 		} /* switch(rval) */
-		
+
 		ADVANCE(rval.consumed);
 	  }	/* for(all structure members) */
 
@@ -441,7 +442,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 	case 4:	/* only 00's expected */
 
 		ASN_DEBUG("SEQUENCE %s Leftover: %ld, size = %ld",
-			td->name, (long)ctx->left, (long)size);
+			TYPE_NAME(td), (long)ctx->left, (long)size);
 
 		/*
 		 * Skip everything until the end of the SEQUENCE.
@@ -482,7 +483,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 				ASN_DEBUG("Unexpected continuation "
 					"of a non-extensible type "
 					"%s (SEQUENCE): %s",
-					td->name,
+					TYPE_NAME(td),
 					ber_tlv_tag_string(tlv_tag));
 				RETURN(RC_FAIL);
 			}
@@ -501,7 +502,7 @@ SEQUENCE_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 
 		PHASE_OUT(ctx);
 	}
-	
+
 	RETURN(RC_OK);
 }
 
@@ -519,7 +520,7 @@ SEQUENCE_encode_der(asn_TYPE_descriptor_t *td,
 	int edx;
 
 	ASN_DEBUG("%s %s as SEQUENCE",
-		cb?"Encoding":"Estimating", td->name);
+		cb?"Encoding":"Estimating", TYPE_NAME(td));
 
 	/*
 	 * Gather the length of the underlying members sequence.
@@ -544,7 +545,7 @@ SEQUENCE_encode_der(asn_TYPE_descriptor_t *td,
 			return erval;
 		computed_size += erval.encoded;
 		ASN_DEBUG("Member %d %s estimated %ld bytes",
-			edx, elm->name, (long)erval.encoded);
+			edx, MEMB_NAME(elm), (long)erval.encoded);
 	}
 
 	/*
@@ -579,7 +580,7 @@ SEQUENCE_encode_der(asn_TYPE_descriptor_t *td,
 			return tmperval;
 		computed_size -= tmperval.encoded;
 		ASN_DEBUG("Member %d %s of SEQUENCE %s encoded in %ld bytes",
-			edx, elm->name, td->name, (long)tmperval.encoded);
+			edx, MEMB_NAME(elm), TYPE_NAME(td), (long)tmperval.encoded);
 	}
 
 	if(computed_size != 0)
@@ -590,8 +591,9 @@ SEQUENCE_encode_der(asn_TYPE_descriptor_t *td,
 
 	ASN__ENCODED_OK(erval);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 
-
+#if (ASN_OP_MASK & ASN_OP_XER)
 #undef	XER_ADVANCE
 #define	XER_ADVANCE(num_bytes)	do {			\
 		size_t num = num_bytes;			\
@@ -675,7 +677,7 @@ SEQUENCE_decode_xer(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 
 			/* Invoke the inner type decoder, m.b. multiple times */
 			tmprval = elm->type->op->xer_decoder(opt_codec_ctx,
-					elm->type, memb_ptr2, elm->name,
+					elm->type, memb_ptr2, MEMB_NAME(elm),
 					buf_ptr, size);
 			XER_ADVANCE(tmprval.consumed);
 			if(tmprval.code != RC_OK)
@@ -783,7 +785,7 @@ SEQUENCE_decode_xer(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 				for(n = edx; n < edx_end; n++) {
 					elm = &td->elements[n];
 					tcv = xer_check_tag(buf_ptr,
-						ch_size, elm->name);
+						ch_size, MEMB_NAME(elm));
 					switch(tcv) {
 					case XCT_BOTH:
 					case XCT_OPENING:
@@ -866,7 +868,7 @@ SEQUENCE_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 		asn_enc_rval_t tmper;
 		asn_TYPE_member_t *elm = &td->elements[edx];
 		void *memb_ptr;
-		const char *mname = elm->name;
+		const char *mname = MEMB_NAME(elm);
 		unsigned int mlen = strlen(mname);
 
 		if(elm->flags & ATF_POINTER) {
@@ -899,7 +901,9 @@ SEQUENCE_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 cb_failed:
 	ASN__ENCODE_FAILED;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 SEQUENCE_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 		asn_app_consume_bytes_f *cb, void *app_key) {
@@ -909,7 +913,7 @@ SEQUENCE_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 	if(!sptr) return (cb("<absent>", 8, app_key) < 0) ? -1 : 0;
 
 	/* Dump preamble */
-	if(cb(td->name, strlen(td->name), app_key) < 0
+	if(cb(TYPE_NAME(td), strlen(TYPE_NAME(td)), app_key) < 0
 	|| cb(" ::= {", 6, app_key) < 0)
 		return -1;
 
@@ -932,7 +936,7 @@ SEQUENCE_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 		_i_INDENT(1);
 
 		/* Print the member's name and stuff */
-		if(cb(elm->name, strlen(elm->name), app_key) < 0
+		if(cb(MEMB_NAME(elm), strlen(MEMB_NAME(elm)), app_key) < 0
 		|| cb(": ", 2, app_key) < 0)
 			return -1;
 
@@ -947,6 +951,7 @@ SEQUENCE_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 	return (cb("}", 1, app_key) < 0) ? -1 : 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 void
 SEQUENCE_free(asn_TYPE_descriptor_t *td, void *sptr, int contents_only) {
@@ -955,7 +960,7 @@ SEQUENCE_free(asn_TYPE_descriptor_t *td, void *sptr, int contents_only) {
 	if(!td || !sptr)
 		return;
 
-	ASN_DEBUG("Freeing %s as SEQUENCE", td->name);
+	ASN_DEBUG("Freeing %s as SEQUENCE", TYPE_NAME(td));
 
 	for(edx = 0; edx < td->elements_count; edx++) {
 		asn_TYPE_member_t *elm = &td->elements[edx];
@@ -975,6 +980,7 @@ SEQUENCE_free(asn_TYPE_descriptor_t *td, void *sptr, int contents_only) {
 	}
 }
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 SEQUENCE_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 		asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -983,7 +989,7 @@ SEQUENCE_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td), __FILE__, __LINE__);
 		return -1;
 	}
 
@@ -1001,7 +1007,7 @@ SEQUENCE_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 					continue;
 				ASN__CTFAIL(app_key, td, sptr,
 				"%s: mandatory element %s absent (%s:%d)",
-				td->name, elm->name, __FILE__, __LINE__);
+				TYPE_NAME(td), MEMB_NAME(elm), __FILE__, __LINE__);
 				return -1;
 			}
 		} else {
@@ -1026,8 +1032,9 @@ SEQUENCE_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 	return 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 
-#ifndef ASN_DISABLE_PER_SUPPORT
+#if (ASN_OP_MASK & ASN_OP_UPER)
 asn_dec_rval_t
 SEQUENCE_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 	asn_per_constraints_t *constraints, void **sptr, asn_per_data_t *pd) {
@@ -1049,7 +1056,7 @@ SEQUENCE_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		if(!st) ASN__DECODE_FAILED;
 	}
 
-	ASN_DEBUG("Decoding %s as SEQUENCE (UPER)", td->name);
+	ASN_DEBUG("Decoding %s as SEQUENCE (UPER)", TYPE_NAME(td));
 
 	/* Handle extensions */
 	if(specs->ext_before >= 0) {
@@ -1072,7 +1079,7 @@ SEQUENCE_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		opmd.buffer = opres;
 		opmd.nbits = specs->roms_count;
 		ASN_DEBUG("Read in presence bitmap for %s of %d bits (%x..)",
-			td->name, specs->roms_count, *opres);
+			TYPE_NAME(td), specs->roms_count, *opres);
 	} else {
 		opres = 0;
 	}
@@ -1100,7 +1107,7 @@ SEQUENCE_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		if(elm->optional) {
 			int present = per_get_few_bits(&opmd, 1);
 			ASN_DEBUG("Member %s->%s is optional, p=%d (%d->%d)",
-				td->name, elm->name, present,
+				TYPE_NAME(td), MEMB_NAME(elm), present,
 				(int)opmd.nboff, (int)opmd.nbits);
 			if(present == 0) {
 				/* This element is not present */
@@ -1119,12 +1126,12 @@ SEQUENCE_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		}
 
 		/* Fetch the member from the stream */
-		ASN_DEBUG("Decoding member %s in %s", elm->name, td->name);
+		ASN_DEBUG("Decoding member %s in %s", MEMB_NAME(elm), TYPE_NAME(td));
 		rv = elm->type->op->uper_decoder(opt_codec_ctx, elm->type,
 			elm->per_constraints, memb_ptr2, pd);
 		if(rv.code != RC_OK) {
 			ASN_DEBUG("Failed decode %s in %s",
-				elm->name, td->name);
+				MEMB_NAME(elm), TYPE_NAME(td));
 			FREEMEM(opres);
 			return rv;
 		}
@@ -1144,7 +1151,7 @@ SEQUENCE_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		bmlength = uper_get_nslength(pd);
 		if(bmlength < 0) ASN__DECODE_STARVED;
 
-		ASN_DEBUG("Extensions %ld present in %s", (long)bmlength, td->name);
+		ASN_DEBUG("Extensions %ld present in %s", (long)bmlength, TYPE_NAME(td));
 
 		epres = (uint8_t *)MALLOC((bmlength + 15) >> 3);
 		if(!epres) ASN__DECODE_STARVED;
@@ -1159,7 +1166,7 @@ SEQUENCE_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		epmd.buffer = epres;
 		epmd.nbits = bmlength;
 		ASN_DEBUG("Read in extensions bitmap for %s of %ld bits (%x..)",
-			td->name, (long)bmlength, *epres);
+			TYPE_NAME(td), (long)bmlength, *epres);
 
 	    /* Go over extensions and read them in */
 	    for(edx = specs->ext_after + 1; edx < td->elements_count; edx++) {
@@ -1187,7 +1194,7 @@ SEQUENCE_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 			continue;
 		}
 
-		ASN_DEBUG("Decoding member %s in %s %p", elm->name, td->name, *memb_ptr2);
+		ASN_DEBUG("Decoding member %s in %s %p", MEMB_NAME(elm), TYPE_NAME(td), *memb_ptr2);
 		rv = uper_open_type_get(opt_codec_ctx, elm->type,
 			elm->per_constraints, memb_ptr2, pd);
 		if(rv.code != RC_OK) {
@@ -1263,7 +1270,7 @@ SEQUENCE_handle_extensions(asn_TYPE_descriptor_t *td, void *sptr,
 		int present;
 
 		if(!IN_EXTENSION_GROUP(specs, edx)) {
-			ASN_DEBUG("%s (@%d) is not extension", elm->type->name, edx);
+			ASN_DEBUG("%s (@%d) is not extension", TYPE_NAME(elm->type), edx);
 			continue;
 		}
 
@@ -1278,7 +1285,7 @@ SEQUENCE_handle_extensions(asn_TYPE_descriptor_t *td, void *sptr,
 		}
 
 		ASN_DEBUG("checking %s (@%d) present => %d",
-			elm->type->name, edx, present);
+			TYPE_NAME(elm->type), edx, present);
 		exts_count++;
 		exts_present += present;
 
@@ -1312,7 +1319,7 @@ SEQUENCE_encode_uper(asn_TYPE_descriptor_t *td,
 
 	er.encoded = 0;
 
-	ASN_DEBUG("Encoding %s as SEQUENCE (UPER)", td->name);
+	ASN_DEBUG("Encoding %s as SEQUENCE (UPER)", TYPE_NAME(td));
 
 
 	/*
@@ -1354,7 +1361,7 @@ SEQUENCE_encode_uper(asn_TYPE_descriptor_t *td,
 		ASN_DEBUG("Element %s %s %s->%s is %s",
 			elm->flags & ATF_POINTER ? "ptr" : "inline",
 			elm->default_value ? "def" : "wtv",
-			td->name, elm->name, present ? "present" : "absent");
+			TYPE_NAME(td), MEMB_NAME(elm), present ? "present" : "absent");
 		if(per_put_few_bits(po, present, 1))
 			ASN__ENCODE_FAILED;
 	}
@@ -1373,14 +1380,14 @@ SEQUENCE_encode_uper(asn_TYPE_descriptor_t *td,
 		if(IN_EXTENSION_GROUP(specs, edx))
 			continue;
 
-		ASN_DEBUG("About to encode %s", elm->type->name);
+		ASN_DEBUG("About to encode %s", TYPE_NAME(elm->type));
 
 		/* Fetch the pointer to this member */
 		if(elm->flags & ATF_POINTER) {
 			memb_ptr2 = (void **)((char *)sptr + elm->memb_offset);
 			if(!*memb_ptr2) {
 				ASN_DEBUG("Element %s %d not present",
-					elm->name, edx);
+					MEMB_NAME(elm), edx);
 				if(elm->optional)
 					continue;
 				/* Mandatory element is missing */
@@ -1395,7 +1402,7 @@ SEQUENCE_encode_uper(asn_TYPE_descriptor_t *td,
 		if(elm->default_value && elm->default_value(0, memb_ptr2) == 1)
 			continue;
 
-		ASN_DEBUG("Encoding %s->%s", td->name, elm->name);
+		ASN_DEBUG("Encoding %s->%s", TYPE_NAME(td), MEMB_NAME(elm));
 		er = elm->type->op->uper_encoder(elm->type, elm->per_constraints,
 			*memb_ptr2, po);
 		if(er.encoded == -1)
@@ -1423,24 +1430,30 @@ SEQUENCE_encode_uper(asn_TYPE_descriptor_t *td,
 
 	ASN__ENCODED_OK(er);
 }
-
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 asn_TYPE_operation_t asn_OP_SEQUENCE = {
 	SEQUENCE_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	SEQUENCE_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	SEQUENCE_decode_ber,
 	SEQUENCE_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	SEQUENCE_decode_xer,
 	SEQUENCE_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	SEQUENCE_decode_uper,
 	SEQUENCE_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 

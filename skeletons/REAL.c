@@ -38,36 +38,55 @@ static volatile double real_zero GCC_NOTUSED = 0.0;
 /*
  * REAL basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_REAL_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (9 << 2))
 };
+#endif
 asn_TYPE_operation_t asn_OP_REAL = {
 	ASN__PRIMITIVE_TYPE_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	REAL_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	ber_decode_primitive,
 	der_encode_primitive,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	REAL_decode_xer,
 	REAL_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	REAL_decode_uper,
 	REAL_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_REAL = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"REAL",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"REAL",
+#endif
 	&asn_OP_REAL,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_REAL_tags,
 	sizeof(asn_DEF_REAL_tags) / sizeof(asn_DEF_REAL_tags[0]),
 	asn_DEF_REAL_tags,	/* Same as above */
 	sizeof(asn_DEF_REAL_tags) / sizeof(asn_DEF_REAL_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -89,6 +108,7 @@ static struct specialRealValue_s {
 #undef	SRV_SET
 };
 
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 ssize_t
 REAL__dump(double d, int canonical, asn_app_consume_bytes_f *cb, void *app_key) {
 	char local_buf[64];
@@ -267,7 +287,9 @@ REAL__dump(double d, int canonical, asn_app_consume_bytes_f *cb, void *app_key) 
 	if(buf != local_buf) FREEMEM(buf);
 	return (ret < 0) ? -1 : buflen;
 }
+#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 REAL_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 	asn_app_consume_bytes_f *cb, void *app_key) {
@@ -287,7 +309,9 @@ REAL_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 	return (ret < 0) ? -1 : 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 asn_enc_rval_t
 REAL_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 	int ilevel, enum xer_encoder_flags_e flags,
@@ -385,7 +409,9 @@ REAL_decode_xer(asn_codec_ctx_t *opt_codec_ctx,
 		sptr, sizeof(REAL_t), opt_mname,
 		buf_ptr, size, REAL__xer_body_decode);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_UPER)
 asn_dec_rval_t
 REAL_decode_uper(asn_codec_ctx_t *opt_codec_ctx,
 	asn_TYPE_descriptor_t *td, asn_per_constraints_t *constraints,
@@ -400,7 +426,9 @@ REAL_encode_uper(asn_TYPE_descriptor_t *td,
 	(void)constraints;	/* No PER visible constraints */
 	return OCTET_STRING_encode_uper(td, 0, sptr, po);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 int
 asn_REAL2double(const REAL_t *st, double *dbl_value) {
 	unsigned int octv;
@@ -764,3 +792,4 @@ asn_double2REAL(REAL_t *st, double dbl_value) {
 
 	return 0;
 }
+#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */

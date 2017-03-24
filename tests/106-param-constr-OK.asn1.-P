@@ -23,6 +23,7 @@ extern asn_TYPE_member_t asn_MBR_Narrow_15P0_1[3];
 
 /*** <<< CODE [Narrow] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 static int
 memb_narrow1_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -31,7 +32,7 @@ memb_narrow1_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -43,11 +44,15 @@ memb_narrow1_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+
+
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 static int
 memb_narrow2_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -56,7 +61,7 @@ memb_narrow2_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -68,11 +73,15 @@ memb_narrow2_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+
+
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 static int
 memb_narrow3_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -81,7 +90,7 @@ memb_narrow3_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -93,10 +102,13 @@ memb_narrow3_constraint_1(asn_TYPE_descriptor_t *td, const void *sptr,
 	} else {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: constraint failed (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 }
+
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+
 
 
 /*** <<< STAT-DEFS [Narrow] >>> ***/
@@ -121,62 +133,110 @@ static int asn_DFL_2_set_3(int set_value, void **sptr) {
 }
 asn_TYPE_member_t asn_MBR_Narrow_15P0_1[] = {
 	{ ATF_POINTER, 1, offsetof(struct Narrow_15P0, narrow1),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_UNIVERSAL | (2 << 2)),
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_NativeInteger,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = memb_narrow1_constraint_1,
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
 		.default_value = asn_DFL_2_set_3,	/* DEFAULT 3 */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "narrow1"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_NOFLAGS, 0, offsetof(struct Narrow_15P0, narrow2),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (0 << 2)),
 		.tag_mode = +1,	/* EXPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_NativeInteger,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = memb_narrow2_constraint_1,
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "narrow2"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 	{ ATF_POINTER, 1, offsetof(struct Narrow_15P0, narrow3),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_CONTEXT | (1 << 2)),
 		.tag_mode = +1,	/* EXPLICIT tag at current level */
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_NativeInteger,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = memb_narrow3_constraint_1,
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "narrow3"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_Narrow_15P0_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_Narrow_15P0_tag2el_1[] = {
     { (ASN_TAG_CLASS_UNIVERSAL | (2 << 2)), 0, 0, 0 }, /* narrow1 */
     { (ASN_TAG_CLASS_CONTEXT | (0 << 2)), 1, 0, 0 }, /* narrow2 */
     { (ASN_TAG_CLASS_CONTEXT | (1 << 2)), 2, 0, 0 } /* narrow3 */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_SEQUENCE_specifics_t asn_SPC_Narrow_15P0_specs_1 = {
 	sizeof(struct Narrow_15P0),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct Narrow_15P0, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_Narrow_15P0_tag2el_1,
 	3,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 asn_TYPE_descriptor_t asn_DEF_Narrow_15P0 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"Narrow",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"Narrow",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_Narrow_15P0_tags_1,
 	sizeof(asn_DEF_Narrow_15P0_tags_1)
 		/sizeof(asn_DEF_Narrow_15P0_tags_1[0]), /* 1 */
 	asn_DEF_Narrow_15P0_tags_1,	/* Same as above */
 	sizeof(asn_DEF_Narrow_15P0_tags_1)
 		/sizeof(asn_DEF_Narrow_15P0_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Narrow_15P0_1,
 	3,	/* Elements count */
 	&asn_SPC_Narrow_15P0_specs_1	/* Additional specs */
@@ -193,14 +253,23 @@ typedef Narrow_15P0_t	 NarrowInteger_t;
 
 /*** <<< FUNC-DECLS [NarrowInteger] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_NarrowInteger;
 asn_struct_free_f NarrowInteger_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f NarrowInteger_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f NarrowInteger_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f NarrowInteger_decode_ber;
 der_type_encoder_f NarrowInteger_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f NarrowInteger_decode_xer;
 xer_type_encoder_f NarrowInteger_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [NarrowInteger] >>> ***/
 
@@ -211,21 +280,35 @@ xer_type_encoder_f NarrowInteger_encode_xer;
 
 /*** <<< STAT-DEFS [NarrowInteger] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NarrowInteger_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_NarrowInteger = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NarrowInteger",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"NarrowInteger",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NarrowInteger_tags_1,
 	sizeof(asn_DEF_NarrowInteger_tags_1)
 		/sizeof(asn_DEF_NarrowInteger_tags_1[0]), /* 1 */
 	asn_DEF_NarrowInteger_tags_1,	/* Same as above */
 	sizeof(asn_DEF_NarrowInteger_tags_1)
 		/sizeof(asn_DEF_NarrowInteger_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_Narrow_15P0_1,
 	3,	/* Elements count */
 	&asn_SPC_Narrow_15P0_specs_1	/* Additional specs */

@@ -2,9 +2,9 @@
  * Generic converter template for a selected ASN.1 type.
  * Copyright (c) 2005, 2006, 2007 Lev Walkin <vlm@lionet.info>.
  * All rights reserved.
- * 
+ *
  * To compile with your own ASN.1 type, please redefine the PDU as shown:
- * 
+ *
  * cc -DPDU=MyCustomType -o myDecoder.o -c converter-sample.c
  */
 #ifdef	HAVE_CONFIG_H
@@ -92,8 +92,10 @@ main(int ac, char *av[]) {
 	int ch;
 
 	/* Figure out if Unaligned PER needs to be default */
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	if(pduType->op->uper_decoder)
 		iform = INP_PER;
+#endif
 
 	/*
 	 * Pocess the command-line argments.
@@ -103,15 +105,19 @@ main(int ac, char *av[]) {
 	case 'i':
 		if(optarg[0] == 'b') { iform = INP_BER; break; }
 		if(optarg[0] == 'x') { iform = INP_XER; break; }
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		if(pduType->op->uper_decoder
 		&& optarg[0] == 'p') { iform = INP_PER; break; }
+#endif
 		fprintf(stderr, "-i<format>: '%s': improper format selector\n",
 			optarg);
 		exit(EX_UNAVAILABLE);
 	case 'o':
 		if(optarg[0] == 'd') { oform = OUT_DER; break; }
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		if(pduType->op->uper_encoder
 		&& optarg[0] == 'p') { oform = OUT_PER; break; }
+#endif
 		if(optarg[0] == 'x') { oform = OUT_XER; break; }
 		if(optarg[0] == 't') { oform = OUT_TEXT; break; }
 		if(optarg[0] == 'n') { oform = OUT_NULL; break; }
@@ -131,9 +137,11 @@ main(int ac, char *av[]) {
 			exit(EX_UNAVAILABLE);
 		}
 		break;
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	case 'c':
 		opt_check = 1;
 		break;
+#endif
 	case 'd':
 		opt_debug++;	/* Double -dd means ASN.1 debug */
 		break;
@@ -150,15 +158,15 @@ main(int ac, char *av[]) {
 			opt_nopad = 1;
 			break;
 		}
-#ifdef	ASN_PDU_COLLECTION
+#if defined (ASN_PDU_COLLECTION) && (ASN_OP_MASK & ASN_OP_PRINT)
 		if(strcmp(optarg, "list") == 0) {
 			asn_TYPE_descriptor_t **pdu = asn_pdu_collection;
 			fprintf(stderr, "Available PDU types:\n");
-			for(; *pdu; pdu++) printf("%s\n", (*pdu)->name);
+			for(; *pdu; pdu++) printf("%s\n", TYPE_NAME(*pdu));
 			exit(0);
 		} else if(optarg[0] >= 'A' && optarg[0] <= 'Z') {
 			asn_TYPE_descriptor_t **pdu = asn_pdu_collection;
-			while(*pdu && strcmp((*pdu)->name, optarg)) pdu++;
+			while(*pdu && strcmp(TYPE_NAME(*pdu), optarg)) pdu++;
 			if(*pdu) { pduType = *pdu; break; }
 			fprintf(stderr, "-p %s: Unrecognized PDU\n", optarg);
 		}
@@ -194,25 +202,39 @@ main(int ac, char *av[]) {
 #endif
 		fprintf(stderr, "Usage: %s [options] <data.ber> ...\n", av[0]);
 		fprintf(stderr, "Where options are:\n");
+#if (ASN_OP_MASK & ASN_OP_UPER)
 		if(pduType->op->uper_decoder)
 		fprintf(stderr,
 		"  -iper        Input is in Unaligned PER (Packed Encoding Rules) (DEFAULT)\n");
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		fprintf(stderr,
 		"  -iber        Input is in BER (Basic Encoding Rules)%s\n",
 			iform == INP_PER ? "" : " (DEFAULT)");
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 		fprintf(stderr,
 		"  -ixer        Input is in XER (XML Encoding Rules)\n");
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 		if(pduType->op->uper_encoder)
 		fprintf(stderr,
 		"  -oper        Output in Unaligned PER (Packed Encoding Rules)\n");
+#endif
 		fprintf(stderr,
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		"  -oder        Output in DER (Distinguished Encoding Rules)\n"
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 		"  -oxer        Output in XER (XML Encoding Rules) (DEFAULT)\n"
+#endif
 		"  -otext       Output in plain semi-structured text (dump)\n"
 		"  -onull       Verify (decode) input, but do not output\n");
+#if (ASN_OP_MASK & ASN_OP_UPER)
 		if(pduType->op->uper_decoder)
 		fprintf(stderr,
 		"  -per-nopad   Assume PER PDUs are not padded (-iper)\n");
+#endif
 #ifdef	ASN_PDU_COLLECTION
 		fprintf(stderr,
 		"  -p <PDU>     Specify PDU type to decode\n"
@@ -221,7 +243,9 @@ main(int ac, char *av[]) {
 		fprintf(stderr,
 		"  -1           Decode only the first PDU in file\n"
 		"  -b <size>    Set the i/o buffer size (default is %ld)\n"
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 		"  -c           Check ASN.1 constraints after decoding\n"
+#endif
 		"  -d           Enable debugging (-dd is even better)\n"
 		"  -n <num>     Process files <num> times\n"
 		"  -s <size>    Set the stack usage limit (default is %d)\n"
@@ -273,6 +297,7 @@ main(int ac, char *av[]) {
 		}
 
 		/* Check ASN.1 constraints */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 		if(opt_check) {
 			char errbuf[128];
 			size_t errlen = sizeof(errbuf);
@@ -283,6 +308,7 @@ main(int ac, char *av[]) {
 				exit(EX_DATAERR);
 			}
 		}
+#endif
 
 		switch(oform) {
 		case OUT_NULL:
@@ -291,37 +317,47 @@ main(int ac, char *av[]) {
 #endif
 			fprintf(stderr, "%s: decoded successfully\n", name);
 			break;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 		case OUT_TEXT:	/* -otext */
 			asn_fprint(stdout, pduType, structure);
 			break;
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 		case OUT_XER:	/* -oxer */
 			if(xer_fprint(stdout, pduType, structure)) {
 				fprintf(stderr,
 					"%s: Cannot convert %s into XML\n",
-					name, pduType->name);
+					name,
+					TYPE_NAME(pduType));
 				exit(EX_UNAVAILABLE);
 			}
 			break;
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		case OUT_DER:
 			erv = der_encode(pduType, structure, write_out, stdout);
 			if(erv.encoded < 0) {
 				fprintf(stderr,
 					"%s: Cannot convert %s into DER\n",
-					name, pduType->name);
+					TYPE_NAME(pduType));
 				exit(EX_UNAVAILABLE);
 			}
 			DEBUG("Encoded in %ld bytes of DER", (long)erv.encoded);
 			break;
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 		case OUT_PER:
 			erv = uper_encode(pduType, structure, write_out, stdout);
 			if(erv.encoded < 0) {
 				fprintf(stderr,
 				"%s: Cannot convert %s into Unaligned PER\n",
-					name, pduType->name);
+					name, 
+					TYPE_NAME(pduType));
 				exit(EX_UNAVAILABLE);
 			}
 			DEBUG("Encoded in %ld bits of UPER", (long)erv.encoded);
 			break;
+#endif
 		}
 
 		ASN_STRUCT_FREE(*pduType, structure);
@@ -627,14 +663,19 @@ data_decode_from_file(asn_TYPE_descriptor_t *pduType, FILE *file, const char *na
 #endif
 
 		switch(iform) {
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		case INP_BER:
 			rval = ber_decode(opt_codec_ctx, pduType,
 				(void **)&structure, i_bptr, i_size);
 			break;
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 		case INP_XER:
 			rval = xer_decode(opt_codec_ctx, pduType,
 				(void **)&structure, i_bptr, i_size);
 			break;
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 		case INP_PER:
 			if(opt_nopad)
 			rval = uper_decode(opt_codec_ctx, pduType,
@@ -664,6 +705,7 @@ data_decode_from_file(asn_TYPE_descriptor_t *pduType, FILE *file, const char *na
 				break;
 			}
 			break;
+#endif
 		}
 		DEBUG("decode(%ld) consumed %ld+%db (%ld), code %d",
 			(long)DynamicBuffer.length,

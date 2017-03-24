@@ -7,6 +7,8 @@
 #include <asn_internal.h>
 #include <per_support.h>
 
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
+
 char *
 per_data_string(asn_per_data_t *pd) {
 	static char buf[2][32];
@@ -480,4 +482,4 @@ uper_put_nslength(asn_per_outp_t *po, size_t length) {
 
 	return 0;
 }
-
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */

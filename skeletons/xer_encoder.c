@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <errno.h>
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 /*
  * The XER encoder of any type. May be invoked by the application.
  */
@@ -65,3 +66,4 @@ xer_fprint(FILE *stream, asn_TYPE_descriptor_t *td, void *sptr) {
 
 	return fflush(stream);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */

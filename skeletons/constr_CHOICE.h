@@ -17,18 +17,24 @@ typedef const struct asn_CHOICE_specifics_s {
 	 * Target structure description.
 	 */
 	int struct_size;	/* Size of the target structure. */
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	int ctx_offset;		/* Offset of the asn_codec_ctx_t member */
+#endif
 	int pres_offset;	/* Identifier of the present member */
 	int pres_size;		/* Size of the identifier (enum) */
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	/*
 	 * Tags to members mapping table.
 	 */
 	const asn_TYPE_tag2member_t *tag2el;
 	int tag2el_count;
+#endif
 
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	/* Canonical ordering of CHOICE elements, for PER */
 	int *canonical_order;
+#endif
 
 	/*
 	 * Extensions-related stuff.

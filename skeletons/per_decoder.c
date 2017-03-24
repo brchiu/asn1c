@@ -2,6 +2,8 @@
 #include <asn_internal.h>
 #include <per_decoder.h>
 
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
+
 /*
  * Decode a "Production of a complete encoding", X.691#10.1.
  * The complete encoding contains at least one byte, and is an integral
@@ -90,4 +92,4 @@ uper_decode(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td, void **sp
 	}
 	return rval;
 }
-
+#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */

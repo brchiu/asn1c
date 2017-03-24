@@ -5,8 +5,10 @@
  * Redistribution and modifications are permitted subject to BSD license.
  */
 #include <asn_system.h>
+#include <asn_internal.h>
 #include <xer_support.h>
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 /* Parser states */
 typedef enum {
 	ST_TEXT,
@@ -224,4 +226,4 @@ finish:
 	*stateContext = (int)state;
 	return chunk_start - (const char *)xmlbuf;
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */

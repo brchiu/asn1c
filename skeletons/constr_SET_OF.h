@@ -18,8 +18,10 @@ typedef const struct asn_SET_OF_specifics_s {
 	int struct_size;	/* Size of the target structure. */
 	int ctx_offset;		/* Offset of the asn_struct_ctx_t member */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 	/* XER-specific stuff */
 	int as_XMLValueList;	/* The member type must be encoded like this */
+#endif
 } asn_SET_OF_specifics_t;
 
 /*

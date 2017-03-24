@@ -27,7 +27,7 @@
  */
 #include "sys-common.h"
 
-#define ASN_DISABLE_PER_SUPPORT 1
+#define ASN_OP_MASK (ASN_OP_PRINT | ASN_OP_CHECK | ASN_OP_BER_DER | ASN_OP_XER)
 
 #include <asn1parser.h> /* For static string tables */
 

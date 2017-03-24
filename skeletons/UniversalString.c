@@ -9,54 +9,75 @@
 /*
  * UniversalString basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_UniversalString_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (28 << 2)),	/* [UNIVERSAL 28] IMPLICIT ...*/
 	(ASN_TAG_CLASS_UNIVERSAL | (4 << 2))	/* ... OCTET STRING */
 };
+#endif
 asn_OCTET_STRING_specifics_t asn_SPC_UniversalString_specs = {
 	sizeof(UniversalString_t),
 	offsetof(UniversalString_t, _asn_ctx),
 	ASN_OSUBV_U32	/* 32-bits character */
 };
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 static asn_per_constraints_t asn_DEF_UniversalString_constraints = {
 	{ APC_CONSTRAINED, 32, 32, 0, 2147483647 },
 	{ APC_SEMI_CONSTRAINED, -1, -1, 0, 0 },
 	0, 0
 };
+#endif
 asn_TYPE_operation_t asn_OP_UniversalString = {
 	OCTET_STRING_free,
-	UniversalString_print,      /* Convert into UTF8 and print */	
+#if (ASN_OP_MASK & ASN_OP_PRINT)
+	UniversalString_print,      /* Convert into UTF8 and print */
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	OCTET_STRING_decode_ber,
 	OCTET_STRING_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	UniversalString_decode_xer,	/* Convert from UTF-8 */
 	UniversalString_encode_xer,	/* Convert into UTF-8 */
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	OCTET_STRING_decode_uper,
 	OCTET_STRING_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_UniversalString = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"UniversalString",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"UniversalString",
+#endif
 	&asn_OP_UniversalString,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_UniversalString_tags,
 	sizeof(asn_DEF_UniversalString_tags)
 	  / sizeof(asn_DEF_UniversalString_tags[0]) - 1,
 	asn_DEF_UniversalString_tags,
 	sizeof(asn_DEF_UniversalString_tags)
 	  / sizeof(asn_DEF_UniversalString_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_DEF_UniversalString_constraints,
+#endif
 	0, 0,	/* No members */
 	&asn_SPC_UniversalString_specs
 };
 
-
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 static ssize_t
 UniversalString__dump(const UniversalString_t *st,
 		asn_app_consume_bytes_f *cb, void *app_key) {
@@ -115,7 +136,9 @@ UniversalString__dump(const UniversalString_t *st,
 
 	return wrote;
 }
+#endif /* (ASN_OP_MASK & (ASN_OP_PRINT & ASN_OP_XER)) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 asn_dec_rval_t
 UniversalString_decode_xer(asn_codec_ctx_t *opt_codec_ctx,
 	asn_TYPE_descriptor_t *td, void **sptr,
@@ -191,7 +214,9 @@ UniversalString_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 
 	ASN__ENCODED_OK(er);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 UniversalString_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 	asn_app_consume_bytes_f *cb, void *app_key) {
@@ -207,4 +232,5 @@ UniversalString_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 	return 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
 

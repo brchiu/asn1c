@@ -10,40 +10,60 @@
 /*
  * NULL basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NULL_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (5 << 2))
 };
+#endif
 asn_TYPE_operation_t asn_OP_NULL = {
 	BOOLEAN_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	NULL_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	BOOLEAN_decode_ber,	/* Implemented in terms of BOOLEAN */
 	NULL_encode_der,	/* Special handling of DER encoding */
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	NULL_decode_xer,
 	NULL_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	NULL_decode_uper,	/* Unaligned PER decoder */
 	NULL_encode_uper,	/* Unaligned PER encoder */
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_NULL = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"NULL",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"NULL",
+#endif
 	&asn_OP_NULL,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NULL_tags,
 	sizeof(asn_DEF_NULL_tags) / sizeof(asn_DEF_NULL_tags[0]),
 	asn_DEF_NULL_tags,	/* Same as above */
 	sizeof(asn_DEF_NULL_tags) / sizeof(asn_DEF_NULL_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 asn_enc_rval_t
 NULL_encode_der(asn_TYPE_descriptor_t *td, void *ptr,
 	int tag_mode, ber_tlv_tag_t tag,
@@ -58,7 +78,9 @@ NULL_encode_der(asn_TYPE_descriptor_t *td, void *ptr,
 
 	ASN__ENCODED_OK(erval);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 asn_enc_rval_t
 NULL_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 	int ilevel, enum xer_encoder_flags_e flags,
@@ -102,7 +124,9 @@ NULL_decode_xer(asn_codec_ctx_t *opt_codec_ctx,
 		sptr, sizeof(NULL_t), opt_mname, buf_ptr, size,
 		NULL__xer_body_decode);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 NULL_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 	asn_app_consume_bytes_f *cb, void *app_key) {
@@ -116,7 +140,9 @@ NULL_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 		return (cb("<absent>", 8, app_key) < 0) ? -1 : 0;
 	}
 }
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
 
+#if (ASN_OP_MASK & ASN_OP_UPER)
 asn_dec_rval_t
 NULL_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 	asn_per_constraints_t *constraints, void **sptr, asn_per_data_t *pd) {
@@ -158,3 +184,4 @@ NULL_encode_uper(asn_TYPE_descriptor_t *td, asn_per_constraints_t *constraints,
 	er.encoded = 0;
 	ASN__ENCODED_OK(er);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */

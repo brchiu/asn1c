@@ -18,11 +18,13 @@
 /*
  * UTCTime basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_UTCTime_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (23 << 2)),	/* [UNIVERSAL 23] IMPLICIT ...*/
 	(ASN_TAG_CLASS_UNIVERSAL | (26 << 2)),  /* [UNIVERSAL 26] IMPLICIT ...*/
 	(ASN_TAG_CLASS_UNIVERSAL | (4 << 2))    /* ... OCTET STRING */
 };
+#endif
 static asn_per_constraints_t asn_DEF_UTCTime_constraints = {
         { APC_CONSTRAINED, 7, 7, 0x20, 0x7e },  /* Value */
         { APC_SEMI_CONSTRAINED, -1, -1, 0, 0 }, /* Size */
@@ -30,33 +32,50 @@ static asn_per_constraints_t asn_DEF_UTCTime_constraints = {
 };
 asn_TYPE_operation_t asn_OP_UTCTime = {
 	OCTET_STRING_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	UTCTime_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	UTCTime_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	OCTET_STRING_decode_ber,    /* Implemented in terms of OCTET STRING */
 	OCTET_STRING_encode_der,    /* Implemented in terms of OCTET STRING */
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	OCTET_STRING_decode_xer_utf8,
 	UTCTime_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	OCTET_STRING_decode_uper,
 	OCTET_STRING_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_UTCTime = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"UTCTime",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"UTCTime",
+#endif
 	&asn_OP_UTCTime,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	UTCTime_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_UTCTime_tags,
 	sizeof(asn_DEF_UTCTime_tags)
 	  / sizeof(asn_DEF_UTCTime_tags[0]) - 2,
 	asn_DEF_UTCTime_tags,
 	sizeof(asn_DEF_UTCTime_tags)
 	  / sizeof(asn_DEF_UTCTime_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	&asn_DEF_UTCTime_constraints,
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -66,6 +85,7 @@ asn_TYPE_descriptor_t asn_DEF_UTCTime = {
 /*
  * Check that the time looks like the time.
  */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 UTCTime_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 		asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -77,15 +97,17 @@ UTCTime_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(tloc == -1 && errno != EPERM) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: Invalid time format: %s (%s:%d)",
-			td->name, strerror(errno), __FILE__, __LINE__);
+			TYPE_NAME(td), strerror(errno), __FILE__, __LINE__);
 		return -1;
 	}
 
 	return 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 
 #ifndef	ASN___INTERNAL_TEST_MODE
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 asn_enc_rval_t
 UTCTime_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 	int ilevel, enum xer_encoder_flags_e flags,
@@ -114,9 +136,10 @@ UTCTime_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 			cb, app_key);
 	}
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 #endif	/* ASN___INTERNAL_TEST_MODE */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 UTCTime_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 		asn_app_consume_bytes_f *cb, void *app_key) {
@@ -144,7 +167,9 @@ UTCTime_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 		return (cb("<absent>", 8, app_key) < 0) ? -1 : 0;
 	}
 }
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
 
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_CHECK_CHECK | ASN_OP_XER))
 time_t
 asn_UT2time(const UTCTime_t *st, struct tm *_tm, int as_gmt) {
 	char buf[24];	/* "AAMMJJhhmmss+hhmm" + cushion */
@@ -185,4 +210,4 @@ asn_time2UT(UTCTime_t *opt_ut, const struct tm *tm, int force_gmt) {
 
 	return (UTCTime_t *)gt;
 }
-
+#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_CHECK_CHECK | ASN_OP_XER)) */

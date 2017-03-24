@@ -34,6 +34,7 @@ struct errbufDesc {
 	size_t errlen;
 };
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 static void
 _asn_i_ctfailcb(void *key, asn_TYPE_descriptor_t *td, const void *sptr, const char *fmt, ...) {
 	struct errbufDesc *arg = key;
@@ -90,4 +91,4 @@ asn_check_constraints(asn_TYPE_descriptor_t *type_descriptor,
 
 	return ret;
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */

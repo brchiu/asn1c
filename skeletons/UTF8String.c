@@ -9,39 +9,58 @@
 /*
  * UTF8String basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_UTF8String_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (12 << 2)),	/* [UNIVERSAL 12] IMPLICIT ...*/
 	(ASN_TAG_CLASS_UNIVERSAL | (4 << 2)),	/* ... OCTET STRING */
 };
+#endif
 asn_TYPE_operation_t asn_OP_UTF8String = {
 	OCTET_STRING_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	UTF8String_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	UTF8String_constraint,      /* Check for invalid codes, etc. */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	OCTET_STRING_decode_ber,    /* Implemented in terms of OCTET STRING */
 	OCTET_STRING_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	OCTET_STRING_decode_xer_utf8,
 	OCTET_STRING_encode_xer_utf8,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	OCTET_STRING_decode_uper,
 	OCTET_STRING_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_UTF8String = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"UTF8String",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"UTF8String",
+#endif
 	&asn_OP_UTF8String,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	UTF8String_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_UTF8String_tags,
 	sizeof(asn_DEF_UTF8String_tags)
 	  / sizeof(asn_DEF_UTF8String_tags[0]) - 1,
 	asn_DEF_UTF8String_tags,
 	sizeof(asn_DEF_UTF8String_tags)
 	  / sizeof(asn_DEF_UTF8String_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
@@ -76,6 +95,7 @@ static const int32_t UTF8String_mv[7] = { 0, 0,
 #define	U8E_NOTMIN	-4	/* Not minimal length encoding */
 #define	U8E_EINVAL	-5	/* Invalid arguments */
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 UTF8String_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 		asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -83,31 +103,32 @@ UTF8String_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	switch(len) {
 	case U8E_EINVAL:
 		ASN__CTFAIL(app_key, td, sptr,
-			"%s: value not given", td->name);
+			"%s: value not given", TYPE_NAME(td));
 		break;
 	case U8E_TRUNC:
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: truncated UTF-8 sequence (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td), __FILE__, __LINE__);
 		break;
 	case U8E_ILLSTART:
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: UTF-8 illegal start of encoding (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td), __FILE__, __LINE__);
 		break;
 	case U8E_NOTCONT:
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: UTF-8 not continuation (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td), __FILE__, __LINE__);
 		break;
 	case U8E_NOTMIN:
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: UTF-8 not minimal sequence (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td), __FILE__, __LINE__);
 		break;
 	}
 	return (len < 0) ? -1 : 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 
 static ssize_t
 UTF8String__process(const UTF8String_t *st, uint32_t *dst, size_t dstlen) {
@@ -157,7 +178,6 @@ UTF8String__process(const UTF8String_t *st, uint32_t *dst, size_t dstlen) {
 	return length;
 }
 
-
 ssize_t
 UTF8String_length(const UTF8String_t *st) {
 	if(st && st->buf) {
@@ -177,6 +197,7 @@ UTF8String_to_wcs(const UTF8String_t *st, uint32_t *dst, size_t dstlen) {
 	}
 }
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 UTF8String_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 	asn_app_consume_bytes_f *cb, void *app_key) {
@@ -191,3 +212,4 @@ UTF8String_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 		return (cb("<absent>", 8, app_key) < 0) ? -1 : 0;
 	}
 }
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */

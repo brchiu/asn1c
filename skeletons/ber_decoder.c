@@ -4,6 +4,8 @@
  */
 #include <asn_internal.h>
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
+
 #undef	ADVANCE
 #define	ADVANCE(num_bytes)	do {					\
 		size_t num = num_bytes;					\
@@ -109,7 +111,7 @@ ber_check_tags(asn_codec_ctx_t *opt_codec_ctx,
 		+ (tag_mode==1?-1:0)
 		;
 	ASN_DEBUG("ber_check_tags(%s, size=%ld, tm=%d, step=%d, tagno=%d)",
-		td->name, (long)size, tag_mode, step, tagno);
+		TYPE_NAME(td), (long)size, tag_mode, step, tagno);
 	/* assert(td->tags_count >= 1) May not be the case for CHOICE or ANY */
 
 	if(tag_mode == 0 && tagno == td->tags_count) {
@@ -281,3 +283,4 @@ ber_check_tags(asn_codec_ctx_t *opt_codec_ctx,
 
 	RETURN(RC_OK);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */

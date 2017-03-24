@@ -6,6 +6,7 @@
 #include <asn_codecs_prim.h>
 #include <errno.h>
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 /*
  * Decode an always-primitive type.
  */
@@ -27,7 +28,7 @@ ber_decode_primitive(asn_codec_ctx_t *opt_codec_ctx,
 	}
 
 	ASN_DEBUG("Decoding %s as plain primitive (tm=%d)",
-		td->name, tag_mode);
+		TYPE_NAME(td), tag_mode);
 
 	/*
 	 * Check tags and extract value length.
@@ -37,7 +38,7 @@ ber_decode_primitive(asn_codec_ctx_t *opt_codec_ctx,
 	if(rval.code != RC_OK)
 		return rval;
 
-	ASN_DEBUG("%s length is %d bytes", td->name, (int)length);
+	ASN_DEBUG("%s length is %d bytes", TYPE_NAME(td), (int)length);
 
 	/*
 	 * Make sure we have this length.
@@ -72,7 +73,7 @@ ber_decode_primitive(asn_codec_ctx_t *opt_codec_ctx,
 
 	ASN_DEBUG("Took %ld/%ld bytes to encode %s",
 		(long)rval.consumed,
-		(long)length, td->name);
+		(long)length, TYPE_NAME(td));
 
 	return rval;
 }
@@ -88,11 +89,11 @@ der_encode_primitive(asn_TYPE_descriptor_t *td, void *sptr,
 	ASN__PRIMITIVE_TYPE_t *st = (ASN__PRIMITIVE_TYPE_t *)sptr;
 
 	ASN_DEBUG("%s %s as a primitive type (tm=%d)",
-		cb?"Encoding":"Estimating", td->name, tag_mode);
+		cb?"Encoding":"Estimating", TYPE_NAME(td), tag_mode);
 
 	erval.encoded = der_write_tags(td, st->size, tag_mode, 0, tag,
 		cb, app_key);
-	ASN_DEBUG("%s wrote tags %d", td->name, (int)erval.encoded);
+	ASN_DEBUG("%s wrote tags %d", TYPE_NAME(td), (int)erval.encoded);
 	if(erval.encoded == -1) {
 		erval.failed_type = td;
 		erval.structure_ptr = sptr;
@@ -113,6 +114,7 @@ der_encode_primitive(asn_TYPE_descriptor_t *td, void *sptr,
 	erval.encoded += st->size;
 	ASN__ENCODED_OK(erval);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 
 void
 ASN__PRIMITIVE_TYPE_free(asn_TYPE_descriptor_t *td, void *sptr,
@@ -122,7 +124,7 @@ ASN__PRIMITIVE_TYPE_free(asn_TYPE_descriptor_t *td, void *sptr,
 	if(!td || !sptr)
 		return;
 
-	ASN_DEBUG("Freeing %s as a primitive type", td->name);
+	ASN_DEBUG("Freeing %s as a primitive type", TYPE_NAME(td));
 
 	if(st->buf)
 		FREEMEM(st->buf);
@@ -143,6 +145,7 @@ struct xdp_arg_s {
 	int want_more;
 };
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 /*
  * Since some kinds of primitive values can be encoded using value-specific
  * tags (<MINUS-INFINITY>, <enum-element>, etc), the primitive decoder must
@@ -309,4 +312,4 @@ xer_decode_primitive(asn_codec_ctx_t *opt_codec_ctx,
 	}
 	return rc;
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */

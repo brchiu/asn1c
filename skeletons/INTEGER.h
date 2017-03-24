@@ -26,11 +26,21 @@ typedef struct asn_INTEGER_enum_map_s {
 
 /* This type describes an enumeration for INTEGER and ENUMERATED types */
 typedef const struct asn_INTEGER_specifics_s {
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
 	const asn_INTEGER_enum_map_t *value2enum;	/* N -> "tag"; sorted by N */
+#endif
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 	const unsigned int *enum2value;		/* "tag" => N; sorted by tag */
+#endif
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
 	int map_count;				/* Elements in either map */
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	int extension;				/* This map is extensible */
+#endif
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 	int strict_enumeration;			/* Enumeration set is fixed */
+#endif
 	int field_width;			/* Size of native integer */
 	int field_unsigned;			/* Signed=0, unsigned=1 */
 } asn_INTEGER_specifics_t;

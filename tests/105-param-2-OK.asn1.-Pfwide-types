@@ -53,42 +53,74 @@ extern asn_TYPE_member_t asn_MBR_SIGNED_16P1_3[1];
 
 asn_TYPE_member_t asn_MBR_SIGNED_16P0_1[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct SIGNED_16P0, Signed),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_UNIVERSAL | (9 << 2)),
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_REAL,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "signed"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_SIGNED_16P0_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_SIGNED_16P0_tag2el_1[] = {
     { (ASN_TAG_CLASS_UNIVERSAL | (9 << 2)), 0, 0, 0 } /* signed */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_SEQUENCE_specifics_t asn_SPC_SIGNED_16P0_specs_1 = {
 	sizeof(struct SIGNED_16P0),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct SIGNED_16P0, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_SIGNED_16P0_tag2el_1,
 	1,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 asn_TYPE_descriptor_t asn_DEF_SIGNED_16P0 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"SIGNED",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"SIGNED",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_SIGNED_16P0_tags_1,
 	sizeof(asn_DEF_SIGNED_16P0_tags_1)
 		/sizeof(asn_DEF_SIGNED_16P0_tags_1[0]), /* 1 */
 	asn_DEF_SIGNED_16P0_tags_1,	/* Same as above */
 	sizeof(asn_DEF_SIGNED_16P0_tags_1)
 		/sizeof(asn_DEF_SIGNED_16P0_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_SIGNED_16P0_1,
 	1,	/* Elements count */
 	&asn_SPC_SIGNED_16P0_specs_1	/* Additional specs */
@@ -96,49 +128,80 @@ asn_TYPE_descriptor_t asn_DEF_SIGNED_16P0 = {
 
 static asn_TYPE_member_t asn_MBR_signed_4[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct Signed, a),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_UNIVERSAL | (2 << 2)),
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_INTEGER,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "a"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_signed_tags_4[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (17 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_signed_tag2el_4[] = {
     { (ASN_TAG_CLASS_UNIVERSAL | (2 << 2)), 0, 0, 0 } /* a */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 static const uint8_t asn_MAP_signed_mmap_4[(1 + (8 * sizeof(unsigned int)) - 1) / 8] = {
 	(1 << 7)
 };
+
 static 
 asn_SET_specifics_t asn_SPC_signed_specs_4 = {
 	sizeof(struct Signed),
 	offsetof(struct Signed, _asn_ctx),
 	offsetof(struct Signed, _presence_map),
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_signed_tag2el_4,
 	1,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	asn_MAP_signed_tag2el_4,	/* Same as above */
 	1,	/* Count of tags in the CXER map */
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	0,	/* Whether extensible */
 	(unsigned int *)asn_MAP_signed_mmap_4	/* Mandatory elements map */
 };
+
 static /* Use -fall-defs-global to expose */
 asn_TYPE_descriptor_t asn_DEF_signed_4 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"signed",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"signed",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SET,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SET_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_signed_tags_4,
 	sizeof(asn_DEF_signed_tags_4)
 		/sizeof(asn_DEF_signed_tags_4[0]), /* 1 */
 	asn_DEF_signed_tags_4,	/* Same as above */
 	sizeof(asn_DEF_signed_tags_4)
 		/sizeof(asn_DEF_signed_tags_4[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_signed_4,
 	1,	/* Elements count */
 	&asn_SPC_signed_specs_4	/* Additional specs */
@@ -146,42 +209,74 @@ asn_TYPE_descriptor_t asn_DEF_signed_4 = {
 
 asn_TYPE_member_t asn_MBR_SIGNED_16P1_3[] = {
 	{ ATF_NOFLAGS, 0, offsetof(struct SIGNED_16P1, Signed),
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_UNIVERSAL | (17 << 2)),
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_signed_4,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "signed"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_SIGNED_16P1_tags_3[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static const asn_TYPE_tag2member_t asn_MAP_SIGNED_16P1_tag2el_3[] = {
     { (ASN_TAG_CLASS_UNIVERSAL | (17 << 2)), 0, 0, 0 } /* signed */
 };
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+
 asn_SEQUENCE_specifics_t asn_SPC_SIGNED_16P1_specs_3 = {
 	sizeof(struct SIGNED_16P1),
+	#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 	offsetof(struct SIGNED_16P1, _asn_ctx),
+	#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_MAP_SIGNED_16P1_tag2el_3,
 	1,	/* Count of tags in the map */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0, 0, 0,	/* Optional elements (not needed) */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	-1,	/* Start extensions */
 	-1	/* Stop extensions */
 };
+
 asn_TYPE_descriptor_t asn_DEF_SIGNED_16P1 = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"SIGNED",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"SIGNED",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_SIGNED_16P1_tags_3,
 	sizeof(asn_DEF_SIGNED_16P1_tags_3)
 		/sizeof(asn_DEF_SIGNED_16P1_tags_3[0]), /* 1 */
 	asn_DEF_SIGNED_16P1_tags_3,	/* Same as above */
 	sizeof(asn_DEF_SIGNED_16P1_tags_3)
 		/sizeof(asn_DEF_SIGNED_16P1_tags_3[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_SIGNED_16P1_3,
 	1,	/* Elements count */
 	&asn_SPC_SIGNED_16P1_specs_3	/* Additional specs */
@@ -198,14 +293,23 @@ typedef SIGNED_16P0_t	 SignedREAL_t;
 
 /*** <<< FUNC-DECLS [SignedREAL] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_SignedREAL;
 asn_struct_free_f SignedREAL_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f SignedREAL_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f SignedREAL_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f SignedREAL_decode_ber;
 der_type_encoder_f SignedREAL_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f SignedREAL_decode_xer;
 xer_type_encoder_f SignedREAL_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [SignedREAL] >>> ***/
 
@@ -216,21 +320,35 @@ xer_type_encoder_f SignedREAL_encode_xer;
 
 /*** <<< STAT-DEFS [SignedREAL] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_SignedREAL_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_SignedREAL = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"SignedREAL",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"SignedREAL",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_SignedREAL_tags_1,
 	sizeof(asn_DEF_SignedREAL_tags_1)
 		/sizeof(asn_DEF_SignedREAL_tags_1[0]), /* 1 */
 	asn_DEF_SignedREAL_tags_1,	/* Same as above */
 	sizeof(asn_DEF_SignedREAL_tags_1)
 		/sizeof(asn_DEF_SignedREAL_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_SIGNED_16P0_1,
 	1,	/* Elements count */
 	&asn_SPC_SIGNED_16P0_specs_1	/* Additional specs */
@@ -247,14 +365,23 @@ typedef SIGNED_16P1_t	 SignedSET_t;
 
 /*** <<< FUNC-DECLS [SignedSET] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_SignedSET;
 asn_struct_free_f SignedSET_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f SignedSET_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f SignedSET_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f SignedSET_decode_ber;
 der_type_encoder_f SignedSET_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f SignedSET_decode_xer;
 xer_type_encoder_f SignedSET_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [SignedSET] >>> ***/
 
@@ -265,21 +392,35 @@ xer_type_encoder_f SignedSET_encode_xer;
 
 /*** <<< STAT-DEFS [SignedSET] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_SignedSET_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (16 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_SignedSET = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"SignedSET",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"SignedSET",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SEQUENCE,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_SignedSET_tags_1,
 	sizeof(asn_DEF_SignedSET_tags_1)
 		/sizeof(asn_DEF_SignedSET_tags_1[0]), /* 1 */
 	asn_DEF_SignedSET_tags_1,	/* Same as above */
 	sizeof(asn_DEF_SignedSET_tags_1)
 		/sizeof(asn_DEF_SignedSET_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_SIGNED_16P1_3,
 	1,	/* Elements count */
 	&asn_SPC_SIGNED_16P1_specs_3	/* Additional specs */

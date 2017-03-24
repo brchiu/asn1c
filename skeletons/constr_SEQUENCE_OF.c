@@ -7,6 +7,7 @@
 #include <constr_SEQUENCE_OF.h>
 #include <asn_SEQUENCE_OF.h>
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 /*
  * The DER encoder of the SEQUENCE OF type.
  */
@@ -21,7 +22,7 @@ SEQUENCE_OF_encode_der(asn_TYPE_descriptor_t *td, void *ptr,
 	asn_enc_rval_t erval;
 	int edx;
 
-	ASN_DEBUG("Estimating size of SEQUENCE OF %s", td->name);
+	ASN_DEBUG("Estimating size of SEQUENCE OF %s", TYPE_NAME(td));
 
 	/*
 	 * Gather the length of the underlying members sequence.
@@ -55,7 +56,7 @@ SEQUENCE_OF_encode_der(asn_TYPE_descriptor_t *td, void *ptr,
 		ASN__ENCODED_OK(erval);
 	}
 
-	ASN_DEBUG("Encoding members of SEQUENCE OF %s", td->name);
+	ASN_DEBUG("Encoding members of SEQUENCE OF %s", TYPE_NAME(td));
 
 	/*
 	 * Encode all members.
@@ -86,7 +87,9 @@ SEQUENCE_OF_encode_der(asn_TYPE_descriptor_t *td, void *ptr,
 
 	return erval;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 asn_enc_rval_t
 SEQUENCE_OF_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 	int ilevel, enum xer_encoder_flags_e flags,
@@ -96,7 +99,7 @@ SEQUENCE_OF_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 	asn_TYPE_member_t *elm = td->elements;
 	asn_anonymous_sequence_ *list = _A_SEQUENCE_FROM_VOID(sptr);
 	const char *mname = specs->as_XMLValueList
-		? 0 : ((*elm->name) ? elm->name : elm->type->xml_tag);
+		? 0 : ((*MEMB_NAME(elm)) ? MEMB_NAME(elm) : elm->type->xml_tag);
 	unsigned int mlen = mname ? strlen(mname) : 0;
 	int xcan = (flags & XER_F_CANONICAL);
 	int i;
@@ -139,9 +142,9 @@ SEQUENCE_OF_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 cb_failed:
 	ASN__ENCODE_FAILED;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
-#ifndef ASN_DISABLE_PER_SUPPORT
-
+#if (ASN_OP_MASK & ASN_OP_UPER)
 asn_enc_rval_t
 SEQUENCE_OF_encode_uper(asn_TYPE_descriptor_t *td,
 	asn_per_constraints_t *constraints, void *sptr, asn_per_outp_t *po) {
@@ -156,7 +159,7 @@ SEQUENCE_OF_encode_uper(asn_TYPE_descriptor_t *td,
 
 	er.encoded = 0;
 
-	ASN_DEBUG("Encoding %s as SEQUENCE OF (%d)", td->name, list->count);
+	ASN_DEBUG("Encoding %s as SEQUENCE OF (%d)", TYPE_NAME(td), list->count);
 
 	if(constraints) ct = &constraints->size;
 	else if(td->per_constraints) ct = &td->per_constraints->size;
@@ -207,22 +210,29 @@ SEQUENCE_OF_encode_uper(asn_TYPE_descriptor_t *td,
 
 	ASN__ENCODED_OK(er);
 }
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 asn_TYPE_operation_t asn_OP_SEQUENCE_OF = {
 	SEQUENCE_OF_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	SEQUENCE_OF_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SEQUENCE_OF_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	SEQUENCE_OF_decode_ber,
 	SEQUENCE_OF_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	SEQUENCE_OF_decode_xer,
 	SEQUENCE_OF_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	SEQUENCE_OF_decode_uper,
 	SEQUENCE_OF_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };

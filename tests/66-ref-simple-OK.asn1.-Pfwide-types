@@ -22,35 +22,59 @@ extern asn_TYPE_descriptor_t asn_DEF_T;
 
 static asn_TYPE_member_t asn_MBR_T_1[] = {
 	{ ATF_POINTER, 0, 0,
+		#if (ASN_OP_MASK & ASN_OP_BER_DER)
 		.tag = (ASN_TAG_CLASS_UNIVERSAL | (10 << 2)),
 		.tag_mode = 0,
+		#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 		.type = &asn_DEF_SimpleType,
+		#if (ASN_OP_MASK & ASN_OP_CHECK)
 		.memb_constraints = 0,	/* Defer constraints checking to the member type */
+		#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+		#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 		.per_constraints = 0,	/* PER is not compiled, use -gen-PER */
-		.default_value = 0,
+		.default_value = 0,	/* No default value */
+		#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+		#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 		.name = "named"
+		#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 		},
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (17 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 static asn_SET_OF_specifics_t asn_SPC_T_specs_1 = {
 	sizeof(struct T),
 	offsetof(struct T, _asn_ctx),
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	1,	/* XER encoding is XMLValueList */
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 };
+
 asn_TYPE_descriptor_t asn_DEF_T = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"T",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"T",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_SET_OF,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SET_OF_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_T_tags_1,
 	sizeof(asn_DEF_T_tags_1)
 		/sizeof(asn_DEF_T_tags_1[0]), /* 1 */
 	asn_DEF_T_tags_1,	/* Same as above */
 	sizeof(asn_DEF_T_tags_1)
 		/sizeof(asn_DEF_T_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	asn_MBR_T_1,
 	1,	/* Single element */
 	&asn_SPC_T_specs_1	/* Additional specs */
@@ -75,15 +99,24 @@ typedef ENUMERATED_t	 SimpleType_t;
 
 /*** <<< FUNC-DECLS [SimpleType] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_SimpleType;
 extern asn_INTEGER_specifics_t asn_SPC_SimpleType_specs_1;
 asn_struct_free_f SimpleType_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f SimpleType_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f SimpleType_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f SimpleType_decode_ber;
 der_type_encoder_f SimpleType_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f SimpleType_decode_xer;
 xer_type_encoder_f SimpleType_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [SimpleType] >>> ***/
 
@@ -105,29 +138,53 @@ static const unsigned int asn_MAP_SimpleType_enum2value_1[] = {
 	1	/* two(1) */
 };
 const asn_INTEGER_specifics_t asn_SPC_SimpleType_specs_1 = {
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
 	asn_MAP_SimpleType_value2enum_1,	/* "tag" => N; sorted by tag */
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 	asn_MAP_SimpleType_enum2value_1,	/* N => "tag"; sorted by N */
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER))
 	3,	/* Number of elements in the maps */
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER | ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* Enumeration is not extensible */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
+	#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 	1,	/* Strict enumeration */
+	#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 	0,	/* Native long size */
 	0
 };
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_SimpleType_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (10 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_SimpleType = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"SimpleType",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"SimpleType",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_ENUMERATED,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	ENUMERATED_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_SimpleType_tags_1,
 	sizeof(asn_DEF_SimpleType_tags_1)
 		/sizeof(asn_DEF_SimpleType_tags_1[0]), /* 1 */
 	asn_DEF_SimpleType_tags_1,	/* Same as above */
 	sizeof(asn_DEF_SimpleType_tags_1)
 		/sizeof(asn_DEF_SimpleType_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* Defined elsewhere */
 	&asn_SPC_SimpleType_specs_1	/* Additional specs */
 };

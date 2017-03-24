@@ -13,6 +13,7 @@ int get_asn1c_environment_version() { return ASN1C_ENVIRONMENT_VERSION; }
 
 static asn_app_consume_bytes_f _print2fp;
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 /*
  * Return the outmost tag of the type.
  */
@@ -28,7 +29,9 @@ asn_TYPE_outmost_tag(const asn_TYPE_descriptor_t *type_descriptor,
 
 	return type_descriptor->op->outmost_tag(type_descriptor, struct_ptr, 0, 0);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 /*
  * Print the target language's structure in human readable form.
  */
@@ -61,7 +64,7 @@ _print2fp(const void *buffer, size_t size, void *app_key) {
 
 	return 0;
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
 
 /*
  * Some compilers do not support variable args macros.

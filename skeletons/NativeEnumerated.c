@@ -15,40 +15,60 @@
 /*
  * NativeEnumerated basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_NativeEnumerated_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (10 << 2))
 };
+#endif
 asn_TYPE_operation_t asn_OP_NativeEnumerated = {
 	NativeInteger_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	NativeInteger_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	NativeInteger_decode_ber,
 	NativeInteger_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	NativeInteger_decode_xer,
 	NativeEnumerated_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	NativeEnumerated_decode_uper,
 	NativeEnumerated_encode_uper,
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_NativeEnumerated = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"ENUMERATED",			/* The ASN.1 type is still ENUMERATED */
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"ENUMERATED",
+#endif
 	&asn_OP_NativeEnumerated,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_NativeEnumerated_tags,
 	sizeof(asn_DEF_NativeEnumerated_tags) / sizeof(asn_DEF_NativeEnumerated_tags[0]),
 	asn_DEF_NativeEnumerated_tags,	/* Same as above */
 	sizeof(asn_DEF_NativeEnumerated_tags) / sizeof(asn_DEF_NativeEnumerated_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 asn_enc_rval_t
 NativeEnumerated_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
         int ilevel, enum xer_encoder_flags_e flags,
@@ -78,7 +98,9 @@ NativeEnumerated_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 		ASN__ENCODE_FAILED;
 	}
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_UPER)
 asn_dec_rval_t
 NativeEnumerated_decode_uper(asn_codec_ctx_t *opt_codec_ctx,
 	asn_TYPE_descriptor_t *td, asn_per_constraints_t *constraints,
@@ -101,7 +123,7 @@ NativeEnumerated_decode_uper(asn_codec_ctx_t *opt_codec_ctx,
 		if(!native) ASN__DECODE_FAILED;
 	}
 
-	ASN_DEBUG("Decoding %s as NativeEnumerated", td->name);
+	ASN_DEBUG("Decoding %s as NativeEnumerated", TYPE_NAME(td));
 
 	if(ct->flags & APC_EXTENSIBLE) {
 		int inext = per_get_few_bits(pd, 1);
@@ -129,7 +151,7 @@ NativeEnumerated_decode_uper(asn_codec_ctx_t *opt_codec_ctx,
 	}
 
 	*native = specs->value2enum[value].nat_value;
-	ASN_DEBUG("Decoded %s = %ld", td->name, *native);
+	ASN_DEBUG("Decoded %s = %ld", TYPE_NAME(td), *native);
 
 	return rval;
 }
@@ -163,7 +185,7 @@ NativeEnumerated_encode_uper(asn_TYPE_descriptor_t *td,
 	else if(td->per_constraints) ct = &td->per_constraints->value;
 	else ASN__ENCODE_FAILED;	/* Mandatory! */
 
-	ASN_DEBUG("Encoding %s as NativeEnumerated", td->name);
+	ASN_DEBUG("Encoding %s as NativeEnumerated", TYPE_NAME(td));
 
 	er.encoded = 0;
 
@@ -213,4 +235,4 @@ NativeEnumerated_encode_uper(asn_TYPE_descriptor_t *td,
 
 	ASN__ENCODED_OK(er);
 }
-
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */

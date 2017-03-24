@@ -11,40 +11,60 @@
 /*
  * INTEGER basic type description.
  */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_INTEGER_tags[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (2 << 2))
 };
+#endif
 asn_TYPE_operation_t asn_OP_INTEGER = {
 	ASN__PRIMITIVE_TYPE_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	INTEGER_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	ber_decode_primitive,
 	INTEGER_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	INTEGER_decode_xer,
 	INTEGER_encode_xer,
-#ifdef ASN_DISABLE_PER_SUPPORT
-	0,
-	0,
-#else
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	INTEGER_decode_uper,	/* Unaligned PER decoder */
 	INTEGER_encode_uper,	/* Unaligned PER encoder */
-#endif /* ASN_DISABLE_PER_SUPPORT */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0			/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_INTEGER = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"INTEGER",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"INTEGER",
+#endif
 	&asn_OP_INTEGER,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_INTEGER_tags,
 	sizeof(asn_DEF_INTEGER_tags) / sizeof(asn_DEF_INTEGER_tags[0]),
 	asn_DEF_INTEGER_tags,	/* Same as above */
 	sizeof(asn_DEF_INTEGER_tags) / sizeof(asn_DEF_INTEGER_tags[0]),
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	0	/* No specifics */
 };
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 /*
  * Encode INTEGER type using DER.
  */
@@ -55,7 +75,7 @@ INTEGER_encode_der(asn_TYPE_descriptor_t *td, void *sptr,
 	INTEGER_t *st = (INTEGER_t *)sptr;
 
 	ASN_DEBUG("%s %s as INTEGER (tm=%d)",
-		cb?"Encoding":"Estimating", td->name, tag_mode);
+		cb?"Encoding":"Estimating", TYPE_NAME(td), tag_mode);
 
 	/*
 	 * Canonicalize integer in the buffer.
@@ -103,9 +123,13 @@ INTEGER_encode_der(asn_TYPE_descriptor_t *td, void *sptr,
 
 	return der_encode_primitive(td, sptr, tag_mode, tag, cb, app_key);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 static const asn_INTEGER_enum_map_t *INTEGER_map_enum2value(asn_INTEGER_specifics_t *specs, const char *lstart, const char *lstop);
+#endif
 
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 /*
  * INTEGER specific human-readable output.
  */
@@ -208,7 +232,9 @@ INTEGER_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 	return (ret < 0) ? -1 : 0;
 }
+#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 struct e2v_key {
 	const char *start;
 	const char *stop;
@@ -271,7 +297,9 @@ INTEGER_map_enum2value(asn_INTEGER_specifics_t *specs, const char *lstart, const
 	}
 	return el_found;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER))
 static int
 INTEGER__compar_value2enum(const void *kp, const void *am) {
 	long a = *(const long *)kp;
@@ -290,7 +318,9 @@ INTEGER_map_value2enum(asn_INTEGER_specifics_t *specs, long value) {
 		count, sizeof(specs->value2enum[0]),
 		INTEGER__compar_value2enum);
 }
+#endif /* (ASN_OP_MASK & (ASN_OP_PRINT | ASN_OP_XER)) */
 
+#if (ASN_OP_MASK & ASN_OP_XER)
 static int
 INTEGER_st_prealloc(INTEGER_t *st, int min_size) {
 	void *p = MALLOC(min_size + 1);
@@ -546,7 +576,7 @@ INTEGER_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 
 	(void)ilevel;
 	(void)flags;
-	
+
 	if(!st || !st->buf)
 		ASN__ENCODE_FAILED;
 
@@ -555,8 +585,9 @@ INTEGER_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 
 	ASN__ENCODED_OK(er);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
-#ifndef	ASN_DISABLE_PER_SUPPORT
+#if (ASN_OP_MASK & ASN_OP_UPER)
 
 asn_dec_rval_t
 INTEGER_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
@@ -631,7 +662,7 @@ INTEGER_decode_uper(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 			return rval;
 		}
 	} else {
-		ASN_DEBUG("Decoding unconstrained integer %s", td->name);
+		ASN_DEBUG("Decoding unconstrained integer %s", TYPE_NAME(td));
 	}
 
 	/* X.691, #12.2.3, #12.2.4 */
@@ -764,7 +795,7 @@ INTEGER_encode_uper(asn_TYPE_descriptor_t *td,
 	ASN__ENCODED_OK(er);
 }
 
-#endif	/* ASN_DISABLE_PER_SUPPORT */
+#endif /* (ASN_OP_MASK & ASN_OP_UPER) */
 
 int
 asn_INTEGER2long(const INTEGER_t *iptr, long *lptr) {

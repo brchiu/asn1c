@@ -13,28 +13,50 @@ asn_OCTET_STRING_specifics_t asn_SPC_ANY_specs = {
 };
 asn_TYPE_operation_t asn_OP_ANY = {
 	OCTET_STRING_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	OCTET_STRING_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	OCTET_STRING_decode_ber,
 	OCTET_STRING_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	OCTET_STRING_decode_xer_hex,
 	ANY_encode_xer,
+#endif
+#if (ASN_OP_MASK & ASN_OP_UPER)
 	0,
 	0,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };
 asn_TYPE_descriptor_t asn_DEF_ANY = {
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"ANY",
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	"ANY",
+#endif
 	&asn_OP_ANY,
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	asn_generic_no_constraint,
-	0, 0, 0, 0,	/* No PER visible constraints */
-	0,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
+	0, 0, 0, 0,
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
+	0,	/* No PER visible constraints */
+#endif
 	0, 0,	/* No members */
 	&asn_SPC_ANY_specs,
 };
 
-
+#if (ASN_OP_MASK & ASN_OP_XER)
 asn_enc_rval_t
 ANY_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 	int ilevel, enum xer_encoder_flags_e flags,
@@ -50,6 +72,7 @@ ANY_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 	/* Dump as binary */
 	return OCTET_STRING_encode_xer(td, sptr, ilevel, flags, cb, app_key);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 struct _callback_arg {
 	uint8_t *buffer;
@@ -59,6 +82,7 @@ struct _callback_arg {
 
 static int ANY__consume_bytes(const void *buffer, size_t size, void *key);
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 int
 ANY_fromType(ANY_t *st, asn_TYPE_descriptor_t *td, void *sptr) {
 	struct _callback_arg arg;
@@ -142,6 +166,7 @@ ANY_to_type(ANY_t *st, asn_TYPE_descriptor_t *td, void **struct_ptr) {
 		return -1;
 	}
 }
+#endif
 
 static int ANY__consume_bytes(const void *buffer, size_t size, void *key) {
 	struct _callback_arg *arg = (struct _callback_arg *)key;

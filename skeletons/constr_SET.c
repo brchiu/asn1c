@@ -62,6 +62,7 @@ static int _SET_is_populated(asn_TYPE_descriptor_t *td, void *st);
 		return rval;			\
 	} while(0)
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 /*
  * Tags are canonically sorted in the tag2element map.
  */
@@ -114,7 +115,7 @@ SET_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 	ssize_t consumed_myself = 0;	/* Consumed bytes from ptr */
 	int edx;			/* SET element's index */
 
-	ASN_DEBUG("Decoding %s as SET", td->name);
+	ASN_DEBUG("Decoding %s as SET", TYPE_NAME(td));
 
 	if(ASN__STACK_OVERFLOW_CHECK(opt_codec_ctx))
 		ASN__DECODE_FAILED;
@@ -133,7 +134,7 @@ SET_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 	 * Restore parsing context.
 	 */
 	ctx = (asn_struct_ctx_t *)((char *)st + specs->ctx_offset);
-	
+
 	/*
 	 * Start to parse where left previously
 	 */
@@ -149,7 +150,7 @@ SET_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 			tag_mode, 1, &ctx->left, 0);
 		if(rval.code != RC_OK) {
 			ASN_DEBUG("%s tagging check failed: %d",
-				td->name, rval.code);
+				TYPE_NAME(td), rval.code);
 			return rval;
 		}
 
@@ -235,11 +236,11 @@ SET_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 			edx = t2m->el_no;
 			ctx->step = (edx << 1) + 1;
 			ASN_DEBUG("Got tag %s (%s), edx %d",
-				ber_tlv_tag_string(tlv_tag), td->name, edx);
+				ber_tlv_tag_string(tlv_tag), TYPE_NAME(td), edx);
 		} else if(specs->extensible == 0) {
 			ASN_DEBUG("Unexpected tag %s "
 				"in non-extensible SET %s",
-				ber_tlv_tag_string(tlv_tag), td->name);
+				ber_tlv_tag_string(tlv_tag), TYPE_NAME(td));
 			RETURN(RC_FAIL);
 		} else {
 			/* Skip this tag */
@@ -273,10 +274,10 @@ SET_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		 */
 		if(ASN_SET_ISPRESENT2((char *)st + specs->pres_offset, edx)) {
 			ASN_DEBUG("SET %s: Duplicate element %s (%d)",
-				td->name, elements[edx].name, edx);
+				TYPE_NAME(td), elements[edx].name, edx);
 			RETURN(RC_FAIL);
 		}
-		
+
 		/*
 		 * Compute the position of the member inside a structure,
 		 * and also a type of containment (it may be contained
@@ -313,7 +314,7 @@ SET_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 		case RC_FAIL: /* Fatal error */
 			RETURN(RC_FAIL);
 		} /* switch(rval) */
-		
+
 		ADVANCE(rval.consumed);
 	  }	/* for(all structure members) */
 
@@ -323,7 +324,7 @@ SET_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 	case 3:
 	case 4:	/* Only 00 is expected */
 		ASN_DEBUG("SET %s Leftover: %ld, size = %ld",
-			td->name, (long)ctx->left, (long)size);
+			TYPE_NAME(td), (long)ctx->left, (long)size);
 
 		/*
 		 * Skip everything until the end of the SET.
@@ -363,7 +364,7 @@ SET_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 				ASN_DEBUG("Unexpected continuation "
 					"of a non-extensible type %s "
 					"(ptr=%02x)",
-					td->name, *(const uint8_t *)ptr);
+					TYPE_NAME(td), *(const uint8_t *)ptr);
 				RETURN(RC_FAIL);
 			}
 
@@ -387,10 +388,12 @@ SET_decode_ber(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 
 		NEXT_PHASE(ctx);
 	}
-	
+
 	RETURN(RC_OK);
 }
+#endif /* #if (ASN_OP_MASK & ASN_OP_BER_DER) */
 
+#if (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER))
 static int
 _SET_is_populated(asn_TYPE_descriptor_t *td, void *st) {
 	asn_SET_specifics_t *specs = (asn_SET_specifics_t *)td->specifics;
@@ -415,7 +418,7 @@ _SET_is_populated(asn_TYPE_descriptor_t *td, void *st) {
 			ASN_DEBUG("One or more mandatory elements "
 				"of a SET %s %d (%08x.%08x)=%08x "
 				"are not present",
-				td->name,
+				TYPE_NAME(td),
 				midx,
 				pres,
 				must,
@@ -427,7 +430,9 @@ _SET_is_populated(asn_TYPE_descriptor_t *td, void *st) {
 
 	return 1;
 }
+#endif /* (ASN_OP_MASK & (ASN_OP_BER_DER | ASN_OP_XER)) */
 
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 /*
  * The DER encoder of the SET type.
  */
@@ -572,6 +577,9 @@ SET_encode_der(asn_TYPE_descriptor_t *td,
 
 	ASN__ENCODED_OK(er);
 }
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
+#if (ASN_OP_MASK & ASN_OP_XER)
 
 #undef	XER_ADVANCE
 #define	XER_ADVANCE(num_bytes)	do {			\
@@ -643,7 +651,7 @@ SET_decode_xer(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 			if(ASN_SET_ISPRESENT2((char *)st + specs->pres_offset,
 					edx)) {
 				ASN_DEBUG("SET %s: Duplicate element %s (%d)",
-				td->name, elements[edx].name, edx);
+				TYPE_NAME(td), elements[edx].name, edx);
 				RETURN(RC_FAIL);
 			}
 
@@ -659,7 +667,7 @@ SET_decode_xer(asn_codec_ctx_t *opt_codec_ctx, asn_TYPE_descriptor_t *td,
 
 			/* Invoke the inner type decoder, m.b. multiple times */
 			tmprval = elm->type->op->xer_decoder(opt_codec_ctx,
-					elm->type, memb_ptr2, elm->name,
+					elm->type, memb_ptr2, MEMB_NAME(elm),
 					buf_ptr, size);
 			XER_ADVANCE(tmprval.consumed);
 			if(tmprval.code != RC_OK)
@@ -826,8 +834,8 @@ SET_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 		unsigned int mlen;
 
 		elm = &td->elements[t2m[edx].el_no];
-		mname = elm->name;
-		mlen = strlen(elm->name);
+		mname = MEMB_NAME(elm);
+		mlen = strlen(MEMB_NAME(elm));
 
 		if(elm->flags & ATF_POINTER) {
 			memb_ptr = *(void **)((char *)sptr + elm->memb_offset);
@@ -861,7 +869,9 @@ SET_encode_xer(asn_TYPE_descriptor_t *td, void *sptr,
 cb_failed:
 	ASN__ENCODE_FAILED;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 int
 SET_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 		asn_app_consume_bytes_f *cb, void *app_key) {
@@ -871,7 +881,7 @@ SET_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 	if(!sptr) return (cb("<absent>", 8, app_key) < 0) ? -1 : 0;
 
 	/* Dump preamble */
-	if(cb(td->name, strlen(td->name), app_key) < 0
+	if(cb(TYPE_NAME(td), strlen(TYPE_NAME(td)), app_key) < 0
 	|| cb(" ::= {", 6, app_key) < 0)
 		return -1;
 
@@ -893,7 +903,7 @@ SET_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 		_i_INDENT(1);
 
 		/* Print the member's name and stuff */
-		if(cb(elm->name, strlen(elm->name), app_key) < 0
+		if(cb(MEMB_NAME(elm), strlen(MEMB_NAME(elm)), app_key) < 0
 		|| cb(": ", 2, app_key) < 0)
 			return -1;
 
@@ -908,6 +918,7 @@ SET_print(asn_TYPE_descriptor_t *td, const void *sptr, int ilevel,
 
 	return (cb("}", 1, app_key) < 0) ? -1 : 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
 
 void
 SET_free(asn_TYPE_descriptor_t *td, void *ptr, int contents_only) {
@@ -916,7 +927,7 @@ SET_free(asn_TYPE_descriptor_t *td, void *ptr, int contents_only) {
 	if(!td || !ptr)
 		return;
 
-	ASN_DEBUG("Freeing %s as SET", td->name);
+	ASN_DEBUG("Freeing %s as SET", TYPE_NAME(td));
 
 	for(edx = 0; edx < td->elements_count; edx++) {
 		asn_TYPE_member_t *elm = &td->elements[edx];
@@ -936,6 +947,7 @@ SET_free(asn_TYPE_descriptor_t *td, void *ptr, int contents_only) {
 	}
 }
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 SET_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 		asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -944,7 +956,7 @@ SET_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td), __FILE__, __LINE__);
 		return -1;
 	}
 
@@ -962,7 +974,7 @@ SET_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 					continue;
 				ASN__CTFAIL(app_key, td, sptr,
 				"%s: mandatory element %s absent (%s:%d)",
-				td->name, elm->name, __FILE__, __LINE__);
+				TYPE_NAME(td), MEMB_NAME(elm), __FILE__, __LINE__);
 				return -1;
 			}
 		} else {
@@ -987,16 +999,29 @@ SET_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 	return 0;
 }
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 
 asn_TYPE_operation_t asn_OP_SET = {
 	SET_free,
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 	SET_print,
+#endif
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 	SET_constraint,
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	SET_decode_ber,
 	SET_encode_der,
+#endif
+#if (ASN_OP_MASK & ASN_OP_XER)
 	SET_decode_xer,
 	SET_encode_xer,
+#endif
+#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* SET_decode_uper */
 	0,	/* SET_encode_uper */
+#endif
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	0	/* Use generic outmost tag fetcher */
+#endif
 };

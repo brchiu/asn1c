@@ -17,17 +17,27 @@ typedef BIT_STRING_t	 T_t;
 
 /*** <<< FUNC-DECLS [T] >>> ***/
 
+
 extern asn_TYPE_descriptor_t asn_DEF_T;
 asn_struct_free_f T_free;
+#if (ASN_OP_MASK & ASN_OP_PRINT)
 asn_struct_print_f T_print;
+#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 asn_constr_check_f T_constraint;
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 ber_type_decoder_f T_decode_ber;
 der_type_encoder_f T_encode_der;
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+#if (ASN_OP_MASK & ASN_OP_XER)
 xer_type_decoder_f T_decode_xer;
 xer_type_encoder_f T_encode_xer;
+#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 
 /*** <<< CODE [T] >>> ***/
 
+#if (ASN_OP_MASK & ASN_OP_CHECK)
 int
 T_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 			asn_app_constraint_failed_f *ctfailcb, void *app_key) {
@@ -36,7 +46,7 @@ T_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	if(!sptr) {
 		ASN__CTFAIL(app_key, td, sptr,
 			"%s: value not given (%s:%d)",
-			td->name, __FILE__, __LINE__);
+			TYPE_NAME(td),__FILE__, __LINE__);
 		return -1;
 	}
 	
@@ -50,6 +60,7 @@ T_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 	return td->check_constraints(td, sptr, ctfailcb, app_key);
 }
 
+#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
 /*
  * This type is implemented using BIT_STRING,
  * so here we adjust the DEF accordingly.
@@ -57,21 +68,35 @@ T_constraint(asn_TYPE_descriptor_t *td, const void *sptr,
 
 /*** <<< STAT-DEFS [T] >>> ***/
 
+
+#if (ASN_OP_MASK & ASN_OP_BER_DER)
 static const ber_tlv_tag_t asn_DEF_T_tags_1[] = {
 	(ASN_TAG_CLASS_UNIVERSAL | (3 << 2))
 };
+#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+
 asn_TYPE_descriptor_t asn_DEF_T = {
+	#if (ASN_OP_MASK & ASN_OP_PRINT)
 	"T",
+	#endif /* (ASN_OP_MASK & ASN_OP_PRINT) */
+	#if (ASN_OP_MASK & ASN_OP_XER)
 	"T",
+	#endif /* (ASN_OP_MASK & ASN_OP_XER) */
 	&asn_OP_BIT_STRING,
+	#if (ASN_OP_MASK & ASN_OP_CHECK)
 	T_constraint,
+	#endif /* (ASN_OP_MASK & ASN_OP_CHECK) */
+	#if (ASN_OP_MASK & ASN_OP_BER_DER)
 	asn_DEF_T_tags_1,
 	sizeof(asn_DEF_T_tags_1)
 		/sizeof(asn_DEF_T_tags_1[0]), /* 1 */
 	asn_DEF_T_tags_1,	/* Same as above */
 	sizeof(asn_DEF_T_tags_1)
 		/sizeof(asn_DEF_T_tags_1[0]), /* 1 */
+	#endif /* (ASN_OP_MASK & ASN_OP_BER_DER) */
+	#if (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER))
 	0,	/* No PER visible constraints */
+	#endif /* (ASN_OP_MASK & (ASN_OP_UPER | ASN_OP_APER)) */
 	0, 0,	/* Defined elsewhere */
 	&asn_SPC_BIT_STRING_specs	/* Additional specs */
 };
