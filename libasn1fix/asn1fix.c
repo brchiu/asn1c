@@ -293,7 +293,7 @@ phase_1_1(arg_t *arg, int prm2) {
 	int rvalue = 0;
 	int ret;
 
-	if(expr->lhs_params && expr->spec_index == -1) {
+	if(expr->specializations.pspecs_count) {
 		int i;
 		if(!prm2)
 			/* Do not process the parameterized type just yet */

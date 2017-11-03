@@ -954,6 +954,9 @@ asn1c_lang_C_type_CHOICE(arg_t *arg) {
 
 	DEPENDENCIES;
 
+if((expr->expr_type != ASN_CONSTR_OPEN_TYPE) ||
+   (strcmp(expr->Identifier, arg->expr->Identifier) == 0)) {
+
 	REDIR(OT_DEPS);
 
 	OUT("typedef %s {\n", c_name(arg).presence_enum);
@@ -1019,6 +1022,10 @@ asn1c_lang_C_type_CHOICE(arg_t *arg) {
 			c_name(arg).short_name);
 	}
 	if(!expr->_anonymous_type) OUT(";\n");
+
+} else {
+	GEN_INCLUDE(asn1c_type_name(arg, expr, TNF_INCLUDE));
+}
 
 	return asn1c_lang_C_type_CHOICE_def(arg);
 }
@@ -1306,7 +1313,8 @@ asn1c_lang_C_type_SIMPLE_TYPE(arg_t *arg) {
 	} else {
 		GEN_INCLUDE(asn1c_type_name(arg, expr, TNF_INCLUDE));
 
-		REDIR(OT_TYPE_DECLS);
+		//REDIR(OT_TYPE_DECLS);
+		REDIR(OT_FUNC_DECLS);
 
 		OUT("typedef %s\t",
 			asn1c_type_name(arg, arg->expr, TNF_CTYPE));

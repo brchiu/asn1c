@@ -114,7 +114,8 @@ asn1c_compile_expr(arg_t *arg, const asn1c_ioc_table_and_objset_t *opt_ioc) {
 			expr->Identifier,
 			expr->_lineno);
 
-		if(expr->lhs_params && expr->spec_index == -1) {
+		ret = 0;
+		if(expr->specializations.pspecs_count) {
 			int i;
 			ret = 0;
 			DEBUG("Parameterized type %s at line %d: %s (%d)",
@@ -123,13 +124,21 @@ asn1c_compile_expr(arg_t *arg, const asn1c_ioc_table_and_objset_t *opt_ioc) {
 				? "compiling" : "unused, skipping",
 				expr->specializations.pspecs_count);
 			for(i = 0; i<expr->specializations.pspecs_count; i++) {
+				if((i > 0) &&
+					strcmp(arg->expr->Identifier,
+						expr->specializations
+						.pspec[i].my_clone->Identifier) == 0)
+					continue;
+
 				arg->expr = expr->specializations
 						.pspec[i].my_clone;
 				ret = asn1c_compile_expr(arg, opt_ioc);
 				if(ret) break;
 			}
 			arg->expr = expr;	/* Restore */
-		} else {
+		}
+
+		if(!(expr->lhs_params && expr->spec_index == -1)){
 			ret = type_cb(arg);
 		}
 	} else {

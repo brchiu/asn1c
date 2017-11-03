@@ -14,6 +14,47 @@ static asn1p_expr_t *find_target_specialization_byvalueset(resolver_arg_t *rarg,
 static asn1p_expr_t *find_target_specialization_byref(resolver_arg_t *rarg, asn1p_ref_t *ref);
 static asn1p_expr_t *find_target_specialization_bystr(resolver_arg_t *rarg, char *str);
 
+static asn1p_expr_t *find_specialization_by_rhs(asn1p_expr_t *expr, asn1p_expr_t *rhs_pspecs);
+static int append_specialization(asn1p_expr_t *expr, asn1p_expr_t *exc, asn1p_expr_t *rpc);
+
+static asn1p_expr_t *
+find_specialization_by_rhs(asn1p_expr_t *expr, asn1p_expr_t *rhs_pspecs) {
+	int npspecs;
+
+	for(npspecs = 0;
+		npspecs < expr->specializations.pspecs_count;
+			npspecs++) {
+		if(compare_specializations(rhs_pspecs,
+			expr->specializations.pspec[npspecs].rhs_pspecs) == 0) {
+			return expr->specializations.pspec[npspecs].my_clone;
+		}
+	}
+
+	return (asn1p_expr_t *)NULL;
+}
+
+static int
+append_specialization(asn1p_expr_t *expr, asn1p_expr_t *exc, asn1p_expr_t *rpc) {
+	int npspecs;
+	void *p;
+	struct asn1p_pspec_s *pspec;
+
+	npspecs = expr->specializations.pspecs_count;
+	p = realloc(expr->specializations.pspec,
+			(npspecs + 1) * sizeof(expr->specializations.pspec[0]));
+	assert(p);
+	expr->specializations.pspec = p;
+	pspec = &expr->specializations.pspec[npspecs];
+	memset(pspec, 0, sizeof *pspec);
+
+	pspec->rhs_pspecs = rpc;
+	pspec->my_clone = exc;
+
+	/* Commit */
+	expr->specializations.pspecs_count = npspecs + 1;
+	return npspecs;
+}
+
 asn1p_expr_t *
 asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_pspecs) {
 	resolver_arg_t rarg;	/* resolver argument */
@@ -21,26 +62,27 @@ asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_ps
 	asn1p_expr_t *rpc;	/* rhs_pspecs clone */
 	asn1p_expr_t *m;	/* expr members */
 	asn1p_expr_t *target;
-	void *p;
-	struct asn1p_pspec_s *pspec;
+	asn1p_expr_t *parent_expr;
 	int npspecs;
 
 	assert(rhs_pspecs);
 	assert(expr->lhs_params);
 	assert(expr->parent_expr == 0);
 
+	parent_expr = arg->expr->parent_expr ? arg->expr->parent_expr : arg->expr;
+
 	/*
 	 * Find if this exact specialization has been used already.
 	 */
-	for(npspecs = 0;
-		npspecs < expr->specializations.pspecs_count;
-			npspecs++) {
-		if(compare_specializations(rhs_pspecs,
-			expr->specializations.pspec[npspecs].rhs_pspecs) == 0) {
-			DEBUG("Reused parameterization for %s",
-				expr->Identifier);
-			return expr->specializations.pspec[npspecs].my_clone;
+	exc = find_specialization_by_rhs(expr, rhs_pspecs);
+	if(exc) {
+		DEBUG("Reused parameterization for %s", expr->Identifier);
+		if(parent_expr->specializations.pspecs_count == 0) {
+			append_specialization(parent_expr, exc, rhs_pspecs);
+			exc->ref_cnt++;
+			rhs_pspecs->ref_cnt++;
 		}
+		return exc;
 	}
 
 	DEBUG("Forking parameterization at %d for %s (%d alr)",
@@ -60,16 +102,14 @@ asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_ps
 	/*
 	 * Create a new specialization.
 	 */
-	npspecs = expr->specializations.pspecs_count;
-	p = realloc(expr->specializations.pspec,
-			(npspecs + 1) * sizeof(expr->specializations.pspec[0]));
-	assert(p);
-	expr->specializations.pspec = p;
-	pspec = &expr->specializations.pspec[npspecs];
-	memset(pspec, 0, sizeof *pspec);
+	npspecs = append_specialization(expr, exc, rpc);
 
-	pspec->rhs_pspecs = rpc;
-	pspec->my_clone = exc;
+	if(parent_expr->specializations.pspecs_count == 0) {
+		append_specialization(parent_expr, exc, rhs_pspecs);
+		exc->ref_cnt++;
+		rhs_pspecs->ref_cnt++;
+	}
+
 	exc->spec_index = npspecs;
 	exc->rhs_pspecs = asn1p_expr_clone_with_resolver(expr->rhs_pspecs ?
 					expr->rhs_pspecs : rhs_pspecs,
@@ -87,8 +127,6 @@ asn1f_parameterization_fork(arg_t *arg, asn1p_expr_t *expr, asn1p_expr_t *rhs_ps
 
 	DEBUG("Forked new parameterization for %s", expr->Identifier);
 
-	/* Commit */
-	expr->specializations.pspecs_count = npspecs + 1;
 	return exc;
 }
 

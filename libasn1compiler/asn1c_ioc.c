@@ -243,6 +243,7 @@ emit_ioc_cell(arg_t *arg, struct asn1p_ioc_cell_s *cell) {
 int
 emit_ioc_table(arg_t *arg, asn1p_expr_t *context, asn1c_ioc_table_and_objset_t ioc_tao) {
     size_t columns = 0;
+    int saved_target = arg->target->target;
 
     (void)context;
     GEN_INCLUDE_STD("asn_ioc");
@@ -289,6 +290,8 @@ emit_ioc_table(arg_t *arg, asn1p_expr_t *context, asn1c_ioc_table_and_objset_t i
         MKID(ioc_tao.objset), ioc_tao.objset->_type_unique_index);
     INDENT(-1);
     OUT("};\n");
+
+    REDIR(saved_target);
 
     return 0;
 }
