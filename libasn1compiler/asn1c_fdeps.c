@@ -84,7 +84,7 @@ asn1c_read_file_dependencies(arg_t *arg, const char *datadir) {
 		errno = EINVAL;
 		return NULL;
 	} else {
-		sprintf(buf, "%s/file-dependencies", datadir);
+		snprintf(buf, sizeof(buf), "%s/file-dependencies", datadir);
 	}
 
 	f = fopen(buf, "r");

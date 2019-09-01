@@ -380,7 +380,7 @@ asn1c_lang_C_type_SEQUENCE(arg_t *arg) {
             if((v->expr_type == ASN_CONSTR_SEQUENCE) &&
                (v->marker.flags & EM_OPTIONAL) &&
                (v->Identifier == NULL)) {
-                sprintf(ext_name, "ext%d", ext_num++);
+                snprintf(ext_name, sizeof(ext_name), "ext%d", ext_num++);
                 v->Identifier = strdup(ext_name);
             }
 
@@ -625,7 +625,7 @@ asn1c_lang_C_type_SET(arg_t *arg) {
 		if((v->expr_type == ASN_CONSTR_SEQUENCE) &&
 		   (v->marker.flags & EM_OPTIONAL) &&
 		   (v->Identifier == NULL)) {
-			sprintf(ext_name, "ext%d", ext_num++);
+			snprintf(ext_name, sizeof(ext_name), "ext%d", ext_num++);
 			v->Identifier = strdup(ext_name);
 		}
 		EMBED(v);
@@ -993,7 +993,7 @@ asn1c_lang_C_type_CHOICE(arg_t *arg) {
 				(v->marker.flags & EM_OPTIONAL) &&
 				(v->Identifier == NULL)) {
 				char ext_name[20];
-				sprintf(ext_name, "ext%d", ext_num++);
+				snprintf(ext_name, sizeof(ext_name), "ext%d", ext_num++);
 				v->Identifier = strdup(ext_name);
 			}
 			OUT("%s", c_presence_name(arg, v));

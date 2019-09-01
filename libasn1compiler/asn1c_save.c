@@ -580,7 +580,7 @@ asn1c_save_streams(arg_t *arg, asn1c_dep_chainset *deps, const char *destdir,
 		}
 	}
 
-	sprintf(name_buf, "%s%s.h", destdir, filename);
+	snprintf(name_buf, sizeof(name_buf), "%s%s.h", destdir, filename);
 	if(identical_files(name_buf, tmpname_h)) {
 		h_retained = " (contents unchanged)";
 		unlink(tmpname_h);
